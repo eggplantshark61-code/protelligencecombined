@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- THEME: "Blueprint" — technical schematic build on deep navy. Blueprint grid background, hand-drawn inline SVG sedan wireframe with dimension arrows and measurement callouts, stroke-dashoffset line-draw animation (visible fallback), sections framed as drawing sheets with title blocks, numbered clauses. Space Grotesk + JetBrains Mono. Palette: navy / white / silver / steel only. -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROTELLIGENCE — Independent Vehicle Valuation &amp; Litigation Consulting</title>
+<meta name="description" content="Independent vehicle valuation and litigation consulting, drawn to specification: total-loss disputes, diminished value, expert reports and testimony, CCC/Mitchell review. Founder Jack Donachie. National practice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bp:#0A1A2F; --bp-deep:#071120; --bp-panel:#0E2138;
+  --ink:#EAF0F7; --silver:#B9C7D6; --faint:#7E92A8;
+  --steel:#6D8FB3; --steel-hi:#9DB8D4; --steel-lo:#3A5876;
+  --line:rgba(157,184,212,.22); --line-soft:rgba(157,184,212,.12);
+  --grid-minor:rgba(157,184,212,.055); --grid-major:rgba(157,184,212,.11);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  font-family:'Space Grotesk',system-ui,sans-serif;font-size:16px;line-height:1.62;
+  color:var(--silver);-webkit-font-smoothing:antialiased;
+  background:
+    linear-gradient(rgba(7,17,32,0) 0%,rgba(7,17,32,.5) 100%),
+    repeating-linear-gradient(0deg,var(--grid-minor) 0 1px,transparent 1px 24px),
+    repeating-linear-gradient(90deg,var(--grid-minor) 0 1px,transparent 1px 24px),
+    repeating-linear-gradient(0deg,var(--grid-major) 0 1px,transparent 1px 120px),
+    repeating-linear-gradient(90deg,var(--grid-major) 0 1px,transparent 1px 120px),
+    radial-gradient(140% 90% at 50% -10%,#12294a 0%,var(--bp) 55%,var(--bp-deep) 100%);
+  background-attachment:fixed;
+}
+h1,h2,h3{color:var(--ink);font-weight:500;letter-spacing:-.01em}
+.mono{font-family:'JetBrains Mono',monospace}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--steel-hi);outline-offset:3px}
+.shell{width:min(1220px,94vw);margin:0 auto}
+
+/* ---------- DRAWING-HEADER NAV ---------- */
+.dwg-header{
+  position:sticky;top:0;z-index:60;background:rgba(7,17,32,.94);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+.dwg-header .cells{
+  display:grid;grid-template-columns:auto 1fr auto auto auto;align-items:stretch;
+  border-left:1px solid var(--line);border-right:1px solid var(--line);
+}
+.cell{border-right:1px solid var(--line-soft);padding:.7rem 1.1rem;display:flex;flex-direction:column;justify-content:center;min-height:58px}
+.cell:last-child{border-right:0}
+.cell .k{font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;color:var(--faint)}
+.cell .v{font-size:.85rem;color:var(--ink);white-space:nowrap}
+.cell.brand .v{font-weight:700;letter-spacing:.24em;font-size:1rem}
+.cell.brand .v span{color:var(--steel-hi)}
+.cell.menu{flex-direction:row;align-items:center;gap:1.3rem;justify-content:center}
+.cell.menu a{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);text-decoration:none;padding:.6rem 0;min-height:44px;display:inline-flex;align-items:center;transition:color .2s}
+.cell.menu a:hover{color:var(--ink)}
+.cell.tel a{color:var(--steel-hi);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:.8rem}
+.cell.tel a:hover{color:var(--ink)}
+.cell.cta{padding:0}
+.cell.cta a{
+  display:flex;align-items:center;height:100%;padding:0 1.4rem;text-decoration:none;
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--bp-deep);background:var(--steel-hi);font-weight:500;transition:background .2s;
+}
+.cell.cta a:hover{background:var(--ink)}
+
+/* ---------- SHEET FRAME ---------- */
+.sheet{
+  position:relative;margin:clamp(2.2rem,5vh,4rem) auto;width:min(1220px,94vw);
+  border:1px solid var(--line);background:rgba(10,26,47,.55);
+  padding:clamp(1.6rem,4vw,3.4rem);
+}
+.sheet::before{content:"";position:absolute;inset:8px;border:1px solid var(--line-soft);pointer-events:none}
+.corner{position:absolute;width:10px;height:10px;pointer-events:none}
+.corner::before,.corner::after{content:"";position:absolute;background:var(--steel-hi)}
+.corner::before{width:10px;height:1px;top:0}
+.corner::after{width:1px;height:10px;left:0}
+.c-tl{top:-1px;left:-1px}
+.c-tr{top:-1px;right:-1px;transform:scaleX(-1)}
+.c-bl{bottom:-1px;left:-1px;transform:scaleY(-1)}
+.c-br{bottom:-1px;right:-1px;transform:scale(-1)}
+
+/* Title block (per sheet) */
+.titleblock{
+  display:grid;grid-template-columns:auto 1fr auto auto;gap:0;margin-bottom:2.4rem;
+  border:1px solid var(--line);font-family:'JetBrains Mono',monospace;
+}
+.tb-cell{padding:.55rem .9rem;border-right:1px solid var(--line-soft)}
+.tb-cell:last-child{border-right:0}
+.tb-cell .k{display:block;font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:var(--faint)}
+.tb-cell .v{font-size:.76rem;color:var(--steel-hi);letter-spacing:.08em}
+.tb-cell.name .v{color:var(--ink)}
+
+.clause-kicker{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--steel-hi);display:block;margin-bottom:1rem}
+.sheet h2{font-size:clamp(1.7rem,3.4vw,2.6rem);line-height:1.15;max-width:24ch}
+.sheet h2 .lt{font-weight:300;color:var(--silver)}
+.lede{margin-top:1.1rem;max-width:60ch;color:var(--faint)}
+
+/* Numbered clauses */
+.clauses{margin-top:2.2rem;border-top:1px dashed var(--line)}
+.clause{display:grid;grid-template-columns:5.4rem 1fr;gap:1.4rem;padding:1.5rem .2rem;border-bottom:1px dashed var(--line)}
+.clause .num{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--steel-hi);letter-spacing:.1em;padding-top:.2rem}
+.clause h3{font-size:1.12rem;margin-bottom:.35rem;font-weight:500}
+.clause p{color:var(--faint);font-size:.95rem;max-width:62ch}
+.clause .spec{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--steel-lo);display:block;margin-top:.55rem}
+
+/* Buttons — stamp style */
+.stamp{
+  display:inline-flex;align-items:center;gap:.7rem;cursor:pointer;text-decoration:none;
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--steel-hi);border:1px dashed var(--steel);padding:.95rem 1.5rem;background:rgba(109,143,179,.06);
+  position:relative;min-height:44px;transition:all .25s ease;
+}
+.stamp:hover{border-style:solid;border-color:var(--steel-hi);color:var(--ink);background:rgba(109,143,179,.14)}
+.stamp.filled{background:var(--steel-hi);color:var(--bp-deep);border:1px solid var(--steel-hi);font-weight:500}
+.stamp.filled:hover{background:var(--ink);border-color:var(--ink);color:var(--bp-deep)}
+.stamp svg{width:14px;height:14px}
+
+/* ---------- HERO ---------- */
+.hero-grid{display:grid;grid-template-columns:1fr;gap:2rem}
+.hero-top{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,4vw,3.5rem);align-items:end}
+.hero h1{font-size:clamp(2.1rem,4.6vw,3.7rem);line-height:1.1;font-weight:500}
+.hero h1 .lt{font-weight:300;color:var(--silver)}
+.hero h1 .hi{color:var(--steel-hi)}
+.hero .sub{margin-top:1.3rem;max-width:52ch;color:var(--faint);font-size:1.03rem}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.9rem}
+.hero-notes{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.14em;color:var(--faint);line-height:2.1;text-transform:uppercase}
+.hero-notes b{color:var(--steel-hi);font-weight:400}
+
+/* Car schematic */
+.schematic{margin-top:2.6rem;position:relative;border:1px solid var(--line-soft);background:rgba(7,17,32,.4);padding:clamp(.8rem,2vw,1.8rem)}
+.schematic svg{width:100%;height:auto;display:block}
+.schematic .sch-label{
+  position:absolute;top: .7rem;left:.9rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--faint);
+}
+.schematic .sch-label b{color:var(--steel-hi);font-weight:400}
+/* line-draw: strokes visible by default; JS applies dash + animates offset */
+.sch-stroke{stroke:var(--steel-hi);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.sch-dim{stroke:var(--steel);fill:none;stroke-width:1;vector-effect:non-scaling-stroke}
+.sch-thin{stroke:var(--steel-lo);fill:none;stroke-width:1;stroke-dasharray:4 5;vector-effect:non-scaling-stroke}
+.sch-txt{font-family:'JetBrains Mono',monospace;font-size:10.5px;fill:var(--silver);letter-spacing:.14em}
+.sch-txt.dim{fill:var(--steel-hi);font-size:10px}
+
+/* legend table (industries) */
+.legend{border:1px solid var(--line);margin-top:2.2rem}
+.legend-head{display:grid;grid-template-columns:5rem 1fr 8rem;font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--line);padding:.6rem 1rem;gap:1rem}
+.legend-row{display:grid;grid-template-columns:5rem 1fr 8rem;gap:1rem;align-items:center;padding:.85rem 1rem;border-bottom:1px solid var(--line-soft);transition:background .2s}
+.legend-row:last-child{border-bottom:0}
+.legend-row:hover{background:rgba(109,143,179,.07)}
+.legend-row .sym{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--steel-hi)}
+.legend-row .nm{color:var(--ink);font-size:.98rem}
+.legend-row .cls{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);text-align:right}
+
+/* detail callout cards (method) */
+.details-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line);margin-top:2.4rem}
+.detail{background:var(--bp);padding:1.5rem 1.2rem;position:relative;transition:background .25s}
+.detail:hover{background:var(--bp-panel)}
+.detail .d-no{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;color:var(--steel-hi);display:flex;align-items:center;gap:.5rem;margin-bottom:.9rem}
+.detail .d-no::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+.detail h3{font-size:.98rem;margin-bottom:.45rem;font-weight:500}
+.detail p{font-size:.85rem;color:var(--faint);line-height:1.55}
+.detail .bub{position:absolute;top:-11px;left:1.1rem;width:22px;height:22px;border:1px solid var(--steel-hi);border-radius:50%;background:var(--bp-deep);display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--steel-hi)}
+
+/* general notes (why) */
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.2rem}
+.note{border-left:2px solid var(--steel);padding:.3rem 0 .3rem 1.2rem}
+.note h3{font-size:1rem;margin-bottom:.4rem}
+.note h3 .n{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--steel-hi);margin-right:.5rem;letter-spacing:.12em}
+.note p{font-size:.9rem;color:var(--faint)}
+
+/* founder */
+.founder-grid{display:grid;grid-template-columns:1fr 340px;gap:clamp(2rem,4vw,3.5rem);align-items:start}
+.portrait-dwg{
+  aspect-ratio:3/4;border:1px dashed var(--steel);position:relative;display:grid;place-items:center;text-align:center;
+  background:repeating-linear-gradient(-45deg,rgba(109,143,179,.05) 0 12px,transparent 12px 24px);
+  padding:1.6rem;
+}
+.portrait-dwg .reg{position:absolute;width:14px;height:14px}
+.portrait-dwg .reg::before,.portrait-dwg .reg::after{content:"";position:absolute;background:var(--steel)}
+.portrait-dwg .reg::before{width:14px;height:1px;top:7px}
+.portrait-dwg .reg::after{width:1px;height:14px;left:7px}
+.portrait-dwg .reg.r1{top:8px;left:8px}.portrait-dwg .reg.r2{top:8px;right:8px}
+.portrait-dwg .reg.r3{bottom:8px;left:8px}.portrait-dwg .reg.r4{bottom:8px;right:8px}
+.portrait-dwg p{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);line-height:2.2}
+.portrait-dwg svg{width:46px;height:46px;color:var(--steel);margin:0 auto 1rem}
+
+/* issued documents */
+.issue-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:2.2rem}
+.issue{
+  border:1px solid var(--line);padding:1.8rem;position:relative;background:rgba(7,17,32,.45);
+  transition:border-color .25s,transform .25s ease;
+}
+.issue:hover{border-color:var(--steel-hi);transform:translateY(-4px)}
+.issue .iss-tag{position:absolute;top:1.2rem;right:1.2rem;font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.2em;color:var(--bp-deep);background:var(--steel-hi);padding:.3rem .55rem;text-transform:uppercase}
+.issue svg.doc-i{width:30px;height:30px;color:var(--steel-hi);margin-bottom:1rem}
+.issue h3{font-size:1.1rem;margin-bottom:.5rem}
+.issue p{font-size:.92rem;color:var(--faint);max-width:46ch}
+.issue .stamp{margin-top:1.3rem;font-size:.62rem;padding:.7rem 1.1rem}
+
+/* FAQ / RFI log */
+.faq{margin-top:2.2rem;border:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line-soft)}
+.faq details:last-child{border-bottom:0}
+.faq summary{
+  cursor:pointer;list-style:none;display:grid;grid-template-columns:auto 1fr auto;gap:1.1rem;align-items:center;
+  padding:1.15rem 1.2rem;min-height:44px;color:var(--ink);font-weight:500;font-size:.98rem;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .rfi{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--steel-hi);letter-spacing:.14em}
+.faq summary .sq{width:16px;height:16px;border:1px solid var(--steel);position:relative;transition:background .25s}
+.faq summary .sq::before{content:"";position:absolute;inset:3px;background:var(--steel-hi);opacity:0;transition:opacity .25s;}
+.faq details[open] summary .sq::before{opacity:1}
+.faq details p{padding:0 1.2rem 1.3rem 3.7rem;color:var(--faint);max-width:66ch;font-size:.94rem}
+.faq summary:hover{color:var(--steel-hi)}
+
+/* contact */
+.transmittal{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4rem)}
+form{display:grid;gap:1.05rem;margin-top:.4rem}
+.fpair{display:grid;grid-template-columns:1fr 1fr;gap:1.05rem}
+label{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:.45rem}
+input,select,textarea{
+  width:100%;background:rgba(7,17,32,.6);border:1px solid var(--line);color:var(--ink);
+  font-family:'Space Grotesk',sans-serif;font-size:1rem;padding:.85rem .95rem;min-height:44px;border-radius:0;
+  transition:border-color .25s,box-shadow .25s;
+}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%239DB8D4' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .95rem center}
+select option{color:#0A1A2F;background:#EAF0F7}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--steel-hi);box-shadow:0 0 0 3px rgba(157,184,212,.15)}
+textarea{min-height:140px;resize:vertical}
+input::placeholder,textarea::placeholder{color:rgba(126,146,168,.5)}
+.spec-table{border:1px solid var(--line);margin-top:1.8rem;font-family:'JetBrains Mono',monospace}
+.spec-row{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 1rem;border-bottom:1px solid var(--line-soft);font-size:.74rem;letter-spacing:.06em}
+.spec-row:last-child{border-bottom:0}
+.spec-row .sk{color:var(--faint);text-transform:uppercase;font-size:.6rem;letter-spacing:.2em;align-self:center}
+.spec-row .sv{color:var(--steel-hi)}
+.spec-row .sv a{color:inherit;text-decoration:none}
+.spec-row .sv a:hover{color:var(--ink)}
+
+/* footer revision block */
+footer{border-top:1px solid var(--line);background:rgba(7,17,32,.85)}
+.rev-block{width:min(1220px,94vw);margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:1rem;padding:1.8rem 0;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.12em;color:var(--faint)}
+.rev-block b{color:var(--silver);font-weight:400}
+
+/* mobile bar */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:80;display:grid;grid-template-columns:1fr 1fr;background:var(--bp-deep);border-top:1px solid var(--line)}
+.mbar a{display:flex;align-items:center;justify-content:center;gap:.55rem;min-height:56px;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.mbar a+a{border-left:1px solid var(--line);background:var(--steel-lo)}
+.mbar svg{width:15px;height:15px;color:var(--steel-hi)}
+@media(min-width:768px){.mbar{display:none}}
+
+/* reveal (JS-gated) */
+.js .plot{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,.7,.3,1)}
+.js .plot.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .js .plot{opacity:1!important;transform:none!important;transition:none}
+  .sch-anim{stroke-dasharray:none!important;stroke-dashoffset:0!important;animation:none!important;transition:none!important}
+  *{transition-duration:.01ms!important}
+}
+
+/* responsive */
+@media(max-width:1024px){
+  .cell.menu{display:none}
+  .details-grid{grid-template-columns:repeat(2,1fr)}
+  .detail:last-child{grid-column:1/-1}
+}
+@media(max-width:900px){
+  .hero-top,.founder-grid,.transmittal,.issue-grid{grid-template-columns:1fr}
+  .notes{grid-template-columns:1fr}
+  .portrait-dwg{max-width:340px}
+  .titleblock{grid-template-columns:1fr 1fr}
+  .tb-cell:nth-child(2n){border-right:0}
+  .tb-cell{border-bottom:1px solid var(--line-soft)}
+  .details-grid{grid-template-columns:1fr}
+  .legend-head,.legend-row{grid-template-columns:3.4rem 1fr 6.4rem}
+}
+@media(max-width:767px){
+  body{padding-bottom:56px}
+  .cell.tel,.cell.cta{display:none}
+  .dwg-header .cells{grid-template-columns:auto 1fr}
+  .cell.date-c{display:none}
+  .fpair{grid-template-columns:1fr}
+  .clause{grid-template-columns:3rem 1fr;gap:.9rem}
+  .legend-head{display:none}
+  .legend-row{grid-template-columns:2.6rem 1fr}
+  .legend-row .cls{display:none}
+  .faq details p{padding-left:1.2rem}
+}
+</style>
+</head>
+<body>
+<script>document.body.classList.add('js');</script>
+
+<!-- DRAWING HEADER NAV -->
+<header class="dwg-header">
+  <div class="shell cells">
+    <div class="cell brand"><span class="k">Project</span><span class="v">PRO<span>TELLIGENCE</span></span></div>
+    <nav class="cell menu" aria-label="Primary">
+      <a href="#sheet-scope">Scope</a>
+      <a href="#sheet-method">Method</a>
+      <a href="#sheet-principal">Principal</a>
+      <a href="#sheet-issued">Issued Docs</a>
+      <a href="#sheet-rfi">RFI</a>
+    </nav>
+    <div class="cell date-c"><span class="k">Discipline</span><span class="v mono" style="font-size:.72rem">VAL-LIT</span></div>
+    <div class="cell tel"><span class="k">Direct</span><span class="v"><a href="tel:0007768355">(000) 776-8355</a></span></div>
+    <div class="cell cta"><a href="#sheet-transmittal">Case Review</a></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- SHEET 01 · HERO -->
+  <section class="sheet hero" id="sheet-01" aria-label="Cover sheet">
+    <span class="corner c-tl" aria-hidden="true"></span><span class="corner c-tr" aria-hidden="true"></span><span class="corner c-bl" aria-hidden="true"></span><span class="corner c-br" aria-hidden="true"></span>
+    <div class="titleblock plot">
+      <div class="tb-cell name"><span class="k">Sheet</span><span class="v">01 — COVER / GENERAL ARRANGEMENT</span></div>
+      <div class="tb-cell"><span class="k">Practice</span><span class="v">VEHICLE VALUATION · LITIGATION</span></div>
+      <div class="tb-cell"><span class="k">Drawn by</span><span class="v">J. DONACHIE</span></div>
+      <div class="tb-cell"><span class="k">Scale</span><span class="v">1 : 1</span></div>
+    </div>
+    <div class="hero-top">
+      <div>
+        <span class="clause-kicker plot">§ 1.0 — General Provision</span>
+        <h1 class="plot">Vehicle value,<br><span class="lt">drawn to</span> <span class="hi">specification.</span></h1>
+        <p class="sub plot">PROTELLIGENCE prepares independent vehicle valuations and expert analysis for litigation — dimensioned, annotated, and issued for review. If a figure appears in one of our reports, its derivation appears beside it.</p>
+        <div class="hero-ctas plot">
+          <a class="stamp filled" href="#sheet-transmittal">Request a Case Review
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="stamp" href="#sheet-scope">Review Scope of Work</a>
+        </div>
+      </div>
+      <div class="hero-notes plot" aria-label="General notes">
+        <b>General notes</b><br>
+        1. Independent practice — conflict-checked per engagement.<br>
+        2. Methodology transparent &amp; reproducible.<br>
+        3. One accountable principal: J. Donachie.<br>
+        4. Coverage: national, all jurisdictions.<br>
+        5. No pricing published; fees quoted per matter.
+      </div>
+    </div>
+
+    <!-- SEDAN SCHEMATIC (hand-drawn inline SVG) -->
+    <figure class="schematic plot" aria-label="Wireframe schematic of a sedan in profile with reference dimensions">
+      <span class="sch-label">FIG 1.1 — <b>SUBJECT VEHICLE, PROFILE</b> · WIREFRAME</span>
+      <svg viewBox="0 0 900 330" role="img" aria-label="Line drawing of a sedan with dimension arrows">
+        <!-- ground line -->
+        <line class="sch-thin" x1="40" y1="252" x2="860" y2="252"/>
+        <!-- centerline through wheels -->
+        <line class="sch-thin" x1="150" y1="60" x2="150" y2="290"/>
+        <line class="sch-thin" x1="700" y1="60" x2="700" y2="290"/>
+        <!-- body outline -->
+        <path class="sch-stroke sch-anim" d="M78 226
+          C74 216 74 204 82 198
+          L130 188
+          C170 182 200 178 236 172
+          L296 128
+          C316 113 342 104 372 102
+          L520 102
+          C556 103 588 112 612 130
+          L664 168
+          L762 180
+          C792 184 812 194 816 206
+          C820 216 818 224 810 228
+          L780 232"/>
+        <!-- lower body / sills between wheels -->
+        <path class="sch-stroke sch-anim" d="M204 236 L266 240 M586 240 L646 238"/>
+        <path class="sch-stroke sch-anim" d="M266 240 C270 236 286 234 300 234 M560 234 C580 234 584 236 586 240"/>
+        <!-- wheel arches -->
+        <path class="sch-stroke sch-anim" d="M96 232 A56 56 0 0 1 204 230"/>
+        <path class="sch-stroke sch-anim" d="M646 230 A56 56 0 0 1 754 232"/>
+        <!-- wheels -->
+        <circle class="sch-stroke sch-anim" cx="150" cy="240" r="40"/>
+        <circle class="sch-stroke sch-anim" cx="150" cy="240" r="16"/>
+        <circle class="sch-stroke sch-anim" cx="700" cy="240" r="40"/>
+        <circle class="sch-stroke sch-anim" cx="700" cy="240" r="16"/>
+        <!-- greenhouse -->
+        <path class="sch-stroke sch-anim" d="M310 134 L342 112 L508 112 C534 113 560 121 578 134 L600 152 L326 152 Z" fill="none"/>
+        <line class="sch-stroke sch-anim" x1="452" y1="112" x2="452" y2="152"/>
+        <!-- door cuts -->
+        <path class="sch-stroke sch-anim" d="M330 156 L326 232 M452 152 L452 236 M572 152 L588 230"/>
+        <!-- handles -->
+        <line class="sch-stroke sch-anim" x1="360" y1="172" x2="392" y2="172"/>
+        <line class="sch-stroke sch-anim" x1="472" y1="172" x2="504" y2="172"/>
+        <!-- lamps -->
+        <path class="sch-stroke sch-anim" d="M82 198 L112 192 L118 200 L86 206 Z"/>
+        <path class="sch-stroke sch-anim" d="M812 200 L782 196 L780 206 L808 210 Z"/>
+        <!-- mirror -->
+        <path class="sch-stroke sch-anim" d="M316 140 L302 132 L300 140 L312 146 Z"/>
+        <!-- DIMENSION: wheelbase (below) -->
+        <line class="sch-dim" x1="150" y1="300" x2="700" y2="300"/>
+        <path class="sch-dim" d="M150 300 l10 -4 M150 300 l10 4 M700 300 l-10 -4 M700 300 l-10 4"/>
+        <line class="sch-dim" x1="150" y1="286" x2="150" y2="306"/>
+        <line class="sch-dim" x1="700" y1="286" x2="700" y2="306"/>
+        <text class="sch-txt dim" x="425" y="318" text-anchor="middle">WHEELBASE — REF</text>
+        <!-- DIMENSION: overall length (above) -->
+        <line class="sch-dim" x1="76" y1="66" x2="820" y2="66"/>
+        <path class="sch-dim" d="M76 66 l10 -4 M76 66 l10 4 M820 66 l-10 -4 M820 66 l-10 4"/>
+        <line class="sch-dim" x1="76" y1="60" x2="76" y2="196"/>
+        <line class="sch-dim" x1="820" y1="60" x2="820" y2="200"/>
+        <text class="sch-txt dim" x="448" y="58" text-anchor="middle">OVERALL LENGTH — REF</text>
+        <!-- CALLOUTS -->
+        <line class="sch-dim" x1="452" y1="100" x2="452" y2="84"/><circle class="sch-dim" cx="452" cy="80" r="3"/>
+        <text class="sch-txt" x="462" y="84">A — GLASS &amp; TRIM CONDITION</text>
+        <line class="sch-dim" x1="150" y1="196" x2="216" y2="120"/><circle class="sch-dim" cx="219" cy="117" r="3"/>
+        <text class="sch-txt" x="150" y="108">B — OEM WHEEL VERIFICATION</text>
+        <line class="sch-dim" x1="770" y1="230" x2="822" y2="252"/><circle class="sch-dim" cx="825" cy="253" r="3"/>
+        <text class="sch-txt" x="712" y="278">C — PRIOR REPAIR EVIDENCE</text>
+      </svg>
+      <figcaption class="mono" style="font-size:.6rem;letter-spacing:.2em;color:var(--faint);margin-top:.8rem;text-transform:uppercase">All dimensions for reference only. Condition determined from records &amp; inspection evidence, not assumption.</figcaption>
+    </figure>
+  </section>
+
+  <!-- SHEET 02 · SCOPE OF WORK -->
+  <section class="sheet" id="sheet-scope" aria-label="Scope of work">
+    <span class="corner c-tl" aria-hidden="true"></span><span class="corner c-tr" aria-hidden="true"></span><span class="corner c-bl" aria-hidden="true"></span><span class="corner c-br" aria-hidden="true"></span>
+    <div class="titleblock plot">
+      <div class="tb-cell name"><span class="k">Sheet</span><span class="v">02 — SCOPE OF WORK</span></div>
+      <div class="tb-cell"><span class="k">Section</span><span class="v">§ 2 — ENGAGEMENTS</span></div>
+      <div class="tb-cell"><span class="k">Status</span><span class="v">ISSUED FOR REVIEW</span></div>
+      <div class="tb-cell"><span class="k">Scale</span><span class="v">1 : 1</span></div>
+    </div>
+    <span class="clause-kicker plot">§ 2.0 — Engagements Undertaken</span>
+    <h2 class="plot">Five clauses define<br><span class="lt">the whole practice.</span></h2>
+    <p class="lede plot">Nothing outside this scope is accepted; nothing inside it is delegated. Each clause carries the same specification: documented inputs, reproducible analysis, a conclusion that survives cross-examination.</p>
+    <div class="clauses plot">
+      <article class="clause">
+        <span class="num">§ 2.1</span>
+        <div>
+          <h3>Total-Loss Valuation Disputes</h3>
+          <p>Re-derivation of the settlement figure from verifiable market evidence. The carrier's number is checked against the record — and confirmed or corrected accordingly.</p>
+          <span class="spec">Deliverable: Valuation report, comparables schedule, adjustment detail</span>
+        </div>
+      </article>
+      <article class="clause">
+        <span class="num">§ 2.2</span>
+        <div>
+          <h3>Diminished-Value Claims</h3>
+          <p>Quantification of the market penalty a repair history imposes at resale — measured, documented, and stated as a defensible figure rather than a rounded guess.</p>
+          <span class="spec">Deliverable: Diminished-value analysis with supporting market data</span>
+        </div>
+      </article>
+      <article class="clause">
+        <span class="num">§ 2.3</span>
+        <div>
+          <h3>Expert Reports &amp; Testimony</h3>
+          <p>Written opinions prepared for disclosure, deposition, and trial. The analyst who drafted the report presents and defends it in person.</p>
+          <span class="spec">Deliverable: Expert report, exhibits, deposition &amp; trial testimony</span>
+        </div>
+      </article>
+      <article class="clause">
+        <span class="num">§ 2.4</span>
+        <div>
+          <h3>Estate, Bankruptcy &amp; Divorce Valuation</h3>
+          <p>Neutral valuations for fiduciary and family-court contexts, where the number must serve the record rather than either party.</p>
+          <span class="spec">Deliverable: Court-ready valuation, dated and sourced</span>
+        </div>
+      </article>
+      <article class="clause">
+        <span class="num">§ 2.5</span>
+        <div>
+          <h3>Insurance Claim &amp; CCC/Mitchell Review</h3>
+          <p>Clause-by-clause examination of carrier valuation reports: comparable selection, condition ratings, and every adjustment between the cover page and the total.</p>
+          <span class="spec">Deliverable: Written review with itemized findings</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SHEET 03 · PARTIES SERVED -->
+  <section class="sheet" id="sheet-parties" aria-label="Parties served">
+    <span class="corner c-tl" aria-hidden="true"></span><span class="corner c-tr" aria-hidden="true"></span><span class="corner c-bl" aria-hidden="true"></span><span class="corner c-br" aria-hidden="true"></span>
+    <div class="titleblock plot">
+      <div class="tb-cell name"><span class="k">Sheet</span><span class="v">03 — SCHEDULE OF PARTIES</span></div>
+      <div class="tb-cell"><span class="k">Section</span><span class="v">§ 3 — CLIENTELE</span></div>
+      <div class="tb-cell"><span class="k">Symmetry</span><span class="v">BOTH SIDES OF THE V.</span></div>
+      <div class="tb-cell"><span class="k">Scale</span><span class="v">NTS</span></div>
+    </div>
+    <span class="clause-kicker plot">§ 3.0 — Who Retains the Practice</span>
+    <h2 class="plot">Eight parties.<br><span class="lt">One legend.</span></h2>
+    <p class="lede plot">Plaintiff or defense, carrier or claimant — the drawing reads the same from either side of the table. That symmetry is the practice's most useful property.</p>
+    <div class="legend plot" role="list" aria-label="Client categories">
+      <div class="legend-head" aria-hidden="true"><span>Ref</span><span>Party</span><span>Class</span></div>
+      <div class="legend-row" role="listitem"><span class="sym">P-01</span><span class="nm">Plaintiff Attorneys</span><span class="cls">Claimant</span></div>
+      <div class="legend-row" role="listitem"><span class="sym">P-02</span><span class="nm">Defense Attorneys</span><span class="cls">Defense</span></div>
+      <div class="legend-row" role="listitem"><span class="sym">P-03</span><span class="nm">Insurance Companies</span><span class="cls">Carrier</span></div>
+      <div class="legend-row" role="listitem"><span class="sym">P-04</span><span class="nm">Claims Professionals</span><span class="cls">Adjusting</span></div>
+      <div class="legend-row" role="listitem"><span class="sym">P-05</span><span class="nm">Vehicle Owners in Disputes</span><span class="cls">Individual</span></div>
+      <div class="legend-row" role="listitem"><span class="sym">P-06</span><span class="nm">Corporate Fleets</span><span class="cls">Commercial</span></div>
+      <div class="legend-row" role="listitem"><span class="sym">P-07</span><span class="nm">Dealership Groups</span><span class="cls">Retail</span></div>
+      <div class="legend-row" role="listitem"><span class="sym">P-08</span><span class="nm">Financial Institutions</span><span class="cls">Lender</span></div>
+    </div>
+  </section>
+
+  <!-- SHEET 04 · METHODOLOGY -->
+  <section class="sheet" id="sheet-method" aria-label="Methodology">
+    <span class="corner c-tl" aria-hidden="true"></span><span class="corner c-tr" aria-hidden="true"></span><span class="corner c-bl" aria-hidden="true"></span><span class="corner c-br" aria-hidden="true"></span>
+    <div class="titleblock plot">
+      <div class="tb-cell name"><span class="k">Sheet</span><span class="v">04 — METHODOLOGY</span></div>
+      <div class="tb-cell"><span class="k">Section</span><span class="v">§ 4 — SEQUENCE OF OPERATIONS</span></div>
+      <div class="tb-cell"><span class="k">Tolerance</span><span class="v">ZERO UNSOURCED FIGURES</span></div>
+      <div class="tb-cell"><span class="k">Scale</span><span class="v">1 : 1</span></div>
+    </div>
+    <span class="clause-kicker plot">§ 4.0 — Sequence of Operations</span>
+    <h2 class="plot">The same five details,<br><span class="lt">on every drawing.</span></h2>
+    <p class="lede plot">Order is enforced. No valuation begins before independence is confirmed; no report is issued before the analysis can be reproduced from its own citations.</p>
+    <div class="details-grid plot">
+      <article class="detail">
+        <span class="bub" aria-hidden="true">1</span>
+        <span class="d-no">DET 4.1</span>
+        <h3>Conflict Check</h3>
+        <p>Parties, counsel, and carriers screened before records are opened. A failed check ends the engagement before it begins.</p>
+      </article>
+      <article class="detail">
+        <span class="bub" aria-hidden="true">2</span>
+        <span class="d-no">DET 4.2</span>
+        <h3>Records &amp; Data Intake</h3>
+        <p>Valuation reports, repair orders, photographs, title history, market data — indexed and preserved as received.</p>
+      </article>
+      <article class="detail">
+        <span class="bub" aria-hidden="true">3</span>
+        <span class="d-no">DET 4.3</span>
+        <h3>Valuation Analysis</h3>
+        <p>Comparable selection, condition adjustment, and market reconciliation under a documented framework.</p>
+      </article>
+      <article class="detail">
+        <span class="bub" aria-hidden="true">4</span>
+        <span class="d-no">DET 4.4</span>
+        <h3>Defensible Report</h3>
+        <p>Sources cited, adjustments itemized, conclusions dimensioned in plain language for the trier of fact.</p>
+      </article>
+      <article class="detail">
+        <span class="bub" aria-hidden="true">5</span>
+        <span class="d-no">DET 4.5</span>
+        <h3>Testimony Support</h3>
+        <p>Deposition preparation, exhibits, and trial testimony from the analyst of record — not a substitute.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- SHEET 05 · PRINCIPAL -->
+  <section class="sheet" id="sheet-principal" aria-label="Principal and standards">
+    <span class="corner c-tl" aria-hidden="true"></span><span class="corner c-tr" aria-hidden="true"></span><span class="corner c-bl" aria-hidden="true"></span><span class="corner c-br" aria-hidden="true"></span>
+    <div class="titleblock plot">
+      <div class="tb-cell name"><span class="k">Sheet</span><span class="v">05 — PRINCIPAL &amp; STANDARDS</span></div>
+      <div class="tb-cell"><span class="k">Section</span><span class="v">§ 5 — RESPONSIBLE CHARGE</span></div>
+      <div class="tb-cell"><span class="k">Drawn by</span><span class="v">J. DONACHIE</span></div>
+      <div class="tb-cell"><span class="k">Checked by</span><span class="v">J. DONACHIE</span></div>
+    </div>
+    <div class="founder-grid">
+      <div>
+        <span class="clause-kicker plot">§ 5.0 — Responsible Charge</span>
+        <h2 class="plot">Jack Donachie,<br><span class="lt">Founder.</span></h2>
+        <p class="lede plot">Every drawing needs a name in the title block. At PROTELLIGENCE that name is Jack Donachie — the founder, the analyst, and the witness. The practice was built so that responsibility for a valuation never has to be traced through an org chart.</p>
+        <p class="lede plot" style="margin-top:.9rem">Engagements are accepted nationwide from attorneys, insurers, claims professionals, fleets, dealership groups, financial institutions, and vehicle owners in disputes.</p>
+        <div class="notes plot">
+          <div class="note">
+            <h3><span class="n">N-1</span>Independent &amp; Conflict-Checked</h3>
+            <p>No carrier affiliation, no network interest. Screening precedes every engagement.</p>
+          </div>
+          <div class="note">
+            <h3><span class="n">N-2</span>Transparent &amp; Reproducible</h3>
+            <p>The analysis can be rebuilt from its citations by any qualified reviewer.</p>
+          </div>
+          <div class="note">
+            <h3><span class="n">N-3</span>One Point of Accountability</h3>
+            <p>The signature on the report answers for it — in writing and on the stand.</p>
+          </div>
+        </div>
+        <div class="hero-ctas plot" style="margin-top:2rem">
+          <a class="stamp" href="#sheet-transmittal">Schedule a Consultation</a>
+        </div>
+      </div>
+      <figure class="portrait-dwg plot" role="img" aria-label="Placeholder for founder portrait">
+        <span class="reg r1" aria-hidden="true"></span><span class="reg r2" aria-hidden="true"></span><span class="reg r3" aria-hidden="true"></span><span class="reg r4" aria-hidden="true"></span>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" stroke-dasharray="3 2"/><circle cx="12" cy="9" r="3.2"/><path d="M5.5 20.5C6.6 16.8 9 15 12 15s5.4 1.8 6.5 5.5"/></svg>
+          <p>FIG 5.1<br>Professional portrait<br>to be added</p>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- SHEET 06 · ISSUED DOCUMENTS -->
+  <section class="sheet" id="sheet-issued" aria-label="Attorney resources">
+    <span class="corner c-tl" aria-hidden="true"></span><span class="corner c-tr" aria-hidden="true"></span><span class="corner c-bl" aria-hidden="true"></span><span class="corner c-br" aria-hidden="true"></span>
+    <div class="titleblock plot">
+      <div class="tb-cell name"><span class="k">Sheet</span><span class="v">06 — ISSUED DOCUMENTS</span></div>
+      <div class="tb-cell"><span class="k">Section</span><span class="v">§ 6 — ATTORNEY RESOURCES</span></div>
+      <div class="tb-cell"><span class="k">Release</span><span class="v">ON CONFLICT CHECK</span></div>
+      <div class="tb-cell"><span class="k">Scale</span><span class="v">NTS</span></div>
+    </div>
+    <span class="clause-kicker plot">§ 6.0 — Documents Available to Counsel</span>
+    <h2 class="plot">Issued on request,<br><span class="lt">after the conflict check.</span></h2>
+    <p class="lede plot">Two documents are maintained for counsel evaluating the practice. Both are released following a standard conflict check — no exceptions, including for returning firms.</p>
+    <div class="issue-grid plot">
+      <article class="issue">
+        <span class="iss-tag">DOC A</span>
+        <svg class="doc-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M6.5 2.5h8l4 4v15h-12z"/><path d="M14.5 2.5v4h4"/><path d="M9 11h7M9 14h7M9 17h4.5"/><path d="M9 8h3"/></svg>
+        <h3>Sample Report</h3>
+        <p>A representative valuation report — structure, sourcing conventions, and adjustment schedules — so counsel can inspect the deliverable before retaining.</p>
+        <a class="stamp" href="#sheet-transmittal">Request Issue
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </article>
+      <article class="issue">
+        <span class="iss-tag">DOC B</span>
+        <svg class="doc-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M6.5 2.5h8l4 4v15h-12z"/><path d="M14.5 2.5v4h4"/><circle cx="12" cy="11.5" r="2.4"/><path d="M8.5 18.5c.7-2 1.9-3 3.5-3s2.8 1 3.5 3"/></svg>
+        <h3>Curriculum Vitae</h3>
+        <p>The founder's professional history and qualifications, formatted for expert designation and disclosure filings.</p>
+        <a class="stamp" href="#sheet-transmittal">Request Issue
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <!-- SHEET 07 · RFI LOG (FAQ) -->
+  <section class="sheet" id="sheet-rfi" aria-label="Frequently asked questions">
+    <span class="corner c-tl" aria-hidden="true"></span><span class="corner c-tr" aria-hidden="true"></span><span class="corner c-bl" aria-hidden="true"></span><span class="corner c-br" aria-hidden="true"></span>
+    <div class="titleblock plot">
+      <div class="tb-cell name"><span class="k">Sheet</span><span class="v">07 — RFI LOG</span></div>
+      <div class="tb-cell"><span class="k">Section</span><span class="v">§ 7 — REQUESTS FOR INFORMATION</span></div>
+      <div class="tb-cell"><span class="k">Responses</span><span class="v">05 OF 05</span></div>
+      <div class="tb-cell"><span class="k">Scale</span><span class="v">NTS</span></div>
+    </div>
+    <span class="clause-kicker plot">§ 7.0 — Requests for Information</span>
+    <h2 class="plot">Answered<br><span class="lt">and logged.</span></h2>
+    <div class="faq plot">
+      <details>
+        <summary><span class="rfi">RFI-01</span>Do you work for plaintiffs or defendants?<span class="sq" aria-hidden="true"></span></summary>
+        <p>Both — never on the same matter, and never through a conflict. The methodology is identical regardless of caption, which is precisely what makes the work admissible and useful to either side.</p>
+      </details>
+      <details>
+        <summary><span class="rfi">RFI-02</span>What does a CCC/Mitchell review cover?<span class="sq" aria-hidden="true"></span></summary>
+        <p>Comparable selection, condition ratings, itemized adjustments, and the arithmetic connecting them. Findings state where the report holds and where it fails — in whichever direction the evidence points.</p>
+      </details>
+      <details>
+        <summary><span class="rfi">RFI-03</span>Do you provide testimony?<span class="sq" aria-hidden="true"></span></summary>
+        <p>Yes. Reports are drafted from the first clause as testimony-ready documents, and deposition or trial appearance is available whenever the matter requires it.</p>
+      </details>
+      <details>
+        <summary><span class="rfi">RFI-04</span>What is required to open a file?<span class="sq" aria-hidden="true"></span></summary>
+        <p>Party names for the conflict check, then the record set: valuation reports, repair documentation, photographs, and title history. Intake is inventoried, so counsel always knows what the file contains.</p>
+      </details>
+      <details>
+        <summary><span class="rfi">RFI-05</span>What is your service area?<span class="sq" aria-hidden="true"></span></summary>
+        <p>National. Records-based valuation carries no geographic penalty, and testimony logistics are arranged per matter.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- SHEET 08 · TRANSMITTAL (CONTACT) -->
+  <section class="sheet" id="sheet-transmittal" aria-label="Contact">
+    <span class="corner c-tl" aria-hidden="true"></span><span class="corner c-tr" aria-hidden="true"></span><span class="corner c-bl" aria-hidden="true"></span><span class="corner c-br" aria-hidden="true"></span>
+    <div class="titleblock plot">
+      <div class="tb-cell name"><span class="k">Sheet</span><span class="v">08 — TRANSMITTAL</span></div>
+      <div class="tb-cell"><span class="k">Section</span><span class="v">§ 8 — INTAKE</span></div>
+      <div class="tb-cell"><span class="k">Response</span><span class="v">DIRECT FROM PRINCIPAL</span></div>
+      <div class="tb-cell"><span class="k">Scale</span><span class="v">1 : 1</span></div>
+    </div>
+    <div class="transmittal">
+      <div>
+        <span class="clause-kicker plot">§ 8.0 — Submit the Matter</span>
+        <h2 class="plot">Transmit<br><span class="lt">for review.</span></h2>
+        <p class="lede plot">State the vehicle, the dispute, and the question. The reply will specify whether the practice can help and what the conflict check requires — nothing more, nothing vaguer.</p>
+        <div class="spec-table plot" aria-label="Contact specifications">
+          <div class="spec-row"><span class="sk">Direct line</span><span class="sv"><a href="tel:0007768355">(000) 776-8355</a></span></div>
+          <div class="spec-row"><span class="sk">Coverage</span><span class="sv">NATIONAL — ALL JURISDICTIONS</span></div>
+          <div class="spec-row"><span class="sk">Fees</span><span class="sv">QUOTED PER MATTER</span></div>
+          <div class="spec-row"><span class="sk">Principal</span><span class="sv">JACK DONACHIE</span></div>
+        </div>
+      </div>
+      <form name="protelligence-blueprint" method="POST" data-netlify="true" class="plot">
+        <input type="hidden" name="form-name" value="protelligence-blueprint">
+        <div class="fpair">
+          <div><label for="t-name">Name</label><input id="t-name" name="name" type="text" autocomplete="name" required placeholder="Full name"></div>
+          <div><label for="t-phone">Phone</label><input id="t-phone" name="phone" type="tel" autocomplete="tel" required placeholder="(000) 000-0000"></div>
+        </div>
+        <div><label for="t-email">Email</label><input id="t-email" name="email" type="email" autocomplete="email" required placeholder="name@firm.com"></div>
+        <div><label for="t-type">Engagement classification</label>
+          <select id="t-type" name="engagement" required>
+            <option value="" selected disabled>Select per § 2 — Scope of Work</option>
+            <option>Total-Loss Valuation Dispute</option>
+            <option>Diminished-Value Claim</option>
+            <option>Expert Report &amp; Testimony</option>
+            <option>Estate, Bankruptcy &amp; Divorce Valuation</option>
+            <option>Insurance Claim &amp; CCC/Mitchell Review</option>
+            <option>Other / Not sure</option>
+          </select>
+        </div>
+        <div><label for="t-msg">Matter description</label><textarea id="t-msg" name="message" required placeholder="Vehicle, posture of the dispute, and the valuation question at issue."></textarea></div>
+        <div><button class="stamp filled" type="submit">Request a Case Review
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button></div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER · REVISION BLOCK -->
+<footer>
+  <div class="rev-block">
+    <span><b>© 2026 PROTELLIGENCE</b> — INDEPENDENT VEHICLE VALUATION &amp; LITIGATION CONSULTING · FOUNDER: JACK DONACHIE</span>
+    <span>REV 0 · ISSUED FOR REVIEW · <a href="tel:0007768355" style="color:var(--steel-hi);text-decoration:none">(000) 776-8355</a> · NATIONAL PRACTICE</span>
+  </div>
+</footer>
+
+<!-- MOBILE BAR -->
+<nav class="mbar" aria-label="Quick actions">
+  <a href="tel:0007768355">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+    Direct Line
+  </a>
+  <a href="#sheet-transmittal">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 6l9 7 9-7"/></svg>
+    Case Review
+  </a>
+</nav>
+
+<script>
+(function(){
+  'use strict';
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Scroll reveals — hidden state applied only because body.js exists.
+     threshold:0 so ANY visible pixel fires (tall blocks can never miss a
+     ratio threshold); elements already scrolled past also fire; and a
+     scroll/resize safety net force-reveals anything the observer misses. */
+  var plots = Array.prototype.slice.call(document.querySelectorAll('.plot'));
+  if(reduced || !('IntersectionObserver' in window)){
+    plots.forEach(function(el){el.classList.add('on');});
+  }else{
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting || e.boundingClientRect.bottom < 0){
+          e.target.classList.add('on');
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:0,rootMargin:'0px 0px -4% 0px'});
+    plots.forEach(function(el,i){
+      el.style.transitionDelay=(i%3)*90+'ms';
+      io.observe(el);
+    });
+    var safety = function(){
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var remaining = false;
+      plots.forEach(function(el){
+        if(el.classList.contains('on')) return;
+        if(el.getBoundingClientRect().top < vh){ el.classList.add('on'); }
+        else{ remaining = true; }
+      });
+      if(!remaining){
+        window.removeEventListener('scroll',safety);
+        window.removeEventListener('resize',safety);
+      }
+    };
+    window.addEventListener('scroll',safety,{passive:true});
+    window.addEventListener('resize',safety);
+    safety();
+  }
+
+  /* Line-draw animation for the sedan schematic.
+     Strokes are FULLY VISIBLE by default (no-JS / reduced-motion fallback);
+     dash values are applied here, then animated back to zero. The draw fires
+     on ANY intersecting pixel, and a scroll-position safety net guarantees
+     the drawing can never remain hidden after normal scrolling. */
+  if(!reduced && 'IntersectionObserver' in window){
+    var sch = document.querySelector('.schematic');
+    var strokes = Array.prototype.slice.call(document.querySelectorAll('.sch-anim'));
+    if(sch && strokes.length){
+      var drawn = false;
+      var schSafety;
+      var drawNow = function(){
+        if(drawn) return;
+        drawn = true;
+        strokes.forEach(function(p,i){
+          p.style.transition = 'stroke-dashoffset 1.6s ease ' + (i*90) + 'ms';
+          requestAnimationFrame(function(){ p.style.strokeDashoffset = '0'; });
+        });
+        window.removeEventListener('scroll', schSafety);
+      };
+      schSafety = function(){
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        if(sch.getBoundingClientRect().top < vh){ drawNow(); }
+      };
+      try{
+        strokes.forEach(function(p){
+          var len;
+          try{ len = p.getTotalLength(); }catch(err){ len = 600; }
+          p.style.strokeDasharray = len + ' ' + len;
+          p.style.strokeDashoffset = len;
+        });
+        var sio = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){
+            if(e.isIntersecting || e.boundingClientRect.bottom < 0){
+              drawNow();
+              sio.unobserve(e.target);
+            }
+          });
+        },{threshold:0});
+        sio.observe(sch);
+        window.addEventListener('scroll', schSafety, {passive:true});
+        schSafety();
+      }catch(err){
+        /* On any failure, force strokes fully visible */
+        drawn = true;
+        strokes.forEach(function(p){
+          p.style.strokeDasharray = 'none';
+          p.style.strokeDashoffset = '0';
+        });
+      }
+    }
+  }
+})();
+</script>
+</body>
+</html>

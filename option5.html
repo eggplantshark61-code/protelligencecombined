@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROTELLIGENCE — Independent Vehicle Valuation &amp; Litigation Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0A0E14;--bg2:#0E141D;--panel:#121A24;--line:#1E2A38;--ice:#AFC9DE;--ice2:#88ADCB;--steel:#38506B;--text:#E7EDF4;--muted:#9DAEC0;--navy:#0b1622;--maxw:1180px}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:'Sora',sans-serif;color:#fff;line-height:1.12;letter-spacing:-.015em;font-weight:600}
+  h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin:0 0 .6rem}
+  p{margin:0 0 1rem;color:var(--muted)}a{color:var(--ice2);text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+  .eyebrow{font-family:'Sora';text-transform:uppercase;letter-spacing:.24em;font-size:.68rem;font-weight:600;color:var(--ice)}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:'Sora';font-weight:600;font-size:.9rem;padding:14px 26px;border-radius:9px;cursor:pointer;transition:.2s;border:1px solid transparent}
+  .btn-primary{background:linear-gradient(180deg,#C6DAEB,#9BBBD6);color:#0A1420;font-weight:700}.btn-primary:hover{filter:brightness(1.04);transform:translateY(-1px);box-shadow:0 10px 26px rgba(155,187,214,.22)}
+  .btn-ghost{background:rgba(255,255,255,.04);color:#fff;border-color:rgba(255,255,255,.18)}.btn-ghost:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.32)}
+  .btn:focus-visible,a:focus-visible{outline:2px solid var(--ice);outline-offset:3px}
+  header{position:sticky;top:0;z-index:40;background:rgba(10,14,20,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{font-family:'Sora';font-weight:700;font-size:1.16rem;color:#fff;letter-spacing:.06em;display:flex;align-items:center;gap:11px}
+  .brand .g{width:26px;height:26px;border-radius:7px;background:linear-gradient(150deg,#9AD8FF,#38506B);box-shadow:0 0 20px rgba(143,211,255,.4)}
+  .navlinks{display:flex;gap:26px}.navlinks a{color:#B7C4D3;font-size:.87rem;font-weight:500;font-family:'Sora'}.navlinks a:hover{color:#fff}
+  @media(max-width:960px){.navlinks{display:none}}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(900px 520px at 72% -8%, rgba(95,191,240,.18), transparent 62%),
+      radial-gradient(700px 400px at 8% 110%, rgba(56,80,107,.35), transparent 60%),
+      linear-gradient(180deg,#0A0E14,#0c121b)}
+  .hero:after{content:"";position:absolute;inset:0;opacity:.06;background-image:radial-gradient(rgba(255,255,255,.9) 1px,transparent 1px);background-size:30px 30px;mask-image:radial-gradient(75% 65% at 70% 25%,#000,transparent 80%)}
+  .hero .wrap{position:relative;z-index:2;padding:clamp(70px,10vw,130px) 26px clamp(56px,7vw,96px);text-align:center;max-width:960px}
+  .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:999px;padding:8px 16px;font-size:.76rem;color:var(--muted);margin-bottom:26px;font-family:'Sora'}
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--ice);box-shadow:0 0 10px var(--ice)}
+  .hero h1{font-size:clamp(2.3rem,5.2vw,4rem);font-weight:700;margin:0 0 22px;letter-spacing:-.02em}
+  .hero h1 .grad{background:linear-gradient(100deg,#fff,#9AD8FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .lede{font-size:1.16rem;max-width:56ch;margin:0 auto 34px;color:#B7C4D3}
+  .hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .trust{display:flex;gap:36px;justify-content:center;flex-wrap:wrap;margin-top:56px;padding-top:26px;border-top:1px solid var(--line)}
+  .trust div b{font-family:'Sora';font-size:1.4rem;color:#fff;display:block;line-height:1}
+  .trust div span{font-size:.78rem;color:var(--muted)}
+  section{padding:clamp(56px,8vw,100px) 0}
+  .section-head{text-align:center;max-width:64ch;margin:0 auto 46px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:900px){.cards{grid-template-columns:1fr 1fr}}@media(max-width:560px){.cards{grid-template-columns:1fr}}
+  .card{background:linear-gradient(180deg,var(--panel),#0e151e);border:1px solid var(--line);border-radius:14px;padding:26px;transition:.25s;position:relative;overflow:hidden}
+  .card:before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(143,211,255,.5),transparent);opacity:0;transition:.25s}
+  .card:hover{transform:translateY(-4px);border-color:#2b3d52;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+  .card:hover:before{opacity:1}
+  .card .ico{width:46px;height:46px;border-radius:11px;background:rgba(143,211,255,.1);border:1px solid rgba(143,211,255,.25);color:var(--ice);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .card .ico svg{width:23px;height:23px}
+  .card h3{font-size:1.06rem;margin:0 0 7px}.card p{margin:0;font-size:.92rem}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
+  @media(max-width:900px){.why-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.why-grid{grid-template-columns:1fr}}
+  .wi{padding:20px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02)}
+  .wi svg{color:var(--ice);width:24px;height:24px;margin-bottom:11px}.wi h3{font-size:.98rem;margin:0 0 4px}.wi p{font-size:.86rem;margin:0}
+  .steps{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin-top:34px}
+  @media(max-width:1000px){.steps{grid-template-columns:repeat(4,1fr)}}@media(max-width:640px){.steps{grid-template-columns:1fr 1fr}}
+  .st{padding:20px 16px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+  .st .n{width:36px;height:36px;border-radius:9px;background:rgba(143,211,255,.12);border:1px solid rgba(143,211,255,.3);color:var(--ice);font-family:'Sora';font-weight:600;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+  .st h3{font-size:.92rem;margin:0 0 4px}.st p{font-size:.8rem;margin:0}
+  .founder{display:grid;grid-template-columns:.85fr 1.15fr;gap:46px;align-items:center;background:linear-gradient(160deg,#101823,#0b1119);border:1px solid var(--line);border-radius:18px;padding:clamp(24px,3vw,44px)}
+  @media(max-width:820px){.founder{grid-template-columns:1fr;gap:26px}}
+  .fphoto{aspect-ratio:4/5;border:1px solid var(--line);border-radius:14px;background:radial-gradient(120% 90% at 30% 12%,rgba(95,191,240,.22),transparent 58%),linear-gradient(160deg,#16222f,#0a121b);display:flex;align-items:flex-end;justify-content:center;position:relative;overflow:hidden}
+  .fphoto .m{font-family:'Sora';font-weight:700;font-size:4.2rem;color:rgba(255,255,255,.12);position:absolute;top:47%;left:50%;transform:translate(-50%,-50%)}
+  .fphoto .cap{width:100%;padding:16px;background:linear-gradient(0deg,rgba(6,10,16,.9),transparent);color:#B7C4D3;font-size:.78rem;position:relative}
+  .founder .credos{list-style:none;margin:16px 0 22px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .founder .credos li{display:flex;gap:9px;align-items:center;color:#C6D2DE;font-size:.9rem}
+  .founder .credos svg{color:var(--ice);width:17px;height:17px;flex:0 0 17px}
+  .cta{text-align:center;background:radial-gradient(700px 360px at 50% -10%, rgba(95,191,240,.2), transparent 60%)}
+  .cta h2{color:#fff}.cta p{max-width:54ch;margin:0 auto 28px}.cta .hero-cta{justify-content:center}
+  footer{background:#080c11;color:#8A9AAC;padding:56px 0 26px;border-top:1px solid var(--line)}
+  .fg{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px;margin-bottom:34px}
+  @media(max-width:820px){.fg{grid-template-columns:1fr 1fr}}@media(max-width:520px){.fg{grid-template-columns:1fr}}
+  footer h4{color:#fff;font-family:'Sora';font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;margin:0 0 12px}
+  footer a{display:block;color:#8A9AAC;font-size:.88rem;margin-bottom:8px}footer a:hover{color:var(--ice)}
+  .fbot{border-top:1px solid var(--line);padding-top:18px;font-size:.78rem;color:#6C7C8E;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <div class="brand"><span class="g"></span>PROTELLIGENCE</div>
+  <nav class="navlinks"><a href="#services">Services</a><a href="#why">Expertise</a><a href="#founder">For Attorneys</a><a href="#founder">About</a><a href="#contact">Contact</a></nav>
+  <a href="#contact" class="btn btn-primary" style="padding:10px 18px">Request a Case Review</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <span class="pill"><span class="dot"></span>Expert Vehicle Valuation &amp; Litigation Consulting</span>
+  <h1>Independent Vehicle Valuation.<br><span class="grad">Clear Evidence. Defensible Opinions.</span></h1>
+  <p class="lede">Providing independent vehicle valuation opinions for attorneys, insurance carriers, businesses, and vehicle owners nationwide — built to withstand scrutiny from negotiation through trial.</p>
+  <div class="hero-cta"><a href="#contact" class="btn btn-primary">Request a Case Review</a><a href="#contact" class="btn btn-ghost">Schedule a Consultation</a></div>
+  <div class="trust">
+    <div><b>National</b><span>Market research &amp; coverage</span></div>
+    <div><b>Court-Ready</b><span>Depositions &amp; trial testimony</span></div>
+    <div><b>Independent</b><span>No dealer or carrier ties</span></div>
+  </div>
+</div></section>
+
+<section id="services"><div class="wrap">
+  <div class="section-head"><span class="eyebrow">Services</span><h2>Independent opinions for every stage of a dispute.</h2></div>
+  <div class="cards">
+    <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 15l3-4 3 3 4-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Total Loss Valuation Review</h3><p>Independent review of insurer total-loss valuations against supportable market data.</p></article>
+    <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 10l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Diminished Value Analysis</h3><p>Market analysis of post-repair diminished value, quantified with comparable evidence.</p></article>
+    <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V10l8-6 8 6v11" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Vehicle Market Valuation</h3><p>Fair market value for litigation, estates, bankruptcy, divorce, and tax purposes.</p></article>
+    <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l3 3v15H6zM9 12h6M9 16h4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Expert Witness Services</h3><p>Reports, depositions, arbitration, trial testimony, and litigation consulting.</p></article>
+    <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 7.7 8 10 4.6-2.3 8-5 8-10V6z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Insurance Claim Consulting</h3><p>CCC ONE, Mitchell &amp; Audatex review — comparables, condition, taxes &amp; fees.</p></article>
+    <article class="card" style="background:linear-gradient(160deg,#132433,#0d1620);border-color:#26405a"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M12 4v16" stroke-linecap="round"/></svg></div><h3>Not sure which applies?</h3><p>Send the basic case facts and we'll advise honestly whether an independent review is warranted.</p></article>
+  </div>
+</div></section>
+
+<section id="why"><div class="wrap">
+  <div class="section-head"><span class="eyebrow">Why PROTELLIGENCE</span><h2>Opinions built to stand up to scrutiny.</h2></div>
+  <div class="why-grid">
+    <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.4 7.7 8 10 4.6-2.3 8-5 8-10V6z"/></svg><h3>Independent Analysis</h3><p>No dealer, repairer, or carrier ties.</p></div>
+    <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21l4-11h8l4 11M9 3h6l1 4H8z"/></svg><h3>Transparent Methodology</h3><p>Every adjustment shown and sourced.</p></div>
+    <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3" stroke-linecap="round"/></svg><h3>National Market Research</h3><p>Comparables from the broader market.</p></div>
+    <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l3 3v15H6z"/></svg><h3>Litigation-Ready Reports</h3><p>Built for deposition and trial.</p></div>
+    <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Defensible Opinions</h3><p>They survive cross-examination.</p></div>
+    <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5m0 14h16M8 15l3-4 3 2 4-6" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Evidence-Based</h3><p>Data first — opinions follow it.</p></div>
+    <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 .9-4.5 4.3 1 6.1L12 16.8 6.5 19.3l1-6.1L3 8.9 9 8z"/></svg><h3>Executive Experience</h3><p>Decades of automotive leadership.</p></div>
+    <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a4 4 0 0 1 4 4c0 3-4 4-4 7M12 17h.01" stroke-linecap="round"/></svg><h3>Trusted Expertise</h3><p>One point of accountability.</p></div>
+  </div>
+</div></section>
+
+<section id="process"><div class="wrap">
+  <div class="section-head"><span class="eyebrow">Our Process</span><h2>A disciplined path to a defensible opinion.</h2></div>
+  <div class="steps">
+    <div class="st"><div class="n">1</div><h3>Review Info</h3><p>Vehicle &amp; case facts.</p></div>
+    <div class="st"><div class="n">2</div><h3>Verify Specs</h3><p>Trim, options, condition.</p></div>
+    <div class="st"><div class="n">3</div><h3>Research Market</h3><p>National data.</p></div>
+    <div class="st"><div class="n">4</div><h3>Analyze</h3><p>Weigh comparables.</p></div>
+    <div class="st"><div class="n">5</div><h3>Adjust</h3><p>Market-supported.</p></div>
+    <div class="st"><div class="n">6</div><h3>Report</h3><p>Litigation-ready.</p></div>
+    <div class="st"><div class="n">7</div><h3>Testify</h3><p>Arbitration &amp; trial.</p></div>
+  </div>
+</div></section>
+
+<style>
+.pv-add{font-family:inherit}
+.pv-add .pv-wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+.pv-add section{padding:clamp(56px,8vw,96px) 0}
+.pv-ey{text-transform:uppercase;letter-spacing:.24em;font-size:.68rem;font-weight:600;color:#AFC9DE;display:block;margin-bottom:10px}
+.pv-h{color:#fff;font-size:clamp(1.6rem,3.2vw,2.35rem);line-height:1.14;letter-spacing:-.015em;margin:0 0 8px;font-weight:600}
+.pv-ind{border-top:1px solid #1E2A38;border-bottom:1px solid #1E2A38}
+.pv-chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.pv-chip{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.03);border:1px solid #1E2A38;border-radius:999px;padding:11px 18px;font-weight:500;font-size:.9rem;color:#C7D4E0}
+.pv-chip svg{width:15px;height:15px;color:#AFC9DE;flex:0 0 15px}
+.pv-why .pv-ey{color:#AFC9DE}
+.pv-wc{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+@media(max-width:820px){.pv-wc{grid-template-columns:1fr}}
+.pv-wc>div{padding:24px;border:1px solid #1E2A38;border-radius:13px;background:linear-gradient(180deg,#121A24,#0e151e)}
+.pv-wc svg{color:#AFC9DE;width:26px;height:26px;margin-bottom:12px}
+.pv-wc h3{color:#fff;font-size:1.04rem;margin:0 0 6px;font-weight:600}.pv-wc p{color:#9DAEC0;font-size:.9rem;margin:0}
+.pv-res{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+@media(max-width:700px){.pv-res{grid-template-columns:1fr}}
+.pv-r{display:flex;gap:16px;align-items:center;background:linear-gradient(180deg,#121A24,#0e151e);border:1px solid #1E2A38;border-radius:13px;padding:22px}
+.pv-r .pv-ic{width:50px;height:50px;flex:0 0 50px;border-radius:12px;background:rgba(175,201,222,.1);border:1px solid rgba(175,201,222,.25);color:#AFC9DE;display:flex;align-items:center;justify-content:center}
+.pv-r h3{margin:0 0 3px;font-size:1.05rem;color:#fff;font-weight:600}.pv-r p{margin:0;color:#9DAEC0;font-size:.9rem}
+.pv-r .pv-dl{margin-left:auto;color:#AFC9DE;font-weight:600;font-size:.85rem;white-space:nowrap}
+.pv-note{margin-top:16px;font-size:.85rem;color:#8496A8}
+.pv-cta-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(10,14,20,.96);backdrop-filter:blur(10px);border-top:1px solid #1E2A38}
+.pv-cta-bar a{flex:1;text-align:center;justify-content:center}
+@media(max-width:720px){.pv-cta-bar{display:flex}body{padding-bottom:74px}}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+<div class="pv-add">
+  <section class="pv-ind reveal"><div class="pv-wrap">
+    <span class="pv-ey">Industries Served</span>
+    <h2 class="pv-h">Trusted by the professionals who rely on defensible numbers.</h2>
+    <div class="pv-chips">
+      <span class="pv-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Plaintiff Attorneys</span>
+      <span class="pv-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Defense Attorneys</span>
+      <span class="pv-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Insurance Companies</span>
+      <span class="pv-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Claims Professionals</span>
+      <span class="pv-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Vehicle Owners in Disputes</span>
+      <span class="pv-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Corporate Fleets</span>
+      <span class="pv-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Dealership Groups</span>
+      <span class="pv-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Financial Institutions</span>
+    </div>
+  </div></section>
+  <section class="pv-why reveal"><div class="pv-wrap">
+    <span class="pv-ey">Why Clients Choose Us</span>
+    <h2 class="pv-h">Independent opinions, delivered with accountability.</h2>
+    <div class="pv-wc">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.4 7.7 8 10 4.6-2.3 8-5 8-10V6z" stroke-linejoin="round"/></svg><h3>Independent &amp; Conflict-Checked</h3><p>No dealer, repairer, or carrier ties — and every engagement begins with a conflict check.</p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5m0 14h16M8 15l3-4 3 2 4-6" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Transparent &amp; Reproducible</h3><p>Every adjustment is shown and sourced, so opposing experts can follow the math.</p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l3 3v15H6zM9 12h6M9 16h4" stroke-linejoin="round"/></svg><h3>One Point of Accountability</h3><p>The same expert from first review through report, deposition, and trial.</p></div>
+    </div>
+  </div></section>
+  <section class="reveal"><div class="pv-wrap">
+    <span class="pv-ey">Attorney Resources</span>
+    <h2 class="pv-h">Everything counsel needs to evaluate an engagement.</h2>
+    <div class="pv-res">
+      <div class="pv-r"><div class="pv-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h9l3 3v15H6zM9 11h6M9 15h6" stroke-linejoin="round"/></svg></div><div><h3>Sample Report</h3><p>See the structure, sourcing, and defensibility standard.</p></div><span class="pv-dl">Download →</span></div>
+      <div class="pv-r"><div class="pv-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM4 21c0-4 4-6 8-6s8 2 8 6" stroke-linejoin="round"/></svg></div><div><h3>Curriculum Vitae</h3><p>Jack Donachie's full experience and qualifications.</p></div><span class="pv-dl">Download →</span></div>
+    </div>
+    <p class="pv-note">Sample report and CV available to counsel on request, following a standard conflict check.</p>
+  </div></section>
+</div>
+<div class="pv-cta-bar"><a href="#contact" class="btn btn-primary">Request a Case Review</a></div>
+<script>(function(){var els=document.querySelectorAll('.reveal');if(!('IntersectionObserver'in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(e){e.classList.add('in')});return;}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{threshold:.12});els.forEach(function(e){io.observe(e)});})();</script>
+<section id="founder"><div class="wrap"><div class="founder">
+  <div class="fphoto"><span class="m">JD</span><span class="cap">Jack Donachie · Principal — professional portrait to be added</span></div>
+  <div>
+    <span class="eyebrow">About Jack Donachie</span>
+    <h2>Executive-level judgment behind every opinion.</h2>
+    <p>Jack Donachie brings an executive-level perspective developed through decades of leadership in the automotive industry — producing valuation opinions that are practical, well-supported, and capable of withstanding scrutiny in negotiation, arbitration, deposition, and trial.</p>
+    <ul class="credos">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Automotive executive leadership</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Vehicle valuation expertise</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Litigation consulting</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Risk &amp; claims management</li>
+    </ul>
+    <a href="#contact" class="btn btn-primary">Contact an Expert</a>
+  </div>
+</div></div></section>
+
+<section id="contact" class="cta"><div class="wrap">
+  <span class="eyebrow">Request a Case Review</span>
+  <h2>Ready for an independent, defensible opinion?</h2>
+  <p>Request a confidential case review or schedule a consultation. Share the basic case facts and we'll respond with next steps — no obligation.</p>
+  <div class="hero-cta"><a href="tel:+10007768355" class="btn btn-primary">Call (000) 776-8355 · PRO-TELL</a><a href="mailto:info@protelligence-valuation.com" class="btn btn-ghost">Email a Case Summary</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fg">
+    <div><div class="brand" style="margin-bottom:12px"><span class="g"></span>PROTELLIGENCE</div><p style="color:#6C7C8E;max-width:34ch">Independent vehicle valuation &amp; litigation consulting for attorneys, carriers, and businesses nationwide.</p></div>
+    <div><h4>Services</h4><a href="#services">Total Loss Review</a><a href="#services">Diminished Value</a><a href="#services">Market Valuation</a><a href="#services">Expert Witness</a></div>
+    <div><h4>Firm</h4><a href="#why">Expertise</a><a href="#founder">Jack Donachie</a><a href="#founder">Attorney Resources</a></div>
+    <div><h4>Contact</h4><a href="tel:+10007768355">(000) 776-8355</a><a href="mailto:info@protelligence-valuation.com">Email us</a><a href="#contact">Request a Case Review</a></div>
+  </div>
+  <div class="fbot"><span>© 2026 PROTELLIGENCE. All rights reserved.</span><span>National Expert Vehicle Valuation &amp; Litigation Consulting</span></div>
+</div></footer>
+</body></html>

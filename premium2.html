@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- THEME: "White-Shoe Serif" — warm-white law-review editorial. Source Serif 4 display + Inter body.
+     Two-column editorial layouts, drop cap, footnote asides, small-caps labels, hairline dividers,
+     generous margins, table-of-contents nav. Agency DNA: measured counsel's prose, zero hype.
+     Palette held to navy / warm white / silver / steel per client rule. -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROTELLIGENCE — Independent Vehicle Valuation &amp; Litigation Consulting</title>
+<meta name="description" content="PROTELLIGENCE — independent vehicle valuation and litigation consulting for attorneys, insurers, and vehicle owners in disputes, nationwide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f8f7f3; --paper-2:#f1efe9; --card:#fdfcfa;
+  --navy:#14273f; --ink:#1d2f47; --body-ink:#3a4b62;
+  --steel:#4e6b8c; --silver:#c9cdd2; --hair:#d8d6cf; --hair-2:#e5e3dc;
+  --serif:"Source Serif 4",Georgia,serif; --sans:Inter,system-ui,sans-serif;
+  --measure:66ch;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font:400 17px/1.72 var(--serif);color:var(--body-ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background:radial-gradient(1100px 500px at 50% -8%,rgba(78,107,140,.06),transparent 65%),
+             radial-gradient(900px 600px at 100% 100%,rgba(20,39,63,.04),transparent 60%)}
+main,header,footer,nav{position:relative;z-index:1}
+a{color:var(--navy)}
+::selection{background:var(--navy);color:var(--paper)}
+.page{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+.sc{font:600 11.5px/1.6 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--steel)}
+.hairline{border:0;border-top:1px solid var(--hair);margin:0}
+h1,h2,h3{font-family:var(--serif);color:var(--navy);font-weight:600}
+/* buttons: engraved small-caps */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;cursor:pointer;
+  font:600 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--navy);
+  border:1px solid var(--navy);border-radius:2px;padding:16px 28px;background:transparent;min-height:46px;
+  transition:background .25s ease,color .25s ease}
+.btn:hover{background:var(--navy);color:var(--paper)}
+.btn.solid{background:var(--navy);color:var(--paper)}
+.btn.solid:hover{background:#1f3a5c;border-color:#1f3a5c}
+a:focus-visible,.btn:focus-visible,summary:focus-visible,button:focus-visible{outline:2px solid var(--steel);outline-offset:3px}
+/* ---------- masthead ---------- */
+.mast{padding:clamp(30px,5vw,54px) 0 0;text-align:center}
+.mast .vol{display:flex;align-items:center;justify-content:center;gap:18px;margin-bottom:22px}
+.mast .vol .sc{color:#7a8798}
+.mast .vol::before,.mast .vol::after{content:"";height:1px;width:clamp(24px,8vw,90px);background:var(--hair)}
+.wordmark{font:700 clamp(30px,5vw,44px)/1 var(--serif);letter-spacing:.14em;color:var(--navy);text-decoration:none;display:inline-block}
+.wordmark span{color:var(--steel)}
+.mast .sub{margin-top:12px;font-style:italic;font-size:15.5px;color:#5d6d82}
+/* TOC nav */
+.tocbar{position:sticky;top:0;z-index:50;background:rgba(248,247,243,.95);backdrop-filter:blur(6px);
+  border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);margin-top:26px}
+.tocbar .inner{display:flex;align-items:center;justify-content:center;gap:clamp(14px,2.6vw,34px);min-height:54px;flex-wrap:wrap;padding:6px 16px}
+.tocbar a{font:500 12.5px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--ink);
+  padding:10px 2px;transition:color .2s}
+.tocbar a:hover{color:var(--steel)}
+.tocbar a i{font-style:normal;font-family:var(--serif);color:var(--steel);margin-right:7px}
+.tocbar .tel{display:none;font-family:var(--serif);letter-spacing:.02em;text-transform:none;font-size:14px}
+@media(min-width:1024px){.tocbar .tel{display:inline}}
+@media(max-width:767px){
+  .tocbar .inner{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .tocbar .inner::-webkit-scrollbar{display:none}
+  .tocbar a{white-space:nowrap}
+}
+/* ---------- hero / preamble ---------- */
+.preamble{padding:clamp(56px,8vw,96px) 0 clamp(46px,6vw,72px);text-align:center}
+.preamble h1{font-size:clamp(32px,5vw,56px);line-height:1.14;font-weight:600;letter-spacing:-.01em;max-width:21ch;margin:0 auto}
+.preamble h1 em{font-style:italic;font-weight:500;color:var(--steel)}
+.preamble .standfirst{max-width:52ch;margin:26px auto 0;font-size:clamp(16.5px,1.6vw,19px);font-style:italic;color:#51617a}
+.preamble .ctas{margin-top:36px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.preamble .rule-orn{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 auto 26px}
+.rule-orn::before,.rule-orn::after{content:"";width:64px;height:1px;background:var(--hair)}
+.rule-orn svg{width:14px;height:14px;stroke:var(--steel)}
+/* ---------- lead essay: two-column w/ drop cap ---------- */
+.essay{padding:clamp(48px,7vw,84px) 0;border-top:1px solid var(--hair)}
+.sec-label{display:flex;align-items:baseline;gap:16px;margin-bottom:clamp(26px,4vw,40px)}
+.sec-label .n{font:600 15px/1 var(--serif);color:var(--steel);font-style:italic}
+.sec-label h2{font-size:clamp(24px,3.2vw,34px);letter-spacing:-.005em}
+.cols{column-count:1;column-gap:56px;column-rule:1px solid var(--hair-2)}
+@media(min-width:860px){.cols{column-count:2}}
+.cols p{margin-bottom:1.3em;break-inside:avoid-column}
+.cols p:first-of-type::first-letter{
+  font-family:var(--serif);font-weight:700;color:var(--navy);
+  float:left;font-size:4.4em;line-height:.82;padding:6px 12px 0 0}
+sup.fn{font:600 11px/1 var(--sans);color:var(--steel)}
+sup.fn a{text-decoration:none;color:inherit}
+.footnotes{margin-top:clamp(30px,4vw,44px);padding-top:18px;border-top:1px solid var(--hair);max-width:var(--measure)}
+.footnotes li{font-size:13.5px;line-height:1.65;color:#5d6d82;margin:8px 0 8px 1.2em}
+.footnotes li::marker{color:var(--steel);font-family:var(--sans);font-size:12px}
+/* ---------- practice areas ---------- */
+.practice{border-top:1px solid var(--hair);padding:clamp(48px,7vw,84px) 0;background:var(--paper-2)}
+.article{display:grid;grid-template-columns:1fr;gap:8px 44px;padding:26px 0;border-bottom:1px solid var(--hair)}
+@media(min-width:860px){.article{grid-template-columns:250px 1fr}}
+.article:last-of-type{border-bottom:0}
+.article .head .roman{font:600 13px/1 var(--serif);font-style:italic;color:var(--steel);display:block;margin-bottom:8px}
+.article h3{font-size:20px;font-weight:600;letter-spacing:-.005em}
+.article .body p{font-size:15.5px;max-width:var(--measure)}
+.article .aside{margin-top:10px;font:400 13px/1.6 var(--sans);color:#6a788b;border-left:2px solid var(--silver);padding-left:12px;max-width:56ch}
+/* ---------- proceedings (process) ---------- */
+.proceedings{padding:clamp(48px,7vw,84px) 0;border-top:1px solid var(--hair)}
+.proc-list{max-width:760px;margin:0 auto;counter-reset:cl}
+.clause{position:relative;padding:22px 0 22px 74px;border-bottom:1px solid var(--hair-2);counter-increment:cl}
+.clause:last-child{border-bottom:0}
+.clause::before{content:"§ " counter(cl);position:absolute;left:0;top:24px;
+  font:600 15px/1 var(--serif);font-style:italic;color:var(--steel)}
+.clause h3{font-size:17.5px;margin-bottom:6px}
+.clause p{font-size:15px;color:#51617a;max-width:60ch}
+/* ---------- plate figure ---------- */
+.plate{padding:0 0 clamp(48px,7vw,84px)}
+.plate figure{max-width:860px;margin:0 auto}
+.plate .img{height:clamp(220px,40vw,420px);background:#233a55 url('https://images.unsplash.com/photo-1618418721668-0d1f72aa4bab?auto=format&fit=crop&w=1600&q=80') center 60%/cover;
+  filter:grayscale(1);position:relative;border:1px solid var(--hair)}
+.plate .img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,39,63,.28),rgba(20,39,63,.45));mix-blend-mode:multiply}
+.plate figcaption{display:flex;justify-content:space-between;gap:16px;padding-top:12px;font:400 13px/1.6 var(--sans);color:#6a788b;font-style:italic}
+.plate figcaption .sc{font-style:normal}
+/* ---------- clientele index ---------- */
+.clientele{border-top:1px solid var(--hair);padding:clamp(48px,7vw,84px) 0}
+.index{max-width:820px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:0 60px}
+@media(min-width:720px){.index{grid-template-columns:1fr 1fr}}
+.index .entry{display:flex;align-items:baseline;gap:10px;padding:13px 2px;border-bottom:1px dotted var(--silver);
+  font-size:16px;color:var(--ink);transition:background .2s}
+.index .entry:hover{background:var(--card)}
+.index .entry .leader{flex:1;border-bottom:1px dotted transparent}
+.index .entry .pg{font:500 12px/1 var(--sans);letter-spacing:.08em;color:var(--steel)}
+.index .entry em{font-style:normal;font-weight:600;color:var(--navy)}
+/* ---------- principles ---------- */
+.principles{border-top:1px solid var(--hair);padding:clamp(48px,7vw,84px) 0;background:var(--paper-2)}
+.prin-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--hair);border:1px solid var(--hair);max-width:1000px;margin:0 auto}
+@media(min-width:860px){.prin-grid{grid-template-columns:repeat(3,1fr)}}
+.prin{background:var(--card);padding:clamp(24px,3.4vw,40px)}
+.prin .glyph{width:34px;height:34px;margin-bottom:18px}
+.prin .glyph svg{width:100%;height:100%;stroke:var(--steel);fill:none;stroke-width:1.25}
+.prin h3{font-size:18.5px;margin-bottom:10px}
+.prin p{font-size:14.5px;color:#51617a}
+/* ---------- founder ---------- */
+.founder{padding:clamp(48px,7vw,84px) 0;border-top:1px solid var(--hair)}
+.founder .grid{display:grid;grid-template-columns:1fr;gap:clamp(30px,5vw,64px);align-items:start;max-width:1000px;margin:0 auto}
+@media(min-width:860px){.founder .grid{grid-template-columns:340px 1fr}}
+.oval-frame{width:min(300px,80%);margin:0 auto;aspect-ratio:3.4/4.2;border:1px solid var(--hair);background:var(--card);
+  border-radius:50% 50% 50% 50%/44% 44% 56% 56%;display:grid;place-items:center;text-align:center;padding:30px;
+  box-shadow:0 1px 0 var(--paper),inset 0 0 0 8px var(--paper),inset 0 0 0 9px var(--hair)}
+.oval-frame svg{width:40px;height:40px;stroke:var(--silver);margin:0 auto 12px}
+.oval-frame .sc{display:block;font-size:10px}
+.oval-frame p{font-size:13px;font-style:italic;color:#6a788b;margin-top:8px}
+.founder .bio p{margin-bottom:1.2em;max-width:var(--measure)}
+.founder .bio .signoff{font-style:italic;color:var(--steel);font-size:15.5px}
+/* ---------- appendices ---------- */
+.appendices{border-top:1px solid var(--hair);padding:clamp(48px,7vw,84px) 0}
+.app-grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:900px;margin:0 auto}
+@media(min-width:720px){.app-grid{grid-template-columns:1fr 1fr}}
+.app{background:var(--card);border:1px solid var(--hair);border-radius:2px;padding:clamp(24px,3.4vw,36px);
+  position:relative;transition:transform .25s ease,box-shadow .25s ease}
+.app:hover{transform:translateY(-3px);box-shadow:0 18px 40px -28px rgba(20,39,63,.35)}
+.app::before{content:"";position:absolute;top:10px;left:10px;right:10px;bottom:10px;border:1px solid var(--hair-2);pointer-events:none;border-radius:1px}
+.app .sc{display:block;margin-bottom:14px}
+.app h3{font-size:20px;margin-bottom:10px}
+.app p{font-size:14.5px;color:#51617a;margin-bottom:18px}
+.app .req{font:600 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--navy);text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--navy)}
+.app .req svg{width:13px;height:13px;stroke:var(--steel)}
+.app .note{margin-top:14px;font-size:12.5px;font-style:italic;color:#6a788b}
+/* ---------- questions presented ---------- */
+.questions{border-top:1px solid var(--hair);padding:clamp(48px,7vw,84px) 0;background:var(--paper-2)}
+.q-list{max-width:800px;margin:0 auto}
+.q-list details{border-bottom:1px solid var(--hair)}
+.q-list summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:44px 1fr 30px;align-items:baseline;gap:8px;
+  padding:22px 0;font:600 17px/1.5 var(--serif);color:var(--navy)}
+.q-list summary::-webkit-details-marker{display:none}
+.q-list summary .qn{font-style:italic;font-weight:500;color:var(--steel);font-size:15px}
+.q-list summary .tgl{justify-self:end;font-family:var(--serif);color:var(--steel);font-weight:400;font-size:22px;line-height:1;transition:transform .25s}
+.q-list details[open] .tgl{transform:rotate(45deg)}
+.q-list .ans{padding:0 0 24px 44px;font-size:15.5px;color:#51617a;max-width:62ch}
+/* ---------- correspondence ---------- */
+.corr{border-top:1px solid var(--hair);padding:clamp(52px,7vw,92px) 0}
+.corr .lead{max-width:56ch;margin:0 auto 40px;text-align:center;font-style:italic;color:#51617a}
+.letter{max-width:760px;margin:0 auto;background:var(--card);border:1px solid var(--hair);border-radius:2px;
+  padding:clamp(26px,4.5vw,52px);box-shadow:0 24px 50px -38px rgba(20,39,63,.4)}
+.letter .lhead{display:flex;justify-content:space-between;align-items:baseline;gap:14px;border-bottom:1px solid var(--hair);padding-bottom:16px;margin-bottom:26px;flex-wrap:wrap}
+.letter .lhead .sc{font-size:10.5px}
+form.corr-form{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:640px){form.corr-form{grid-template-columns:1fr 1fr}}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld.full{grid-column:1/-1}
+.fld label{font:600 11px/1.5 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--steel)}
+.fld input,.fld select,.fld textarea{font:400 16px/1.5 var(--serif);color:var(--ink);background:transparent;
+  border:0;border-bottom:1px solid var(--silver);padding:10px 2px;min-height:44px;border-radius:0;transition:border-color .2s}
+.fld select{appearance:none;background:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%234e6b8c' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 4px center}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-bottom-color:var(--navy)}
+.fld textarea{min-height:120px;resize:vertical}
+form.corr-form .btn{grid-column:1/-1;justify-self:center;margin-top:8px}
+.corr .alt{margin-top:26px;text-align:center;font-size:14.5px;font-style:italic;color:#6a788b}
+.corr .alt a{color:var(--navy)}
+/* ---------- colophon ---------- */
+.colophon{border-top:1px solid var(--hair);padding:40px 0 120px;text-align:center}
+@media(min-width:768px){.colophon{padding-bottom:48px}}
+.colophon .wordmark{font-size:20px}
+.colophon p{font:400 13px/1.8 var(--sans);color:#6a788b;margin-top:10px}
+.colophon .fin{margin-top:18px;display:flex;justify-content:center}
+.colophon .fin svg{width:16px;height:16px;stroke:var(--silver)}
+/* ---------- mobile bar ---------- */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:70;display:grid;grid-template-columns:1fr 1.4fr;
+  background:var(--card);border-top:1px solid var(--hair);box-shadow:0 -10px 28px rgba(20,39,63,.1)}
+.mbar a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;text-decoration:none;
+  font:600 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.mbar .call{color:var(--navy)}
+.mbar .cta{background:var(--navy);color:var(--paper)}
+.mbar svg{width:15px;height:15px}
+@media(min-width:768px){.mbar{display:none}}
+/* reveal helper */
+.gs-hide{opacity:0;transform:translateY(16px)}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .gs-hide{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="mast page" id="top">
+  <div class="vol"><span class="sc">Est. Independent · Litigation Consulting · Nationwide</span></div>
+  <a class="wordmark" href="#top">PRO<span>TELLIGENCE</span></a>
+  <p class="sub">Independent Vehicle Valuation &amp; Litigation Consulting — Jack Donachie, Founder</p>
+</header>
+
+<nav class="tocbar" aria-label="Table of contents">
+  <div class="inner">
+    <a href="#practice"><i>I.</i>Practice</a>
+    <a href="#proceedings"><i>II.</i>Proceedings</a>
+    <a href="#clientele"><i>III.</i>Clientele</a>
+    <a href="#founder"><i>IV.</i>The Founder</a>
+    <a href="#appendices"><i>V.</i>Appendices</a>
+    <a href="#questions"><i>VI.</i>Questions</a>
+    <a href="#correspondence"><i>VII.</i>Correspondence</a>
+    <a class="tel" href="tel:0007768355">(000) 776-8355</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ======== PREAMBLE ======== -->
+<section class="preamble page" aria-label="Preamble">
+  <div class="rule-orn" data-reveal>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.25" aria-hidden="true"><path d="M12 3l2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4z"/></svg>
+  </div>
+  <h1 data-reveal>On the question of what a vehicle is worth, <em>opinion is cheap; evidence is not.</em></h1>
+  <p class="standfirst" data-reveal>An independent practice retained by counsel, carriers, and owners across the United States to establish vehicle value with the care the record deserves.</p>
+  <div class="ctas" data-reveal>
+    <a class="btn solid" href="#correspondence">Request a Case Review</a>
+    <a class="btn" href="#practice">Read the Practice Note</a>
+  </div>
+</section>
+
+<!-- ======== I. PRACTICE NOTE (essay) ======== -->
+<section class="essay page" id="practice">
+  <div class="sec-label" data-reveal><span class="n">I.</span><h2>A Note on the Practice</h2></div>
+  <div class="cols" data-reveal>
+    <p>PROTELLIGENCE exists for the moment a number is challenged. When a total-loss settlement is disputed, when a repaired vehicle returns to market carrying a quiet penalty, when an estate or a dissolution requires a figure no party can call partisan — the question is never merely what a vehicle is worth, but whether the answer can be defended once someone is paid to disagree with it.<sup class="fn"><a href="#fn1" id="ref1">1</a></sup></p>
+    <p>The practice is deliberately narrow. We undertake five classes of engagement: total-loss valuation disputes; diminished-value claims; expert reports and testimony; valuation for estate, bankruptcy, and divorce matters; and the review of insurance claim files, including CCC and Mitchell valuation reports. Nothing else. A narrow practice is what permits depth, and depth is what survives cross-examination.</p>
+    <p>Every engagement begins with a conflict check and proceeds under a written scope. The methodology is transparent and reproducible: comparables are disclosed, adjustments are stated, and sources are cited, so that a qualified reviewer working from the same record would arrive at the same conclusion.<sup class="fn"><a href="#fn2" id="ref2">2</a></sup> Where matters proceed to deposition or trial, the opinion offered from the stand is the opinion set out on the page — neither softened nor sharpened for the occasion.</p>
+    <p>The practice is national, and it is singular in the older sense of the word: one analyst, one standard, one point of accountability from intake through testimony. Clients do not inherit a rotating bench of junior staff. They retain the person whose name appears on the report, and that person answers for it.</p>
+  </div>
+  <ol class="footnotes" data-reveal>
+    <li id="fn1">The distinction matters chiefly in litigation, which is where this practice keeps its focus. <a href="#ref1" aria-label="Return to reference 1">↩</a></li>
+    <li id="fn2">Reproducibility is treated here as the working definition of objectivity: an opinion that cannot be retraced is an assertion, not an analysis. <a href="#ref2" aria-label="Return to reference 2">↩</a></li>
+  </ol>
+</section>
+
+<!-- ======== PRACTICE AREAS ======== -->
+<section class="practice" aria-label="Areas of engagement">
+  <div class="page">
+    <div class="sec-label" data-reveal><span class="n">I·a</span><h2>Areas of Engagement</h2></div>
+    <article class="article" data-reveal>
+      <div class="head"><span class="roman">Article the First</span><h3>Total-Loss Valuation Disputes</h3></div>
+      <div class="body">
+        <p>Where an insurer's settlement figure and a vehicle's actual cash value part ways, we prepare an independent valuation from documented market evidence — each comparable identified, each adjustment explained, so that the resulting figure invites examination rather than fearing it.</p>
+      </div>
+    </article>
+    <article class="article" data-reveal>
+      <div class="head"><span class="roman">Article the Second</span><h3>Diminished-Value Claims</h3></div>
+      <div class="body">
+        <p>A vehicle competently repaired is not a vehicle restored to its former market standing. We measure the difference — pre-loss value against post-repair value — from observable market behavior, and we say plainly when the difference is small as well as when it is large.</p>
+        <p class="aside">Formula-driven shortcuts are declined on principle; the market, properly documented, is the only authority consulted.</p>
+      </div>
+    </article>
+    <article class="article" data-reveal>
+      <div class="head"><span class="roman">Article the Third</span><h3>Expert Reports &amp; Testimony</h3></div>
+      <div class="body">
+        <p>Written opinions prepared to the standards of expert disclosure, with the founder available for deposition and trial. Reports are structured so that counsel can walk a trier of fact from record to reasoning to conclusion without a gap in the chain.</p>
+      </div>
+    </article>
+    <article class="article" data-reveal>
+      <div class="head"><span class="roman">Article the Fourth</span><h3>Estate, Bankruptcy &amp; Divorce Valuation</h3></div>
+      <div class="body">
+        <p>Courts, trustees, and opposing spouses share one requirement: a number without an agenda. We provide dated, documented valuations of vehicles and collections suitable for filings, negotiations, and the equitable division of property.</p>
+      </div>
+    </article>
+    <article class="article" data-reveal>
+      <div class="head"><span class="roman">Article the Fifth</span><h3>Insurance Claim &amp; CCC / Mitchell Review</h3></div>
+      <div class="body">
+        <p>A carrier's valuation report is a document like any other: it can be audited. We examine comparable selection, condition ratings, and adjustments against the market record, and set out our findings in terms a claims file — or a courtroom — can use.</p>
+        <p class="aside">Reviews are conducted with the same rigor whether retained by the policyholder's counsel or the carrier itself.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ======== PLATE ======== -->
+<section class="plate" aria-label="Plate I">
+  <div class="page" style="padding-top:clamp(48px,7vw,84px)">
+    <figure data-reveal>
+      <div class="img" role="img" aria-label="Vehicle photographed in monochrome, navy-toned"></div>
+      <figcaption><span>Plate I. — The subject of every engagement: the vehicle, considered as evidence.</span><span class="sc">Monochrome, navy toned</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ======== II. PROCEEDINGS ======== -->
+<section class="proceedings page" id="proceedings">
+  <div class="sec-label" data-reveal><span class="n">II.</span><h2>Order of Proceedings</h2></div>
+  <div class="proc-list">
+    <div class="clause" data-reveal><h3>Conflict Check</h3><p>Before substance is discussed, parties, counsel, and carriers are screened. If independence cannot be certified, the engagement is declined — courteously, and at once.</p></div>
+    <div class="clause" data-reveal><h3>Records &amp; Data Intake</h3><p>Valuation reports, repair documentation, photographs, and title history are gathered into a single organized file; what is missing is identified, and the means of obtaining it agreed with counsel.</p></div>
+    <div class="clause" data-reveal><h3>Valuation Analysis</h3><p>Market evidence is assembled and weighed under a methodology that is written down, disclosed, and reproducible — the same discipline in every matter, for every client.</p></div>
+    <div class="clause" data-reveal><h3>Defensible Report</h3><p>Findings are rendered in a report that states its data, its reasoning, and its limitations, in prose a judge need not translate.</p></div>
+    <div class="clause" data-reveal><h3>Testimony Support</h3><p>Should the matter proceed, the analysis is defended at deposition or trial, in complete consistency with the written record.</p></div>
+  </div>
+</section>
+
+<!-- ======== III. CLIENTELE ======== -->
+<section class="clientele page" id="clientele">
+  <div class="sec-label" data-reveal><span class="n">III.</span><h2>An Index of Clientele</h2></div>
+  <div class="index" data-reveal>
+    <div class="entry"><em>Plaintiff Attorneys</em><span class="leader"></span><span class="pg">i</span></div>
+    <div class="entry"><em>Defense Attorneys</em><span class="leader"></span><span class="pg">ii</span></div>
+    <div class="entry"><em>Insurance Companies</em><span class="leader"></span><span class="pg">iii</span></div>
+    <div class="entry"><em>Claims Professionals</em><span class="leader"></span><span class="pg">iv</span></div>
+    <div class="entry"><em>Vehicle Owners in Disputes</em><span class="leader"></span><span class="pg">v</span></div>
+    <div class="entry"><em>Corporate Fleets</em><span class="leader"></span><span class="pg">vi</span></div>
+    <div class="entry"><em>Dealership Groups</em><span class="leader"></span><span class="pg">vii</span></div>
+    <div class="entry"><em>Financial Institutions</em><span class="leader"></span><span class="pg">viii</span></div>
+  </div>
+  <p style="max-width:56ch;margin:30px auto 0;text-align:center;font-style:italic;font-size:15px;color:#6a788b" data-reveal>The same methodology serves every entry above; independence is not adjusted to suit the retaining party.</p>
+</section>
+
+<!-- ======== PRINCIPLES ======== -->
+<section class="principles" aria-label="Principles of the practice">
+  <div class="page">
+    <div class="sec-label" data-reveal><span class="n">III·a</span><h2>Principles, Briefly Stated</h2></div>
+    <div class="prin-grid">
+      <div class="prin" data-reveal>
+        <div class="glyph"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M6 6h12M8 6l-2.5 5a3 3 0 006 0L9 6M18 6l-2.5 5a3 3 0 006 0L19 6M9 21h6"/></svg></div>
+        <h3>Independent &amp; Conflict-Checked</h3>
+        <p>No standing arrangements with carriers, repairers, or counsel. Each matter is screened before engagement, and declined where independence cannot be assured.</p>
+      </div>
+      <div class="prin" data-reveal>
+        <div class="glyph"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h12l4 4v12H4zM16 4v4h4"/><path d="M7 12h10M7 15.5h10M7 8.5h5"/></svg></div>
+        <h3>Transparent &amp; Reproducible</h3>
+        <p>Method, data, and adjustment are disclosed in full. The reader is given everything required to retrace the analysis — and is invited to do so.</p>
+      </div>
+      <div class="prin" data-reveal>
+        <div class="glyph"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.5"/><path d="M5.5 20.5c.8-4 3.4-6 6.5-6s5.7 2 6.5 6M12 14.5V18"/></svg></div>
+        <h3>One Point of Accountability</h3>
+        <p>The analyst retained is the analyst who reports and, if need be, testifies. Responsibility is never diffused across a firm's letterhead.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== IV. FOUNDER ======== -->
+<section class="founder page" id="founder">
+  <div class="sec-label" data-reveal><span class="n">IV.</span><h2>Of the Founder</h2></div>
+  <div class="grid">
+    <div class="oval-frame" data-reveal role="img" aria-label="Placeholder for professional portrait of Jack Donachie, to be added">
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1" aria-hidden="true"><circle cx="12" cy="9.5" r="3.5"/><path d="M5 20c1-3.8 3.7-5.5 7-5.5s6 1.7 7 5.5"/></svg>
+        <span class="sc">Portrait</span>
+        <p>Professional portrait<br>to be added</p>
+      </div>
+    </div>
+    <div class="bio">
+      <p data-reveal>Jack Donachie founded PROTELLIGENCE on an unfashionable conviction: that vehicle valuation, practiced honestly, is closer to a discipline than a negotiation. The figure should proceed from the record; the record should be open to inspection; and the person who signs the opinion should be prepared to defend it under oath.</p>
+      <p data-reveal>The practice he built reflects that conviction in structure as well as sentiment. It is independent of carriers and repair networks. It accepts engagements from either side of a dispute, but never both. It commits its methodology to writing before it commits a number to a report. And it offers counsel a single, continuous point of contact — the founder himself — from the first conflict check to the last question on redirect.</p>
+      <p class="signoff" data-reveal>His curriculum vitae is furnished to counsel on request, following a standard conflict check. — <em>See Appendix B, below.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ======== V. APPENDICES ======== -->
+<section class="appendices page" id="appendices">
+  <div class="sec-label" data-reveal><span class="n">V.</span><h2>Appendices for Counsel</h2></div>
+  <div class="app-grid">
+    <div class="app" data-reveal>
+      <span class="sc">Appendix A</span>
+      <h3>Sample Expert Report</h3>
+      <p>A representative report, suitably redacted, illustrating the structure counsel may expect: the record reviewed, the comparables disclosed, the adjustments reasoned, and the conclusion stated with its limits.</p>
+      <a class="req" href="#correspondence">Request Appendix A
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <p class="note">Available to counsel on request, following a standard conflict check.</p>
+    </div>
+    <div class="app" data-reveal>
+      <span class="sc">Appendix B</span>
+      <h3>Curriculum Vitae</h3>
+      <p>The founder's qualifications and professional history, prepared in the customary form for expert disclosure and ready for inclusion in counsel's file.</p>
+      <a class="req" href="#correspondence">Request Appendix B
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <p class="note">Available to counsel on request, following a standard conflict check.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======== VI. QUESTIONS PRESENTED ======== -->
+<section class="questions" id="questions">
+  <div class="page">
+    <div class="sec-label" data-reveal><span class="n">VI.</span><h2>Questions Presented</h2></div>
+    <div class="q-list">
+      <details data-reveal>
+        <summary><span class="qn">Q.1</span><span>Whether the practice serves policyholders, or carriers, or both.</span><span class="tgl">+</span></summary>
+        <div class="ans">Both, though never within the same matter. The practice holds no standing allegiance; each engagement is preceded by a conflict check, and the methodology applied does not vary with the identity of the retaining party. That, in substance, is what independence means.</div>
+      </details>
+      <details data-reveal>
+        <summary><span class="qn">Q.2</span><span>What materials counsel should assemble before requesting review.</span><span class="tgl">+</span></summary>
+        <div class="ans">The carrier's valuation report (CCC, Mitchell, or comparable), repair estimates and invoices, photographs, any police or incident report, and the vehicle's title and service history. An incomplete file is no impediment; the intake process is designed to identify and cure omissions.</div>
+      </details>
+      <details data-reveal>
+        <summary><span class="qn">Q.3</span><span>Whether testimony is available at deposition and trial.</span><span class="tgl">+</span></summary>
+        <div class="ans">It is. Reports are drafted in anticipation of examination, and the testimony given is in all respects consistent with the written opinion. Counsel will find no daylight between the report and the stand.</div>
+      </details>
+      <details data-reveal>
+        <summary><span class="qn">Q.4</span><span>Whether the practice accepts matters in every jurisdiction.</span><span class="tgl">+</span></summary>
+        <div class="ans">The practice is national. Market evidence is documented from verifiable sources without regard to venue, and records intake is conducted remotely, so geography seldom bears on either scope or schedule.</div>
+      </details>
+      <details data-reveal>
+        <summary><span class="qn">Q.5</span><span>How fees are determined.</span><span class="tgl">+</span></summary>
+        <div class="ans">Fees are quoted in writing once the scope of the engagement is defined at the initial case review, and are never contingent upon the conclusion reached. A valuation whose price depends on its answer is not a valuation counsel can use.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ======== VII. CORRESPONDENCE ======== -->
+<section class="corr page" id="correspondence">
+  <div class="sec-label" style="justify-content:center" data-reveal><span class="n">VII.</span><h2>Correspondence</h2></div>
+  <p class="lead" data-reveal>Counsel and claimants are invited to set out the matter below. The conflict check precedes any substantive discussion, and replies come from the founder's desk, not a service bureau.</p>
+  <div class="letter" data-reveal>
+    <div class="lhead">
+      <span class="sc">PROTELLIGENCE — Case Review Request</span>
+      <span class="sc"><a href="tel:0007768355" style="text-decoration:none;color:inherit">Tel. (000) 776-8355</a></span>
+    </div>
+    <form class="corr-form" name="protelligence-counsel" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="protelligence-counsel">
+      <div class="fld"><label for="c-name">Name</label><input id="c-name" name="name" type="text" autocomplete="name" required></div>
+      <div class="fld"><label for="c-phone">Telephone</label><input id="c-phone" name="phone" type="tel" autocomplete="tel" required></div>
+      <div class="fld full"><label for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="fld full"><label for="c-type">Nature of the matter</label>
+        <select id="c-type" name="engagement" required>
+          <option value="" selected disabled>Please select</option>
+          <option>Total-Loss Valuation Dispute</option>
+          <option>Diminished-Value Claim</option>
+          <option>Expert Report &amp; Testimony</option>
+          <option>Estate, Bankruptcy &amp; Divorce Valuation</option>
+          <option>Insurance Claim &amp; CCC/Mitchell Review</option>
+          <option>Other / Not sure</option>
+        </select>
+      </div>
+      <div class="fld full"><label for="c-msg">The matter, in brief</label><textarea id="c-msg" name="message" placeholder="Venue, vehicle, and the question in dispute. Privileged detail is neither expected nor required at this stage."></textarea></div>
+      <button class="btn solid" type="submit">Submit for Conflict Check</button>
+    </form>
+  </div>
+  <p class="alt">Or telephone directly: <a href="tel:0007768355">(000) 776-8355</a> — engagements accepted nationwide.</p>
+</section>
+
+</main>
+
+<footer class="colophon page">
+  <span class="wordmark" style="letter-spacing:.16em">PRO<span>TELLIGENCE</span></span>
+  <p>Independent Vehicle Valuation &amp; Litigation Consulting · Jack Donachie, Founder<br>
+  © 2026 PROTELLIGENCE · Serving counsel, carriers, and owners nationwide · (000) 776-8355</p>
+  <div class="fin" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.25"><path d="M12 3l2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4z"/></svg>
+  </div>
+</footer>
+
+<nav class="mbar" aria-label="Quick actions">
+  <a class="call" href="tel:0007768355"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>Call</a>
+  <a class="cta" href="#correspondence">Case Review</a>
+</nav>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script>
+(function(){
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.addEventListener('load',function(){
+    if(reduced||typeof gsap==='undefined'||typeof ScrollTrigger==='undefined')return; // degrade gracefully: everything already visible
+    gsap.registerPlugin(ScrollTrigger);
+    document.querySelectorAll('[data-reveal]').forEach(function(el,i){
+      el.classList.add('gs-hide');
+      gsap.to(el,{opacity:1,y:0,duration:.85,ease:'power1.out',delay:(i%3)*.06,
+        scrollTrigger:{trigger:el,start:'top 90%',once:true}});
+    });
+  });
+})();
+</script>
+</body>
+</html>

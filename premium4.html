@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- THEME: "Split Ledger" — architectural split-screen ledger system. Persistent vertical division (dark navy vs paper white) alternating sides down the page. Ruled ledger rows, tabular figures, sticky side-rail nav. Archivo (expanded) + Source Sans 3. Palette: navy / white / silver / steel only. -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROTELLIGENCE — Independent Vehicle Valuation &amp; Litigation Consulting</title>
+<meta name="description" content="PROTELLIGENCE is an independent vehicle valuation and litigation consulting practice serving attorneys, insurers, fleets and vehicle owners nationwide. Founded by Jack Donachie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A1424; --navy-2:#0E1B30; --navy-3:#13233D;
+  --paper:#F6F7F9; --paper-2:#EDEFF2;
+  --silver:#C6CED8; --silver-dim:#8E9AAB;
+  --steel:#5E7EA0; --steel-strong:#7FA0C2; --steel-deep:#33506F;
+  --line-d:rgba(198,206,216,.16); --line-l:rgba(10,20,36,.14);
+  --rail:76px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  font-family:'Source Sans 3',system-ui,sans-serif;font-size:16px;line-height:1.6;
+  color:var(--navy);background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--steel);color:#fff}
+.disp{font-family:'Archivo',sans-serif;font-stretch:118%;font-weight:700;letter-spacing:-.01em;line-height:1.04}
+.disp-x{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;text-transform:uppercase}
+.mono-fig{font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum"}
+.kicker{font-family:'Archivo',sans-serif;font-stretch:112%;font-weight:600;font-size:.72rem;letter-spacing:.34em;text-transform:uppercase}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--steel-strong);outline-offset:3px}
+
+/* ---------- SIDE RAIL NAV ---------- */
+.rail{
+  position:fixed;top:0;left:0;bottom:0;width:var(--rail);z-index:60;
+  background:var(--navy);border-right:1px solid var(--line-d);
+  display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+  padding:1.1rem 0;
+}
+.rail-mark{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line-d)}
+.rail-mark svg{width:22px;height:22px}
+.rail-nav{display:flex;flex-direction:column;gap:.35rem;align-items:center}
+.rail-nav a{
+  writing-mode:vertical-rl;text-orientation:mixed;text-decoration:none;
+  font-family:'Archivo',sans-serif;font-stretch:114%;font-weight:600;
+  font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--silver-dim);padding:.85rem .35rem;border-left:1px solid transparent;
+  transition:color .2s ease;
+  min-height:44px;display:inline-flex;align-items:center;
+}
+.rail-nav a:hover{color:#fff}
+.rail-nav a.on{color:#fff;border-left-color:var(--steel-strong)}
+.rail-tel{writing-mode:vertical-rl;text-decoration:none;color:var(--silver);font-size:.7rem;letter-spacing:.18em;padding:.5rem .3rem}
+.rail-tel:hover{color:#fff}
+
+/* ---------- TOP BAR (mobile) ---------- */
+.topbar{display:none}
+
+/* ---------- PAGE SHELL ---------- */
+.page{margin-left:var(--rail)}
+section{position:relative}
+
+/* Split grid primitive */
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.split.autoh{min-height:0}
+.panel{padding:clamp(2.4rem,6vw,5.5rem) clamp(1.4rem,4.5vw,4.5rem);position:relative;overflow:hidden}
+.panel.dark{
+  background:
+    linear-gradient(160deg,rgba(94,126,160,.10),rgba(10,20,36,0) 45%),
+    radial-gradient(120% 90% at 100% 0%,rgba(51,80,111,.28),rgba(10,20,36,0) 60%),
+    var(--navy);
+  color:var(--paper);
+}
+.panel.light{
+  background:
+    linear-gradient(0deg,rgba(10,20,36,.028),rgba(10,20,36,.028)),
+    repeating-linear-gradient(180deg,transparent 0 31px,rgba(10,20,36,.045) 31px 32px),
+    var(--paper);
+}
+.panel.plain-light{background:var(--paper)}
+/* Vertical rhythm rule at split seam */
+.split::after{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;background:linear-gradient(var(--line-l),transparent);pointer-events:none}
+.split.on-dark::after{background:linear-gradient(var(--line-d),transparent)}
+
+/* Ledger rows */
+.ledger{border-top:1px solid var(--line-l)}
+.dark .ledger{border-top-color:var(--line-d)}
+.ledger-row{
+  display:grid;grid-template-columns:3.2rem 1fr auto;gap:1rem;align-items:baseline;
+  padding:1.05rem .25rem;border-bottom:1px solid var(--line-l);
+  transition:background .2s ease,padding-left .2s ease;
+}
+.dark .ledger-row{border-bottom-color:var(--line-d)}
+.ledger-row:hover{background:rgba(94,126,160,.07);padding-left:.6rem}
+.ledger-no{font-family:'Archivo',sans-serif;font-stretch:110%;font-weight:600;font-size:.72rem;letter-spacing:.14em;color:var(--steel)}
+.dark .ledger-no{color:var(--steel-strong)}
+.ledger-title{font-family:'Archivo',sans-serif;font-stretch:112%;font-weight:600;font-size:1.02rem}
+.ledger-sub{display:block;font-family:'Source Sans 3',sans-serif;font-weight:400;font-size:.9rem;color:var(--steel-deep);margin-top:.15rem;max-width:46ch}
+.dark .ledger-sub{color:var(--silver-dim)}
+.ledger-fig{text-align:right;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--silver-dim);white-space:nowrap}
+.panel.light .ledger-fig{color:var(--steel)}
+
+/* Buttons — ruled ledger style */
+.btn{
+  display:inline-flex;align-items:center;gap:.7rem;text-decoration:none;cursor:pointer;
+  font-family:'Archivo',sans-serif;font-stretch:114%;font-weight:600;font-size:.78rem;
+  letter-spacing:.22em;text-transform:uppercase;
+  padding:.95rem 1.5rem;border:1px solid currentColor;background:transparent;color:inherit;
+  position:relative;transition:background .2s ease,color .2s ease;min-height:44px;
+}
+.btn::before{content:"";position:absolute;left:.55rem;top:.55rem;bottom:.55rem;width:1px;background:currentColor;opacity:.4}
+.btn:hover{background:var(--navy);color:var(--paper)}
+.dark .btn:hover,.btn.inv:hover{background:var(--paper);color:var(--navy)}
+.btn.solid{background:var(--navy);color:var(--paper);border-color:var(--navy)}
+.btn.solid:hover{background:var(--steel-deep);border-color:var(--steel-deep);color:#fff}
+.dark .btn.solid{background:var(--paper);color:var(--navy);border-color:var(--paper)}
+.dark .btn.solid:hover{background:var(--steel-strong);border-color:var(--steel-strong);color:var(--navy)}
+.btn svg{width:14px;height:14px}
+
+/* Stat blocks */
+.figset{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line-d);margin-top:2.2rem}
+.fig{padding:1.1rem 1rem;border-right:1px solid var(--line-d)}
+.fig:last-child{border-right:0}
+.fig b{display:block;font-family:'Archivo',sans-serif;font-stretch:120%;font-weight:700;font-size:clamp(1.5rem,2.6vw,2.2rem);line-height:1;margin-bottom:.35rem}
+.fig span{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--silver-dim)}
+.light .figset,.panel.light .figset{border-color:var(--line-l)}
+.panel.light .fig{border-right-color:var(--line-l)}
+.panel.light .fig span{color:var(--steel-deep)}
+
+/* Photo plates */
+.plate{position:relative;background-color:var(--navy-2);min-height:320px}
+.plate .ph{position:absolute;inset:0;background-size:cover;background-position:center;filter:grayscale(1) contrast(1.06) brightness(.82)}
+.plate::after{content:"";position:absolute;inset:0;background:linear-gradient(165deg,rgba(10,20,36,.55),rgba(51,80,111,.42));mix-blend-mode:multiply}
+.plate .plate-tag{
+  position:absolute;left:1.1rem;bottom:1rem;z-index:2;color:var(--silver);
+  font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;
+  background:rgba(10,20,36,.72);padding:.45rem .7rem;border:1px solid var(--line-d);
+}
+
+/* Rhythm line ornaments */
+.vline{position:absolute;top:0;bottom:0;width:1px;background:var(--line-l);pointer-events:none}
+.dark .vline{background:var(--line-d)}
+
+/* Section header block */
+.sec-head{margin-bottom:2rem}
+.sec-head .kicker{color:var(--steel);display:block;margin-bottom:.9rem}
+.dark .sec-head .kicker{color:var(--steel-strong)}
+.sec-head h2{font-size:clamp(1.7rem,3.4vw,2.7rem)}
+.sec-head .rule{width:52px;height:2px;background:var(--steel);margin-top:1.1rem}
+.lede{color:var(--steel-deep);max-width:52ch;margin-top:1rem}
+.dark .lede{color:var(--silver)}
+
+/* HERO */
+.hero .panel.dark{display:flex;flex-direction:column;justify-content:space-between;gap:3rem}
+.hero-meta{display:flex;justify-content:space-between;gap:1rem;font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--silver-dim)}
+.hero h1{font-size:clamp(2.3rem,5vw,4.3rem);margin:1.2rem 0 0}
+.hero h1 em{font-style:normal;color:var(--steel-strong)}
+.hero-sub{margin-top:1.4rem;max-width:46ch;color:var(--silver);font-size:1.06rem}
+.hero-ctas{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2rem}
+.hero .panel.light{display:flex;flex-direction:column;justify-content:flex-end;gap:0;padding:0}
+.hero-plate{flex:1;min-height:52vh}
+.hero-ledger{padding:1.6rem clamp(1.4rem,4vw,3rem);background:var(--paper)}
+.hero-ledger .kicker{color:var(--steel);display:block;margin-bottom:.6rem}
+.hero-ledger .ledger-row{grid-template-columns:1fr auto}
+
+/* Industries strip */
+.chips{display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid var(--line-d);border-top:1px solid var(--line-d)}
+.chip{
+  padding:1.15rem 1.1rem;border-right:1px solid var(--line-d);border-bottom:1px solid var(--line-d);
+  font-family:'Archivo',sans-serif;font-stretch:112%;font-weight:600;font-size:.82rem;letter-spacing:.06em;
+  display:flex;align-items:center;gap:.65rem;color:var(--silver);
+  transition:color .2s,background .2s;
+}
+.chip:hover{color:#fff;background:rgba(94,126,160,.1)}
+.chip i{width:7px;height:7px;border:1px solid var(--steel-strong);flex:none;display:inline-block}
+
+/* Process — ruled ladder */
+.steps{counter-reset:step;border-top:1px solid var(--line-l)}
+.step{display:grid;grid-template-columns:4.4rem 1fr;gap:1.2rem;padding:1.4rem .2rem;border-bottom:1px solid var(--line-l);align-items:start}
+.step::before{
+  counter-increment:step;content:"0" counter(step);
+  font-family:'Archivo',sans-serif;font-stretch:122%;font-weight:800;font-size:1.9rem;line-height:1;
+  color:transparent;-webkit-text-stroke:1px var(--steel);
+}
+.step h3{font-family:'Archivo',sans-serif;font-stretch:112%;font-size:1.05rem;margin-bottom:.3rem}
+.step p{color:var(--steel-deep);font-size:.95rem;max-width:56ch}
+
+/* Resource cards */
+.docs{display:grid;gap:1.2rem;margin-top:1.6rem}
+.doc{
+  border:1px solid var(--line-d);padding:1.5rem;display:grid;grid-template-columns:auto 1fr;gap:1.2rem;
+  background:linear-gradient(120deg,rgba(94,126,160,.08),transparent 55%);
+  transition:border-color .2s,transform .25s ease;
+}
+.doc:hover{border-color:var(--steel-strong);transform:translateX(6px)}
+.doc svg{width:34px;height:34px;color:var(--steel-strong)}
+.doc h3{font-family:'Archivo',sans-serif;font-stretch:114%;font-size:1.05rem;margin-bottom:.35rem}
+.doc p{color:var(--silver-dim);font-size:.92rem}
+.doc .req{display:inline-block;margin-top:.8rem;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--steel-strong);border-bottom:1px solid var(--steel-strong);padding-bottom:.2rem;text-decoration:none}
+.doc .req:hover{color:#fff;border-color:#fff}
+
+/* Founder */
+.portrait-ph{
+  border:1px solid var(--line-l);aspect-ratio:4/5;max-width:380px;position:relative;
+  background:
+    repeating-linear-gradient(45deg,rgba(10,20,36,.04) 0 10px,transparent 10px 20px),
+    var(--paper-2);
+  display:grid;place-items:center;text-align:center;padding:1.5rem;
+}
+.portrait-ph .frame{position:absolute;inset:12px;border:1px dashed rgba(10,20,36,.28)}
+.portrait-ph p{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--steel-deep);line-height:2}
+.portrait-ph svg{width:44px;height:44px;color:var(--steel);margin-bottom:1rem}
+
+/* FAQ */
+.faq details{border-bottom:1px solid var(--line-l)}
+.faq summary{
+  cursor:pointer;list-style:none;display:grid;grid-template-columns:1fr auto;align-items:center;gap:1rem;
+  padding:1.2rem .2rem;font-family:'Archivo',sans-serif;font-stretch:112%;font-weight:600;font-size:1rem;
+  min-height:44px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .tick{width:14px;height:14px;position:relative;flex:none}
+.faq summary .tick::before,.faq summary .tick::after{content:"";position:absolute;background:var(--steel-deep);transition:transform .25s ease}
+.faq summary .tick::before{left:0;top:6px;width:14px;height:2px}
+.faq summary .tick::after{left:6px;top:0;width:2px;height:14px}
+.faq details[open] summary .tick::after{transform:scaleY(0)}
+.faq details p{padding:0 .2rem 1.3rem;color:var(--steel-deep);max-width:62ch}
+.faq summary:hover{color:var(--steel-deep)}
+
+/* Form */
+form{display:grid;gap:1rem;margin-top:1.6rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+label{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--silver-dim);display:block;margin-bottom:.4rem}
+input,select,textarea{
+  width:100%;background:rgba(246,247,249,.04);border:1px solid var(--line-d);color:var(--paper);
+  font-family:'Source Sans 3',sans-serif;font-size:1rem;padding:.85rem .9rem;min-height:44px;
+  transition:border-color .2s;border-radius:0;
+}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23C6CED8' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .9rem center}
+select option{color:var(--navy)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--steel-strong)}
+textarea{min-height:130px;resize:vertical}
+input::placeholder,textarea::placeholder{color:rgba(198,206,216,.4)}
+
+/* Footer */
+footer{background:var(--navy);color:var(--silver-dim);border-top:1px solid var(--line-d)}
+.foot-in{margin-left:0;padding:2.2rem clamp(1.4rem,4vw,4rem);display:flex;flex-wrap:wrap;gap:1.4rem;justify-content:space-between;font-size:.78rem;letter-spacing:.08em}
+.foot-in a{color:var(--silver);text-decoration:none}
+.foot-in a:hover{color:#fff}
+
+/* Mobile bottom bar */
+.mbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:80;display:grid;grid-template-columns:1fr 1fr;
+  background:var(--navy);border-top:1px solid var(--line-d);
+}
+.mbar a{
+  display:flex;align-items:center;justify-content:center;gap:.55rem;min-height:54px;text-decoration:none;
+  font-family:'Archivo',sans-serif;font-stretch:112%;font-weight:600;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--paper);
+}
+.mbar a+a{border-left:1px solid var(--line-d);background:var(--steel-deep)}
+.mbar svg{width:15px;height:15px}
+
+/* Reveal system: hidden ONLY when JS present */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .js .rv{opacity:1;transform:none;transition:none}
+  .plate .ph{transition:none!important}
+  *{transition-duration:.01ms!important;animation:none!important}
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1023px){
+  :root{--rail:0px}
+  .rail{display:none}
+  .page{margin-left:0}
+  .topbar{
+    display:flex;position:sticky;top:0;z-index:70;background:var(--navy);color:var(--paper);
+    align-items:center;justify-content:space-between;padding:.8rem 1.1rem;border-bottom:1px solid var(--line-d);
+  }
+  .topbar .tb-mark{display:flex;align-items:center;gap:.6rem;font-family:'Archivo',sans-serif;font-stretch:120%;font-weight:800;font-size:.8rem;letter-spacing:.3em}
+  .topbar .tb-mark svg{width:20px;height:20px}
+  .topbar nav{display:flex;gap:1rem}
+  .topbar nav a{color:var(--silver);text-decoration:none;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;padding:.6rem .1rem}
+  .topbar nav a:hover{color:#fff}
+}
+@media (max-width:900px){
+  .split{grid-template-columns:1fr;min-height:0}
+  .split::after{display:none}
+  .hero-plate{min-height:38vh}
+  .chips{grid-template-columns:repeat(2,1fr)}
+}
+@media (min-width:768px){.mbar{display:none}}
+@media (max-width:767px){
+  body{padding-bottom:54px}
+  .topbar nav{display:none}
+  .figset{grid-template-columns:1fr;border-right:0}
+  .fig{border-right:0;border-bottom:1px solid var(--line-d)}
+  .fig:last-child{border-bottom:0}
+  .frow{grid-template-columns:1fr}
+  .ledger-fig{display:none}
+  .ledger-row{grid-template-columns:2.6rem 1fr}
+}
+</style>
+</head>
+<body>
+<script>document.body.classList.add('js');</script>
+
+<!-- SIDE RAIL (desktop) -->
+<aside class="rail" aria-label="Primary">
+  <a class="rail-mark" href="#top" aria-label="PROTELLIGENCE — back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#C6CED8" stroke-width="1.5" aria-hidden="true"><path d="M4 20V4h9a5 5 0 0 1 0 10H9"/><path d="M9 14v6"/></svg>
+  </a>
+  <nav class="rail-nav" aria-label="Sections">
+    <a href="#engagements" data-sec="engagements">Practice</a>
+    <a href="#method" data-sec="method">Method</a>
+    <a href="#founder" data-sec="founder">Founder</a>
+    <a href="#resources" data-sec="resources">Counsel</a>
+    <a href="#contact" data-sec="contact">Contact</a>
+  </nav>
+  <a class="rail-tel" href="tel:0007768355">(000) 776-8355</a>
+</aside>
+
+<!-- TOP BAR (tablet/mobile) -->
+<header class="topbar">
+  <span class="tb-mark">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#C6CED8" stroke-width="1.5" aria-hidden="true"><path d="M4 20V4h9a5 5 0 0 1 0 10H9"/><path d="M9 14v6"/></svg>
+    PROTELLIGENCE
+  </span>
+  <nav aria-label="Sections">
+    <a href="#engagements">Practice</a>
+    <a href="#method">Method</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main class="page" id="top">
+
+  <!-- 01 · HERO -->
+  <section class="hero" aria-label="Introduction">
+    <div class="split on-dark">
+      <div class="panel dark">
+        <div class="hero-meta rv">
+          <span>Independent Practice</span>
+          <span>National · Est. by Jack Donachie</span>
+        </div>
+        <div>
+          <span class="kicker rv" style="color:var(--steel-strong)">Vehicle Valuation · Litigation Consulting</span>
+          <h1 class="disp rv">The number.<br>The method.<br><em>The defense of both.</em></h1>
+          <p class="hero-sub rv">PROTELLIGENCE prepares independent vehicle valuations and expert analysis for disputes — built to be read line by line, and to hold when they are.</p>
+          <div class="hero-ctas rv">
+            <a class="btn solid" href="#contact">Request a Case Review
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn" href="#method">Read the Method</a>
+          </div>
+        </div>
+        <div class="figset rv mono-fig">
+          <div class="fig"><b data-count="8">8</b><span>Client categories</span></div>
+          <div class="fig"><b data-count="5">5</b><span>Engagement types</span></div>
+          <div class="fig"><b>50<span style="font-size:.5em;letter-spacing:0;color:inherit">/50</span></b><span>States served</span></div>
+        </div>
+      </div>
+      <div class="panel light hero">
+        <div class="plate hero-plate">
+          <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=1600&q=80')" role="img" aria-label="Black sedan photographed in low light"></div>
+          <span class="plate-tag">Exhibit A — Subject Vehicle</span>
+        </div>
+        <div class="hero-ledger" aria-label="Summary ledger">
+          <span class="kicker">Opening statement</span>
+          <div class="ledger mono-fig">
+            <div class="ledger-row"><span class="ledger-title" style="font-weight:600">Independence</span><span class="ledger-fig">Conflict-checked</span></div>
+            <div class="ledger-row"><span class="ledger-title" style="font-weight:600">Methodology</span><span class="ledger-fig">Reproducible</span></div>
+            <div class="ledger-row"><span class="ledger-title" style="font-weight:600">Accountability</span><span class="ledger-fig">One point</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · ENGAGEMENTS (ledger) -->
+  <section id="engagements" aria-label="Engagements">
+    <div class="split autoh">
+      <div class="panel light">
+        <div class="vline" style="left:2.2rem"></div>
+        <div class="sec-head rv">
+          <span class="kicker">Schedule 01 — Practice</span>
+          <h2 class="disp">Five engagements.<br>Entered in full.</h2>
+          <div class="rule"></div>
+          <p class="lede">Every matter is booked the same way: records in, analysis through, a defensible figure out. No engagement is taken that independence cannot survive.</p>
+        </div>
+        <div class="ledger mono-fig rv">
+          <div class="ledger-row">
+            <span class="ledger-no">01</span>
+            <span class="ledger-title">Total-Loss Valuation Disputes
+              <span class="ledger-sub">The settlement figure, re-derived from market evidence — not accepted from a printout.</span>
+            </span>
+            <span class="ledger-fig">Valuation</span>
+          </div>
+          <div class="ledger-row">
+            <span class="ledger-no">02</span>
+            <span class="ledger-title">Diminished-Value Claims
+              <span class="ledger-sub">What the repair record costs the vehicle at resale, quantified and supported.</span>
+            </span>
+            <span class="ledger-fig">Valuation</span>
+          </div>
+          <div class="ledger-row">
+            <span class="ledger-no">03</span>
+            <span class="ledger-title">Expert Reports &amp; Testimony
+              <span class="ledger-sub">Written opinions prepared for scrutiny. Deposition and trial support included.</span>
+            </span>
+            <span class="ledger-fig">Litigation</span>
+          </div>
+          <div class="ledger-row">
+            <span class="ledger-no">04</span>
+            <span class="ledger-title">Estate, Bankruptcy &amp; Divorce Valuation
+              <span class="ledger-sub">Neutral figures for courts, trustees, and counsel dividing what a vehicle is worth.</span>
+            </span>
+            <span class="ledger-fig">Fiduciary</span>
+          </div>
+          <div class="ledger-row">
+            <span class="ledger-no">05</span>
+            <span class="ledger-title">Insurance Claim &amp; CCC/Mitchell Review
+              <span class="ledger-sub">Line-item examination of carrier valuation reports — comparables, adjustments, conditions.</span>
+            </span>
+            <span class="ledger-fig">Review</span>
+          </div>
+        </div>
+      </div>
+      <div class="panel dark">
+        <div class="plate rv" style="min-height:260px">
+          <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1618642542397-ef97a739f1d7?auto=format&fit=crop&w=1600&q=80')" role="img" aria-label="Silver headlight detail in grayscale"></div>
+          <span class="plate-tag">Detail — Condition Evidence</span>
+        </div>
+        <div style="margin-top:2.4rem" class="rv">
+          <span class="kicker" style="color:var(--steel-strong);display:block;margin-bottom:1rem">Schedule 02 — Who retains us</span>
+          <div class="chips" role="list" aria-label="Client categories">
+            <span class="chip" role="listitem"><i aria-hidden="true"></i>Plaintiff Attorneys</span>
+            <span class="chip" role="listitem"><i aria-hidden="true"></i>Defense Attorneys</span>
+            <span class="chip" role="listitem"><i aria-hidden="true"></i>Insurance Companies</span>
+            <span class="chip" role="listitem"><i aria-hidden="true"></i>Claims Professionals</span>
+            <span class="chip" role="listitem"><i aria-hidden="true"></i>Vehicle Owners in Disputes</span>
+            <span class="chip" role="listitem"><i aria-hidden="true"></i>Corporate Fleets</span>
+            <span class="chip" role="listitem"><i aria-hidden="true"></i>Dealership Groups</span>
+            <span class="chip" role="listitem"><i aria-hidden="true"></i>Financial Institutions</span>
+          </div>
+          <p style="margin-top:1.4rem;color:var(--silver-dim);font-size:.92rem;max-width:48ch">Both sides of the v. retain this practice. That is the point of independence: the analysis does not know who is paying for it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · METHOD -->
+  <section id="method" aria-label="Methodology">
+    <div class="split autoh on-dark">
+      <div class="panel dark">
+        <div class="sec-head rv">
+          <span class="kicker">Schedule 03 — Method</span>
+          <h2 class="disp">Every figure<br>shows its work.</h2>
+          <div class="rule" style="background:var(--steel-strong)"></div>
+          <p class="lede">A valuation that cannot be reproduced is an opinion. A valuation that can is evidence. The process below runs the same way for every engagement, every client, every side.</p>
+        </div>
+        <div class="plate rv" style="min-height:300px;margin-top:1rem">
+          <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1688026238669-18cb83914a44?auto=format&fit=crop&w=1600&q=80')" role="img" aria-label="Concrete parking structure in muted light"></div>
+          <span class="plate-tag">Working Papers Retained</span>
+        </div>
+      </div>
+      <div class="panel light">
+        <div class="steps rv" style="margin-top:.4rem">
+          <div class="step">
+            <div><h3>Conflict Check</h3><p>Parties, counsel, and carriers are screened before any records are opened. If independence is compromised, the engagement is declined.</p></div>
+          </div>
+          <div class="step">
+            <div><h3>Records &amp; Data Intake</h3><p>Repair orders, photographs, carrier valuation reports, title history, and market data — logged, indexed, and preserved.</p></div>
+          </div>
+          <div class="step">
+            <div><h3>Valuation Analysis</h3><p>Comparable selection, condition adjustment, and market reconciliation performed under a documented, repeatable framework.</p></div>
+          </div>
+          <div class="step">
+            <div><h3>Defensible Report</h3><p>Findings written for the record: sources cited, adjustments itemized, conclusions stated in plain terms a trier of fact can follow.</p></div>
+          </div>
+          <div class="step">
+            <div><h3>Testimony Support</h3><p>Deposition preparation, exhibits, and trial testimony when the matter requires the analysis to stand up and speak.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · WHY / BALANCES -->
+  <section id="why" aria-label="Why clients retain PROTELLIGENCE">
+    <div class="split autoh">
+      <div class="panel light">
+        <div class="sec-head rv">
+          <span class="kicker">Schedule 04 — Balances</span>
+          <h2 class="disp">Three lines<br>that always reconcile.</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="ledger mono-fig rv">
+          <div class="ledger-row">
+            <span class="ledger-no">B1</span>
+            <span class="ledger-title">Independent &amp; Conflict-Checked
+              <span class="ledger-sub">No carrier affiliation. No repair-network interest. Every engagement screened before acceptance.</span>
+            </span>
+            <span class="ledger-fig">Cleared</span>
+          </div>
+          <div class="ledger-row">
+            <span class="ledger-no">B2</span>
+            <span class="ledger-title">Transparent &amp; Reproducible
+              <span class="ledger-sub">Opposing experts can follow the trail. That is a feature, not a risk.</span>
+            </span>
+            <span class="ledger-fig">Documented</span>
+          </div>
+          <div class="ledger-row">
+            <span class="ledger-no">B3</span>
+            <span class="ledger-title">One Point of Accountability
+              <span class="ledger-sub">The analyst who signs the report is the one who answers for it — in writing and on the stand.</span>
+            </span>
+            <span class="ledger-fig">Signed</span>
+          </div>
+        </div>
+        <p class="lede rv" style="margin-top:1.6rem">Nothing on this page is a promise of outcome. It is a description of process — which is the only thing an expert should ever promise.</p>
+      </div>
+      <div class="panel dark">
+        <div class="plate rv" style="min-height:100%;position:absolute;inset:0">
+          <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1673187139211-1e7ec3dd60ec?auto=format&fit=crop&w=1600&q=80')" role="img" aria-label="Vehicle secured on a flatbed transporter"></div>
+          <span class="plate-tag">Chain of Custody — Muted Study</span>
+        </div>
+        <div style="min-height:420px" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 · FOUNDER -->
+  <section id="founder" aria-label="Founder">
+    <div class="split autoh on-dark">
+      <div class="panel dark" style="display:flex;align-items:center">
+        <div>
+          <div class="sec-head rv">
+            <span class="kicker">Schedule 05 — Principal</span>
+            <h2 class="disp">Jack Donachie,<br>Founder.</h2>
+            <div class="rule" style="background:var(--steel-strong)"></div>
+          </div>
+          <p class="lede rv">PROTELLIGENCE is built around a single, accountable principal. Jack Donachie founded the practice to give attorneys, insurers, and vehicle owners the same thing: a valuation professional whose conclusions are earned in the file, not asserted from a letterhead.</p>
+          <p class="lede rv" style="margin-top:1rem">Matters are accepted nationwide. Counsel may request the practice's curriculum vitae below.</p>
+          <div class="hero-ctas rv" style="margin-top:1.8rem">
+            <a class="btn" href="#contact">Schedule a Consultation</a>
+          </div>
+        </div>
+      </div>
+      <div class="panel light" style="display:grid;place-items:center">
+        <figure class="portrait-ph rv" role="img" aria-label="Placeholder for founder portrait">
+          <span class="frame" aria-hidden="true"></span>
+          <div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><rect x="3" y="3" width="18" height="18"/><circle cx="12" cy="9.5" r="3"/><path d="M6 20c1-3.4 3.3-5 6-5s5 1.6 6 5"/></svg>
+            <p>Professional portrait<br>to be added</p>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · ATTORNEY RESOURCES -->
+  <section id="resources" aria-label="Attorney resources">
+    <div class="split autoh">
+      <div class="panel dark">
+        <div class="sec-head rv">
+          <span class="kicker">Schedule 06 — For Counsel</span>
+          <h2 class="disp">Documents,<br>on request.</h2>
+          <div class="rule" style="background:var(--steel-strong)"></div>
+          <p class="lede">Available to counsel following a standard conflict check. Nothing here is boilerplate; both documents reflect how actual reports are built.</p>
+        </div>
+        <div class="docs rv">
+          <div class="doc">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4"/><path d="M10 12h6M10 15h6M10 18h4"/></svg>
+            <div>
+              <h3>Sample Report</h3>
+              <p>A representative valuation report — structure, sourcing, and adjustment schedules — so counsel can see the deliverable before retaining.</p>
+              <a class="req" href="#contact">Request via conflict check</a>
+            </div>
+          </div>
+          <div class="doc">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true"><path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4"/><circle cx="12" cy="12" r="2.2"/><path d="M9 18c.6-1.7 1.7-2.5 3-2.5s2.4.8 3 2.5"/></svg>
+            <div>
+              <h3>Curriculum Vitae</h3>
+              <p>The founder's professional history and qualifications, formatted for disclosure and expert designation filings.</p>
+              <a class="req" href="#contact">Request via conflict check</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel light">
+        <div class="sec-head rv">
+          <span class="kicker">Schedule 07 — Questions</span>
+          <h2 class="disp">Asked and<br>answered.</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="faq rv" style="border-top:1px solid var(--line-l)">
+          <details>
+            <summary>Do you work for plaintiffs or for defendants?<span class="tick" aria-hidden="true"></span></summary>
+            <p>Both, though never on the same matter and never with a conflict. The methodology is identical regardless of who retains the practice; that symmetry is what makes the work useful in litigation.</p>
+          </details>
+          <details>
+            <summary>What does a CCC or Mitchell review actually examine?<span class="tick" aria-hidden="true"></span></summary>
+            <p>Comparable vehicle selection, condition ratings, itemized adjustments, and the arithmetic that connects them. The review states where the report holds and where it does not — whichever way that cuts.</p>
+          </details>
+          <details>
+            <summary>Will you testify, or only write reports?<span class="tick" aria-hidden="true"></span></summary>
+            <p>Both. Reports are written from the first line as if they will be examined under oath, and deposition or trial testimony is available whenever the matter requires it.</p>
+          </details>
+          <details>
+            <summary>What is needed to open a file?<span class="tick" aria-hidden="true"></span></summary>
+            <p>Party names for the conflict check, then the records: valuation reports, repair documentation, photographs, and title history. Intake is itemized so counsel always knows what has been received.</p>
+          </details>
+          <details>
+            <summary>Where do you take engagements?<span class="tick" aria-hidden="true"></span></summary>
+            <p>Nationwide. Records-based valuation work travels well, and testimony logistics are arranged per matter.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · CONTACT -->
+  <section id="contact" aria-label="Contact">
+    <div class="split autoh on-dark">
+      <div class="panel dark">
+        <div class="sec-head rv">
+          <span class="kicker">Schedule 08 — Intake</span>
+          <h2 class="disp">Open<br>a file.</h2>
+          <div class="rule" style="background:var(--steel-strong)"></div>
+          <p class="lede">State the matter plainly. The reply will tell you, plainly, whether the practice can help — and what the conflict check requires first.</p>
+        </div>
+        <form name="protelligence-split-ledger" method="POST" data-netlify="true" class="rv">
+          <input type="hidden" name="form-name" value="protelligence-split-ledger">
+          <div class="frow">
+            <div><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Full name"></div>
+            <div><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" required placeholder="(000) 000-0000"></div>
+          </div>
+          <div class="frow">
+            <div><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required placeholder="name@firm.com"></div>
+            <div><label for="f-type">Engagement type</label>
+              <select id="f-type" name="engagement" required>
+                <option value="" selected disabled>Select one</option>
+                <option>Total-Loss Valuation Dispute</option>
+                <option>Diminished-Value Claim</option>
+                <option>Expert Report &amp; Testimony</option>
+                <option>Estate, Bankruptcy &amp; Divorce Valuation</option>
+                <option>Insurance Claim &amp; CCC/Mitchell Review</option>
+                <option>Other / Not sure</option>
+              </select>
+            </div>
+          </div>
+          <div><label for="f-msg">Matter summary</label><textarea id="f-msg" name="message" required placeholder="Vehicle, dispute posture, and what you need valued or reviewed."></textarea></div>
+          <div><button class="btn solid" type="submit">Request a Case Review
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button></div>
+        </form>
+      </div>
+      <div class="panel light" style="display:flex;flex-direction:column;justify-content:space-between;gap:2rem">
+        <div class="rv">
+          <span class="kicker" style="color:var(--steel);display:block;margin-bottom:1rem">Direct lines</span>
+          <div class="ledger mono-fig">
+            <div class="ledger-row" style="grid-template-columns:1fr auto">
+              <span class="ledger-title">Telephone</span>
+              <a class="ledger-fig" href="tel:0007768355" style="text-decoration:none;color:var(--steel-deep)">(000) 776-8355</a>
+            </div>
+            <div class="ledger-row" style="grid-template-columns:1fr auto">
+              <span class="ledger-title">Coverage</span>
+              <span class="ledger-fig">Nationwide</span>
+            </div>
+            <div class="ledger-row" style="grid-template-columns:1fr auto">
+              <span class="ledger-title">Pricing</span>
+              <span class="ledger-fig">Quoted per matter</span>
+            </div>
+          </div>
+        </div>
+        <div class="plate rv" style="min-height:280px">
+          <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1567808291548-fc3ee04dbcf0?auto=format&fit=crop&w=1600&q=80')" role="img" aria-label="Parked black car at dusk"></div>
+          <span class="plate-tag">Closing Entry</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>© 2026 PROTELLIGENCE · Independent Vehicle Valuation &amp; Litigation Consulting</span>
+    <span>Founder: Jack Donachie · <a href="tel:0007768355">(000) 776-8355</a> · National Practice</span>
+  </div>
+</footer>
+
+<!-- MOBILE BOTTOM BAR -->
+<nav class="mbar" aria-label="Quick actions">
+  <a href="tel:0007768355">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+    Call
+  </a>
+  <a href="#contact">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4"/></svg>
+    Case Review
+  </a>
+</nav>
+
+<script>
+(function(){
+  'use strict';
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Scroll reveals */
+  var items = document.querySelectorAll('.rv');
+  if(reduced || !('IntersectionObserver' in window)){
+    items.forEach(function(el){el.classList.add('in');});
+  }else{
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+      });
+    },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    items.forEach(function(el,i){
+      el.style.transitionDelay = (i%4)*70+'ms';
+      io.observe(el);
+    });
+  }
+
+  /* Animated counters (tabular figures) */
+  var counters = document.querySelectorAll('[data-count]');
+  if(!reduced && 'IntersectionObserver' in window){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting) return;
+        cio.unobserve(e.target);
+        var el=e.target, target=parseInt(el.getAttribute('data-count'),10), t0=null;
+        function tick(ts){
+          if(!t0)t0=ts;
+          var p=Math.min((ts-t0)/900,1);
+          el.textContent=Math.round(target*(1-Math.pow(1-p,3)));
+          if(p<1)requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    },{threshold:.6});
+    counters.forEach(function(c){cio.observe(c);});
+  }
+
+  /* Rail nav active state */
+  var links = document.querySelectorAll('.rail-nav a');
+  var map = {};
+  links.forEach(function(a){
+    var id=a.getAttribute('data-sec'), s=document.getElementById(id);
+    if(s) map[id]={link:a, sec:s};
+  });
+  if('IntersectionObserver' in window){
+    var sio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){a.classList.remove('on');});
+          var id=e.target.id;
+          if(map[id]) map[id].link.classList.add('on');
+        }
+      });
+    },{rootMargin:'-40% 0px -50% 0px'});
+    Object.keys(map).forEach(function(k){sio.observe(map[k].sec);});
+  }
+})();
+</script>
+</body>
+</html>
