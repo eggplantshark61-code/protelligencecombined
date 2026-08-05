@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  PROTELLIGENCE — "OBSIDIAN CHAMBERS"
+  Max-tier flagship build. Dark cinematic luxury: near-black navy base (#070E1A),
+  layered navy panels, silver hairlines, cold steel-blue raking light.
+  The page reads as a sequence of chambers — each numbered like a courtroom exhibit.
+  Typography: Cormorant Garamond (display italic moments) + Archivo (structure)
+  + IBM Plex Mono (exhibit labels). GSAP ScrollTrigger choreography with full
+  no-JS / failed-CDN fallback: every chamber is a normal, fully readable section
+  until JS proves it can do better.
+  Palette discipline per Jack's rules: navy / white / silver / steel only.
+  No fabricated testimonials, credentials, or case results. No pricing.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROTELLIGENCE — Independent Vehicle Valuation &amp; Litigation Consulting</title>
+<meta name="description" content="PROTELLIGENCE provides independent vehicle valuation and litigation consulting nationwide: total-loss disputes, diminished-value claims, expert reports and testimony, estate and bankruptcy valuation, and CCC/Mitchell review. Founded by Jack Donachie.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://www.protelligence.example/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PROTELLIGENCE">
+<meta property="og:title" content="PROTELLIGENCE — Independent Vehicle Valuation &amp; Litigation Consulting">
+<meta property="og:description" content="When a vehicle's value is disputed, one number has to hold. Independent, conflict-checked valuation analysis, defensible reports, and testimony support — nationwide.">
+<meta property="og:url" content="https://www.protelligence.example/">
+<meta property="og:image" content="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&amp;fit=crop&amp;w=1600&amp;q=80">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PROTELLIGENCE — Independent Vehicle Valuation &amp; Litigation Consulting">
+<meta name="twitter:description" content="Independent, conflict-checked vehicle valuation for litigation. Defensible reports. Testimony support. Nationwide.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&amp;fit=crop&amp;w=1600&amp;q=80">
+<meta name="theme-color" content="#070E1A">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "PROTELLIGENCE",
+  "description": "Independent vehicle valuation and litigation consulting: total-loss valuation disputes, diminished-value claims, expert reports and testimony, estate, bankruptcy and divorce valuation, and insurance claim / CCC and Mitchell review.",
+  "url": "https://www.protelligence.example/",
+  "telephone": "+1-000-776-8355",
+  "founder": { "@type": "Person", "name": "Jack Donachie" },
+  "areaServed": { "@type": "Country", "name": "United States" },
+  "knowsAbout": [
+    "Total-loss valuation disputes",
+    "Diminished-value claims",
+    "Expert reports and testimony",
+    "Estate, bankruptcy and divorce vehicle valuation",
+    "Insurance claim and CCC/Mitchell review"
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   OBSIDIAN CHAMBERS — DESIGN SYSTEM
+   ============================================================ */
+:root{
+  --ink-0:#070E1A;          /* chamber floor — near-black navy */
+  --ink-1:#0A1322;          /* raised panel */
+  --ink-2:#0E1A2E;          /* folder / card body */
+  --ink-3:#13233C;          /* hover lift */
+  --hairline:rgba(190,207,228,.14);
+  --hairline-strong:rgba(190,207,228,.26);
+  --silver:#E8EEF7;         /* headline silver-white */
+  --body:#C3D0E2;           /* body text — AA on ink-0 */
+  --muted:#92A4BE;          /* captions — AA on ink-0/1 */
+  --steel:#9CBEDF;          /* cold steel-blue light */
+  --steel-deep:#5E7FA3;
+  --glow:rgba(110,150,196,.16);
+  --focus:#BBD6F0;
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  --ease:cubic-bezier(.22,.7,.24,1);
+  --pad:clamp(1.25rem,4.5vw,4rem);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+html,body{overflow-x:clip}
+body{
+  background:var(--ink-0);
+  color:var(--body);
+  font-family:var(--sans);
+  font-size:16px;
+  font-weight:300;
+  line-height:1.65;
+  letter-spacing:.01em;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+::selection{background:rgba(156,190,223,.28);color:var(--silver)}
+img{max-width:100%;display:block}
+a{color:var(--steel);text-decoration:none}
+a:hover{color:var(--silver)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;color:var(--silver);line-height:1.12}
+strong{font-weight:500;color:var(--silver)}
+
+/* ---- atmospheric floor: grain + vignette + standing glows ---- */
+.atmosphere{position:fixed;inset:0;z-index:0;pointer-events:none}
+.atmosphere::before{ /* standing radial glows — the room is never flat black */
+  content:"";position:absolute;inset:-10%;
+  background:
+    radial-gradient(60rem 42rem at 82% -8%, rgba(94,127,163,.14), transparent 62%),
+    radial-gradient(46rem 40rem at -12% 34%, rgba(59,86,120,.12), transparent 60%),
+    radial-gradient(70rem 52rem at 50% 118%, rgba(30,52,84,.20), transparent 64%);
+}
+.atmosphere::after{ /* vignette */
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 90% at 50% 42%, transparent 55%, rgba(2,5,11,.55) 100%);
+}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.5;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size:160px 160px;
+}
+main,header.site-head,footer.site-foot{position:relative;z-index:2}
+
+/* ---- skip link ---- */
+.skip{position:absolute;left:1rem;top:-4rem;z-index:200;background:var(--silver);color:var(--ink-0);
+  font-family:var(--mono);font-size:.8rem;padding:.75rem 1.25rem;transition:top .2s var(--ease)}
+.skip:focus{top:1rem;color:var(--ink-0)}
+
+/* ============================================================
+   HEADER — a thin silver rail
+   ============================================================ */
+.site-head{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;padding:0 var(--pad);height:64px;
+  border-bottom:1px solid transparent;
+  transition:background .35s var(--ease),border-color .35s var(--ease);
+}
+.site-head.is-scrolled{background:rgba(7,14,26,.82);backdrop-filter:blur(14px);border-color:var(--hairline)}
+.brand{display:flex;align-items:baseline;gap:.65rem;color:var(--silver)}
+.brand .mark{font-family:var(--sans);font-weight:600;font-size:.95rem;letter-spacing:.34em;color:var(--silver)}
+.brand .mark em{font-style:normal;color:var(--steel)}
+.brand .est{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+.head-nav{display:none;gap:2rem}
+.head-nav a{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  padding:.5rem 0;position:relative}
+.head-nav a::after{content:"";position:absolute;left:0;bottom:.15rem;height:1px;width:0;background:var(--steel);transition:width .3s var(--ease)}
+.head-nav a:hover{color:var(--silver)}
+.head-nav a:hover::after{width:100%}
+.head-cta{display:none;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--silver);border:1px solid var(--hairline-strong);padding:.7rem 1.3rem;
+  transition:border-color .3s var(--ease),background .3s var(--ease)}
+.head-cta:hover{border-color:var(--steel);background:rgba(156,190,223,.07);color:var(--silver)}
+@media(min-width:900px){.head-nav{display:flex}.head-cta{display:inline-block}}
+
+/* ============================================================
+   CHAMBER SCAFFOLD
+   ============================================================ */
+.chamber{position:relative;padding:clamp(5.5rem,12vh,9rem) var(--pad);}
+.chamber-inner{max-width:1200px;margin:0 auto;position:relative}
+.exhibit-tag{
+  display:inline-flex;align-items:center;gap:.9rem;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:2.2rem;
+}
+.exhibit-tag::before{content:"";width:2.6rem;height:1px;background:var(--hairline-strong)}
+.exhibit-tag .tag-no{color:var(--muted)}
+.chamber-title{font-size:clamp(2.1rem,5vw,3.6rem);letter-spacing:.005em;max-width:18ch;margin-bottom:1.4rem}
+.chamber-title em{font-style:italic;font-weight:400;color:var(--steel)}
+.chamber-lede{max-width:56ch;color:var(--body);font-size:1.06rem}
+.hairline-top{border-top:1px solid var(--hairline)}
+
+/* ============================================================
+   CHAMBER 00 — HERO
+   ============================================================ */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding-top:7.5rem;padding-bottom:4.5rem;overflow:clip}
+.hero-stage{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-car{position:absolute;inset:-6% -4%;
+  background-color:#0A1322;
+  background-image:
+    linear-gradient(180deg, rgba(7,14,26,.92) 0%, rgba(7,14,26,.55) 42%, rgba(7,14,26,.96) 100%),
+    linear-gradient(105deg, rgba(10,19,34,.9) 0%, rgba(10,19,34,.25) 55%, rgba(30,52,84,.45) 100%),
+    url("https://images.unsplash.com/photo-1485291571150-772bcfc10da5?auto=format&fit=crop&w=1600&q=80");
+  background-size:cover;background-position:center 62%;
+  filter:grayscale(1) brightness(.6) contrast(1.12);
+  opacity:.85;
+}
+.hero-tint{position:absolute;inset:0;background:linear-gradient(160deg, rgba(14,26,46,.55), rgba(7,14,26,.2) 50%, rgba(20,38,64,.5));mix-blend-mode:color}
+.hero-glass{position:absolute;inset:0}
+.hero-glass .pane{position:absolute;top:0;bottom:0;border-left:1px solid rgba(190,207,228,.07);
+  background:linear-gradient(180deg, rgba(190,207,228,.028), rgba(190,207,228,0) 40%)}
+.hero-glass .pane:nth-child(1){left:22%;width:20%}
+.hero-glass .pane:nth-child(2){left:52%;width:16%;border-right:1px solid rgba(190,207,228,.05)}
+.hero-glass .pane:nth-child(3){left:78%;width:14%}
+.hero-rake{ /* raking light — swept across the wordmark by GSAP; invisible without JS */
+  position:absolute;top:8%;bottom:30%;left:-45%;width:34%;opacity:0;
+  background:linear-gradient(90deg, transparent, rgba(188,214,240,.13) 45%, rgba(220,235,250,.2) 50%, rgba(188,214,240,.13) 55%, transparent);
+  transform:skewX(-14deg);filter:blur(6px);
+}
+.hero-content{position:relative;max-width:1200px;margin:0 auto;width:100%}
+.hero-kicker{font-family:var(--mono);font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:2.4rem;display:flex;align-items:center;gap:.9rem}
+.hero-kicker::before{content:"";width:2.6rem;height:1px;background:var(--hairline-strong)}
+.wordmark{
+  font-family:var(--sans);font-weight:600;color:var(--silver);
+  font-size:clamp(1.9rem,8.5vw,7.4rem);
+  letter-spacing:clamp(.06em,1.4vw,.18em);
+  line-height:1.02;margin-left:-.03em;white-space:nowrap;
+}
+.wordmark .lt{display:inline-block}
+.hero-line{margin-top:1.6rem;max-width:44ch}
+.hero-line .serif-line{font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(1.35rem,3vw,2rem);color:var(--body);line-height:1.35}
+.hero-line .serif-line b{font-weight:500;font-style:italic;color:var(--silver)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.8rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.7rem;min-height:52px;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  padding:.9rem 1.9rem;border:1px solid transparent;cursor:pointer;
+  transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease),transform .3s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--silver);color:#0A1322;border-color:var(--silver)}
+.btn-primary:hover{background:#fff;color:#070E1A}
+.btn-ghost{color:var(--silver);border-color:var(--hairline-strong);background:rgba(10,19,34,.35)}
+.btn-ghost:hover{border-color:var(--steel);color:var(--silver);background:rgba(156,190,223,.06)}
+.btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
+
+/* ticker — mono line tracking across the hero foot */
+.hero-ticker{position:relative;margin-top:auto;padding-top:4rem}
+.ticker-shell{border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);
+  overflow:hidden;padding:.85rem 0;max-width:1200px;margin:0 auto}
+.ticker-track{display:flex;gap:0;width:max-content;animation:tick 46s linear infinite}
+.ticker-track span{font-family:var(--mono);font-size:.64rem;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap;padding-right:.4rem}
+.ticker-track span i{font-style:normal;color:var(--steel-deep);padding:0 1.1rem}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+.hero-scrollcue{position:absolute;right:var(--pad);bottom:7.5rem;display:none;
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.3em;color:var(--muted);text-transform:uppercase;
+  writing-mode:vertical-rl;gap:.8rem;align-items:center}
+.hero-scrollcue::after{content:"";width:1px;height:3.4rem;background:linear-gradient(180deg,var(--hairline-strong),transparent)}
+@media(min-width:1024px){.hero-scrollcue{display:flex}}
+
+/* ============================================================
+   CHAMBER I — THE DISPUTE
+   ============================================================ */
+.dispute{background:linear-gradient(180deg, rgba(10,19,34,.0), rgba(10,19,34,.55) 30%, rgba(10,19,34,.0))}
+.dispute-grid{display:grid;gap:3rem}
+@media(min-width:1024px){.dispute-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:5rem;align-items:start}}
+.dispute-copy p{margin-bottom:1.2rem;max-width:58ch}
+.dispute-copy p:last-child{margin-bottom:0}
+.fault-lines{margin-top:2.6rem;border-top:1px solid var(--hairline)}
+.fault{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:baseline;
+  padding:1.35rem 0;border-bottom:1px solid var(--hairline)}
+.fault .f-no{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;color:var(--steel-deep)}
+.fault h3{font-family:var(--sans);font-weight:500;font-size:1rem;letter-spacing:.02em;color:var(--silver);margin-bottom:.3rem}
+.fault p{font-size:.94rem;color:var(--muted);max-width:52ch}
+.dispute-fig{position:relative;min-height:420px;border:1px solid var(--hairline)}
+.dispute-fig .fig-img{position:absolute;inset:0;background-color:#0C1626;
+  background-image:
+    linear-gradient(200deg, rgba(7,14,26,.78), rgba(7,14,26,.32) 55%, rgba(7,14,26,.85)),
+    url("https://images.unsplash.com/photo-1542328689-df6c076c1604?auto=format&fit=crop&w=1600&q=80");
+  background-size:cover;background-position:center;
+  filter:grayscale(1) brightness(.62) contrast(1.15)}
+.dispute-fig .fig-tint{position:absolute;inset:0;background:linear-gradient(160deg, rgba(20,38,64,.5), rgba(10,19,34,.25));mix-blend-mode:color}
+.dispute-fig figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.1rem 1.3rem;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+  border-top:1px solid var(--hairline);background:rgba(7,14,26,.72);backdrop-filter:blur(6px)}
+.dispute-fig .fig-corner{position:absolute;top:1rem;right:1rem;font-family:var(--mono);
+  font-size:.6rem;letter-spacing:.2em;color:var(--steel);border:1px solid var(--hairline-strong);
+  padding:.35rem .7rem;background:rgba(7,14,26,.6)}
+
+/* ============================================================
+   CHAMBER II — EVIDENCE TABLE (engagement folders)
+   ============================================================ */
+.evidence-intro{display:grid;gap:1.5rem;margin-bottom:3.5rem}
+@media(min-width:900px){.evidence-intro{grid-template-columns:1fr 1fr;align-items:end;gap:4rem}}
+.evidence-note{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;color:var(--muted);
+  text-transform:uppercase;line-height:2;justify-self:start}
+@media(min-width:900px){.evidence-note{justify-self:end;text-align:right}}
+.folder-row{display:grid;gap:1.4rem}
+@media(min-width:768px){.folder-row{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1200px){.folder-row{grid-template-columns:repeat(5,1fr);gap:1.1rem}}
+.folder{position:relative;outline-offset:4px;perspective:900px;cursor:default}
+.folder-body{
+  position:relative;background:var(--ink-2);border:1px solid var(--hairline);
+  min-height:365px;display:flex;flex-direction:column;
+  transition:border-color .4s var(--ease),background .4s var(--ease),transform .45s var(--ease);
+  transform-style:preserve-3d;
+}
+.folder:hover .folder-body,.folder:focus-within .folder-body{border-color:var(--hairline-strong);background:var(--ink-3);transform:translateY(-6px)}
+.folder-tab{display:flex;align-items:center;justify-content:space-between;
+  padding:.85rem 1.1rem;border-bottom:1px solid var(--hairline)}
+.folder-tab .f-file{font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;color:var(--steel)}
+.folder-tab .f-clip{width:14px;height:14px;stroke:var(--steel-deep);fill:none;stroke-width:1.4;
+  transition:transform .4s var(--ease),stroke .4s var(--ease)}
+.folder:hover .f-clip,.folder:focus-within .f-clip{transform:rotate(45deg);stroke:var(--steel)}
+.folder-head{padding:1.3rem 1.1rem 1rem}
+.folder-head h3{font-size:1.28rem;font-weight:500;letter-spacing:.01em;line-height:1.25}
+.folder-head .f-sub{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin-top:.55rem}
+.folder-flap{ /* the case-file cover: lifts on hover/focus via transform, never display */
+  position:relative;margin-top:auto;padding:0 1.1rem 1.2rem;
+}
+.folder-flap .f-copy{
+  font-size:.86rem;line-height:1.6;color:var(--muted);
+  transform:translateY(14px) rotateX(-8deg);opacity:0;transform-origin:top center;
+  transition:transform .5s var(--ease),opacity .5s var(--ease);
+}
+.folder:hover .f-copy,.folder:focus-within .f-copy{transform:translateY(0) rotateX(0);opacity:1}
+.folder-flap .f-rule{height:1px;background:var(--hairline);margin-bottom:1rem;
+  transform:scaleX(.35);transform-origin:left;transition:transform .5s var(--ease)}
+.folder:hover .f-rule,.folder:focus-within .f-rule{transform:scaleX(1)}
+.folder-flap .f-open{margin-top:1rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--steel);opacity:0;transform:translateY(6px);
+  transition:opacity .5s var(--ease) .06s,transform .5s var(--ease) .06s;display:inline-block}
+.folder:hover .f-open,.folder:focus-within .f-open{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+  .folder .f-copy,.folder .f-open{opacity:1;transform:none}
+  .folder .f-rule{transform:scaleX(1)}
+}
+@media(hover:none){ /* touch: folders read open */
+  .folder .f-copy,.folder .f-open{opacity:1;transform:none}
+  .folder .f-rule{transform:scaleX(1)}
+}
+
+/* ============================================================
+   CHAMBER III — METHOD
+   ============================================================ */
+.method{position:relative;overflow:clip}
+.method-bg{position:absolute;inset:0;pointer-events:none;opacity:.5}
+.method-bg .m-img{position:absolute;inset:-8% 0;
+  background-color:#0A1322;
+  background-image:
+    linear-gradient(180deg, rgba(7,14,26,.96), rgba(7,14,26,.82) 45%, rgba(7,14,26,.97)),
+    url("https://images.unsplash.com/photo-1688026238669-18cb83914a44?auto=format&fit=crop&w=1600&q=80");
+  background-size:cover;background-position:center;
+  filter:grayscale(1) brightness(.5) contrast(1.1)}
+.method-bg .m-tint{position:absolute;inset:0;background:rgba(14,26,46,.5);mix-blend-mode:color}
+.method .chamber-inner{position:relative}
+.method-rail{margin-top:3.5rem;border-top:1px solid var(--hairline)}
+.step{display:grid;grid-template-columns:auto 1fr;gap:1.4rem;padding:2rem 0;
+  border-bottom:1px solid var(--hairline);align-items:start}
+@media(min-width:900px){.step{grid-template-columns:9rem 1fr 2fr;gap:3rem;align-items:baseline}}
+.step .s-no{font-family:var(--mono);font-size:.66rem;letter-spacing:.24em;color:var(--steel);
+  text-transform:uppercase;padding-top:.4rem}
+.step h3{font-size:1.6rem;font-weight:500}
+.step p{color:var(--muted);font-size:.96rem;max-width:56ch}
+@media(max-width:899px){.step p{grid-column:2}}
+.step .s-seal{display:none}
+@media(min-width:1200px){
+  .step{position:relative}
+  .step::after{content:"";position:absolute;right:0;top:50%;width:6px;height:6px;
+    border:1px solid var(--steel-deep);transform:translateY(-50%) rotate(45deg)}
+}
+
+/* ============================================================
+   CHAMBER IV — INDUSTRIES (the gallery)
+   ============================================================ */
+.industries .chamber-lede{margin-bottom:3rem}
+.industry-grid{display:grid;gap:1px;background:var(--hairline);border:1px solid var(--hairline)}
+@media(min-width:600px){.industry-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.industry-grid{grid-template-columns:repeat(4,1fr)}}
+.industry{background:var(--ink-1);padding:1.9rem 1.5rem;display:flex;flex-direction:column;gap:2.6rem;
+  transition:background .35s var(--ease)}
+.industry:hover{background:var(--ink-2)}
+.industry .i-no{font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;color:var(--steel-deep)}
+.industry h3{font-family:var(--sans);font-weight:500;font-size:1rem;letter-spacing:.02em;color:var(--silver)}
+.industry .i-line{height:1px;background:var(--hairline);transform:scaleX(.4);transform-origin:left;
+  transition:transform .45s var(--ease);margin-top:auto}
+.industry:hover .i-line{transform:scaleX(1)}
+@media(prefers-reduced-motion:reduce){.industry .i-line{transform:scaleX(1)}}
+
+/* ============================================================
+   CHAMBER V — WHY CLIENTS (three findings)
+   ============================================================ */
+.findings{display:grid;gap:1.4rem;margin-top:3.2rem}
+@media(min-width:900px){.findings{grid-template-columns:repeat(3,1fr);gap:1.2rem}}
+.finding{border:1px solid var(--hairline);background:linear-gradient(180deg,var(--ink-1),rgba(10,19,34,.35));
+  padding:2.2rem 1.8rem 2rem;position:relative;overflow:hidden;
+  transition:border-color .4s var(--ease),transform .4s var(--ease)}
+.finding:hover{border-color:var(--hairline-strong);transform:translateY(-4px)}
+.finding::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(156,190,223,.5),transparent);
+  opacity:0;transition:opacity .4s var(--ease)}
+.finding:hover::before{opacity:1}
+.finding .fi-no{font-family:var(--mono);font-size:.62rem;letter-spacing:.26em;color:var(--steel);
+  text-transform:uppercase;display:block;margin-bottom:1.6rem}
+.finding .fi-icon{width:30px;height:30px;stroke:var(--steel);fill:none;stroke-width:1.2;margin-bottom:1.4rem}
+.finding h3{font-size:1.45rem;font-weight:500;margin-bottom:.8rem}
+.finding p{font-size:.93rem;color:var(--muted)}
+
+/* ============================================================
+   CHAMBER VI — FOUNDER
+   ============================================================ */
+.founder{background:linear-gradient(180deg, rgba(10,19,34,0), rgba(10,19,34,.6) 35%, rgba(10,19,34,0))}
+.founder-grid{display:grid;gap:3rem}
+@media(min-width:1024px){.founder-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:5.5rem;align-items:center}}
+.portrait-frame{position:relative;aspect-ratio:4/5;max-width:420px;
+  border:1px solid var(--hairline-strong);
+  background:
+    radial-gradient(70% 55% at 50% 38%, rgba(94,127,163,.14), transparent 70%),
+    linear-gradient(180deg, var(--ink-1), var(--ink-0));
+  display:flex;align-items:center;justify-content:center}
+.portrait-frame::before{content:"";position:absolute;inset:10px;border:1px solid var(--hairline)}
+.portrait-frame::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(120deg, transparent 30%, rgba(190,207,228,.05) 46%, transparent 60%)}
+.portrait-label{position:relative;text-align:center;padding:1rem}
+.portrait-label .p-sil{width:64px;height:64px;margin:0 auto 1.4rem;stroke:var(--steel-deep);fill:none;stroke-width:1}
+.portrait-label .p-cap{font-family:var(--mono);font-size:.62rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--muted);line-height:2}
+.portrait-plate{position:absolute;left:50%;bottom:-1px;transform:translate(-50%,50%);
+  background:var(--ink-0);border:1px solid var(--hairline-strong);padding:.5rem 1.2rem;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--steel);white-space:nowrap}
+.founder-copy h2{margin-bottom:.4rem}
+.founder-name{font-size:clamp(2.4rem,5vw,3.8rem)}
+.founder-role{font-family:var(--mono);font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:2rem;display:flex;align-items:center;gap:.9rem}
+.founder-role::after{content:"";width:2.6rem;height:1px;background:var(--hairline-strong)}
+.founder-copy p{margin-bottom:1.15rem;max-width:56ch}
+.founder-copy p:last-of-type{margin-bottom:0}
+.founder-pull{font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(1.25rem,2.4vw,1.6rem);color:var(--silver);line-height:1.45;
+  border-left:1px solid var(--steel-deep);padding-left:1.6rem;margin:2.2rem 0}
+
+/* ============================================================
+   CHAMBER VII — ATTORNEY RESOURCES
+   ============================================================ */
+.resources-grid{display:grid;gap:1.4rem;margin-top:3.2rem}
+@media(min-width:900px){.resources-grid{grid-template-columns:repeat(2,1fr);gap:1.6rem}}
+.res-card{position:relative;border:1px solid var(--hairline);background:var(--ink-1);
+  padding:2.4rem 2rem 2.2rem;display:flex;flex-direction:column;gap:1.2rem;overflow:hidden;
+  transition:border-color .4s var(--ease),transform .4s var(--ease)}
+.res-card:hover{border-color:var(--hairline-strong);transform:translateY(-4px)}
+.res-card .r-watermark{position:absolute;right:-1.2rem;bottom:-2.4rem;
+  font-family:var(--serif);font-style:italic;font-size:9rem;line-height:1;color:rgba(156,190,223,.05);
+  pointer-events:none;user-select:none}
+.res-card .r-kind{font-family:var(--mono);font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--steel)}
+.res-card h3{font-size:1.7rem;font-weight:500}
+.res-card p{font-size:.94rem;color:var(--muted);max-width:44ch}
+.res-card .r-foot{margin-top:auto;padding-top:1.4rem;border-top:1px solid var(--hairline);
+  display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.res-card .r-foot .r-note{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted)}
+.res-card .r-foot a{font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--silver);display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap}
+.res-card .r-foot a svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.5;transition:transform .3s var(--ease)}
+.res-card .r-foot a:hover svg{transform:translateX(4px)}
+.res-bar{margin-top:2rem;border:1px solid var(--hairline);background:rgba(10,19,34,.5);
+  padding:1.1rem 1.4rem;font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);display:flex;gap:.9rem;align-items:center}
+.res-bar svg{width:14px;height:14px;stroke:var(--steel);fill:none;stroke-width:1.4;flex:none}
+
+/* ============================================================
+   CHAMBER VIII — FAQ
+   ============================================================ */
+.faq-wrap{max-width:820px}
+.faq-wrap{margin-top:3rem;border-top:1px solid var(--hairline)}
+.faq{border-bottom:1px solid var(--hairline)}
+.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;
+  gap:1.2rem;align-items:baseline;padding:1.5rem .25rem;
+  font-family:var(--sans);font-weight:400;font-size:1.05rem;color:var(--silver);
+  transition:color .3s var(--ease)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:#fff}
+.faq summary .q-no{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;color:var(--steel-deep)}
+.faq summary .q-mark{font-family:var(--mono);font-size:.9rem;color:var(--steel);
+  transition:transform .35s var(--ease);line-height:1}
+.faq[open] summary .q-mark{transform:rotate(45deg)}
+.faq .a{padding:0 .25rem 1.7rem;color:var(--muted);font-size:.96rem;max-width:60ch}
+@media(min-width:768px){.faq .a{padding-left:3rem}}
+
+/* ============================================================
+   CHAMBER IX — CONTACT
+   ============================================================ */
+.contact{background:linear-gradient(180deg, rgba(10,19,34,0), rgba(14,26,46,.55) 40%, rgba(7,14,26,.2))}
+.contact-grid{display:grid;gap:3.5rem;margin-top:3rem}
+@media(min-width:1024px){.contact-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:5.5rem}}
+.contact-rail{display:flex;flex-direction:column;gap:2.2rem}
+.rail-item .r-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--steel);margin-bottom:.5rem}
+.rail-item .r-value{font-family:var(--serif);font-size:1.5rem;color:var(--silver)}
+.rail-item .r-value a{color:var(--silver)}
+.rail-item .r-value a:hover{color:var(--steel)}
+.rail-item .r-sub{font-size:.85rem;color:var(--muted);margin-top:.35rem;max-width:34ch}
+.case-form{border:1px solid var(--hairline);background:rgba(10,19,34,.55);padding:clamp(1.5rem,4vw,2.6rem)}
+.form-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  padding-bottom:1.4rem;margin-bottom:1.8rem;border-bottom:1px solid var(--hairline)}
+.form-head .fh-title{font-family:var(--mono);font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--steel)}
+.form-head .fh-no{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;color:var(--muted)}
+.field-grid{display:grid;gap:1.3rem}
+@media(min-width:700px){.field-grid{grid-template-columns:1fr 1fr}}
+.field{display:flex;flex-direction:column;gap:.45rem}
+.field.wide{grid-column:1/-1}
+.field label{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select,.field textarea{
+  background:rgba(7,14,26,.6);border:1px solid var(--hairline);color:var(--silver);
+  font-family:var(--sans);font-weight:300;font-size:1rem;padding:.85rem 1rem;min-height:48px;
+  transition:border-color .3s var(--ease),background .3s var(--ease);border-radius:0;width:100%}
+.field select{appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239CBEDF' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 1rem center}
+.field textarea{min-height:140px;resize:vertical;line-height:1.6}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--steel);background:rgba(7,14,26,.85)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(146,164,190,.55)}
+.form-foot{display:flex;flex-wrap:wrap;align-items:center;gap:1.4rem;margin-top:1.8rem}
+.form-foot .ff-note{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);max-width:30ch;line-height:1.9}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-foot{border-top:1px solid var(--hairline);padding:3.5rem var(--pad) 8rem;background:rgba(7,14,26,.7)}
+@media(min-width:768px){.site-foot{padding-bottom:3.5rem}}
+.foot-inner{max-width:1200px;margin:0 auto;display:grid;gap:2.4rem}
+@media(min-width:900px){.foot-inner{grid-template-columns:2fr 1fr 1fr;gap:4rem}}
+.foot-brand .mark{font-family:var(--sans);font-weight:600;letter-spacing:.3em;color:var(--silver);font-size:.9rem}
+.foot-brand p{font-size:.85rem;color:var(--muted);max-width:38ch;margin-top:1rem}
+.foot-col h4{font-family:var(--mono);font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--steel);font-weight:500;margin-bottom:1.1rem}
+.foot-col ul{list-style:none}
+.foot-col li{margin-bottom:.55rem}
+.foot-col a{font-size:.88rem;color:var(--muted)}
+.foot-col a:hover{color:var(--silver)}
+.foot-legal{max-width:1200px;margin:3rem auto 0;padding-top:1.6rem;border-top:1px solid var(--hairline);
+  display:flex;flex-wrap:wrap;gap:.8rem 2rem;justify-content:space-between;
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+/* ============================================================
+   MOBILE BOTTOM BAR
+   ============================================================ */
+.mobile-bar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--hairline-strong);background:rgba(7,14,26,.92);backdrop-filter:blur(14px)}
+.mobile-bar a{display:flex;align-items:center;justify-content:center;gap:.55rem;min-height:56px;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase}
+.mobile-bar .mb-call{color:var(--silver)}
+.mobile-bar .mb-cta{background:var(--silver);color:#0A1322}
+.mobile-bar svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
+@media(min-width:768px){.mobile-bar{display:none}}
+
+/* ============================================================
+   CONCIERGE (demo assistant)
+   ============================================================ */
+.concierge-btn{position:fixed;right:1.1rem;bottom:4.6rem;z-index:95;width:56px;height:56px;
+  border-radius:50%;border:1px solid var(--hairline-strong);background:var(--ink-2);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);
+  box-shadow:0 10px 30px rgba(2,5,11,.6)}
+@media(min-width:768px){.concierge-btn{bottom:1.4rem;right:1.4rem}}
+.concierge-btn:hover{background:var(--ink-3);border-color:var(--steel);transform:translateY(-2px)}
+.concierge-btn svg{width:22px;height:22px;stroke:var(--steel);fill:none;stroke-width:1.4}
+.concierge-btn .pulse{position:absolute;top:7px;right:7px;width:9px;height:9px;border-radius:50%;
+  background:var(--steel)}
+.concierge-btn .pulse::after{content:"";position:absolute;inset:-4px;border-radius:50%;
+  border:1px solid var(--steel);animation:pulse 2.2s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.6);opacity:.9}70%{transform:scale(1.7);opacity:0}100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.concierge-btn .pulse::after{animation:none;opacity:.4}}
+.concierge{position:fixed;right:1rem;bottom:11.4rem;z-index:96;width:min(370px,calc(100vw - 2rem));
+  max-height:min(560px,calc(100svh - 14rem));display:flex;flex-direction:column;
+  border:1px solid var(--hairline-strong);background:rgba(10,19,34,.97);backdrop-filter:blur(18px);
+  box-shadow:0 30px 70px rgba(2,5,11,.7);
+  opacity:0;transform:translateY(14px) scale(.98);pointer-events:none;visibility:hidden;
+  transition:opacity .32s var(--ease),transform .32s var(--ease),visibility 0s .32s}
+@media(min-width:768px){.concierge{bottom:5.6rem;right:1.4rem}}
+.concierge.open{opacity:1;transform:none;pointer-events:auto;visibility:visible;transition:opacity .32s var(--ease),transform .32s var(--ease)}
+.conc-head{display:flex;align-items:center;gap:.85rem;padding:1rem 1.1rem;border-bottom:1px solid var(--hairline)}
+.conc-head .ch-dot{width:8px;height:8px;border-radius:50%;background:var(--steel);flex:none;
+  box-shadow:0 0 10px rgba(156,190,223,.7)}
+.conc-head .ch-id b{display:block;font-family:var(--sans);font-weight:500;font-size:.82rem;
+  letter-spacing:.14em;color:var(--silver)}
+.conc-head .ch-id span{font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted)}
+.conc-close{margin-left:auto;background:none;border:1px solid transparent;color:var(--muted);
+  width:34px;height:34px;cursor:pointer;font-size:1rem;line-height:1;border-radius:2px}
+.conc-close:hover{color:var(--silver);border-color:var(--hairline)}
+.conc-log{flex:1;overflow-y:auto;padding:1.1rem;display:flex;flex-direction:column;gap:.8rem;min-height:200px}
+.msg{max-width:88%;padding:.75rem .95rem;font-size:.86rem;line-height:1.55}
+.msg.bot{align-self:flex-start;background:var(--ink-2);border:1px solid var(--hairline);color:var(--body)}
+.msg.user{align-self:flex-end;background:rgba(156,190,223,.13);border:1px solid rgba(156,190,223,.22);color:var(--silver)}
+.msg.typing{display:inline-flex;gap:5px;align-items:center;padding:.85rem 1rem}
+.msg.typing i{width:5px;height:5px;border-radius:50%;background:var(--steel);animation:blink 1.2s infinite}
+.msg.typing i:nth-child(2){animation-delay:.18s}
+.msg.typing i:nth-child(3){animation-delay:.36s}
+@keyframes blink{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+@media(prefers-reduced-motion:reduce){.msg.typing i{animation:none;opacity:.7}}
+.conc-chips{display:flex;gap:.5rem;flex-wrap:wrap;padding:0 1.1rem .8rem}
+.conc-chips button{font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--steel);background:none;border:1px solid var(--hairline);padding:.45rem .7rem;cursor:pointer;
+  transition:border-color .25s var(--ease),color .25s var(--ease)}
+.conc-chips button:hover{border-color:var(--steel);color:var(--silver)}
+.conc-input{display:flex;gap:.6rem;padding: .9rem 1.1rem;border-top:1px solid var(--hairline)}
+.conc-input input{flex:1;background:rgba(7,14,26,.7);border:1px solid var(--hairline);color:var(--silver);
+  font-family:var(--sans);font-size:.9rem;padding:.65rem .85rem;min-height:44px;border-radius:0}
+.conc-input input:focus{outline:none;border-color:var(--steel)}
+.conc-input button{background:var(--silver);color:#0A1322;border:none;cursor:pointer;min-width:48px;min-height:44px;
+  display:flex;align-items:center;justify-content:center;transition:background .25s var(--ease)}
+.conc-input button:hover{background:#fff}
+.conc-input button svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.6}
+.conc-disclaim{padding:.5rem 1.1rem .8rem;font-family:var(--mono);font-size:.52rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center}
+
+/* ============================================================
+   MOTION GUARDRAILS — reduced motion kills all choreography
+   ============================================================ */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;
+    transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="atmosphere" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ══════════ HEADER ══════════ -->
+<header class="site-head" id="siteHead">
+  <a class="brand" href="#top" aria-label="PROTELLIGENCE — home">
+    <span class="mark">PRO<em>TELLIGENCE</em></span>
+    <span class="est">Valuation · Litigation</span>
+  </a>
+  <nav class="head-nav" aria-label="Primary">
+    <a href="#dispute">The Dispute</a>
+    <a href="#engagements">Engagements</a>
+    <a href="#method">Method</a>
+    <a href="#founder">Founder</a>
+    <a href="#resources">Resources</a>
+  </nav>
+  <a class="head-cta" href="#contact">Request a Case Review</a>
+</header>
+
+<main id="main">
+
+<!-- ══════════ CHAMBER 00 — HERO ══════════ -->
+<section class="chamber hero" id="top" aria-label="Introduction">
+  <div class="hero-stage" aria-hidden="true">
+    <div class="hero-car" data-depth="bg"></div>
+    <div class="hero-tint"></div>
+    <div class="hero-glass" data-depth="mid">
+      <div class="pane"></div><div class="pane"></div><div class="pane"></div>
+    </div>
+    <div class="hero-rake" id="heroRake"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-kicker" data-hero="kicker">Independent Vehicle Valuation &amp; Litigation Consulting</p>
+    <h1 class="wordmark" id="wordmark" aria-label="PROTELLIGENCE">
+      <span class="lt" aria-hidden="true">P</span><span class="lt" aria-hidden="true">R</span><span class="lt" aria-hidden="true">O</span><span class="lt" aria-hidden="true">T</span><span class="lt" aria-hidden="true">E</span><span class="lt" aria-hidden="true">L</span><span class="lt" aria-hidden="true">L</span><span class="lt" aria-hidden="true">I</span><span class="lt" aria-hidden="true">G</span><span class="lt" aria-hidden="true">E</span><span class="lt" aria-hidden="true">N</span><span class="lt" aria-hidden="true">C</span><span class="lt" aria-hidden="true">E</span>
+    </h1>
+    <div class="hero-line" data-hero="line">
+      <p class="serif-line">A vehicle&rsquo;s value can be argued.<br><b>Or it can be established.</b></p>
+    </div>
+    <div class="hero-actions" data-hero="actions">
+      <a class="btn btn-primary" href="#contact">Request a Case Review
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="#resources">Attorney Resources</a>
+    </div>
+  </div>
+  <div class="hero-ticker" data-hero="ticker">
+    <div class="ticker-shell" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Independent<i>·</i>Conflict-Checked<i>·</i>Nationwide<i>·</i>Reproducible Methodology<i>·</i>Defensible Reports<i>·</i>Testimony Support<i>·</i></span>
+        <span>Independent<i>·</i>Conflict-Checked<i>·</i>Nationwide<i>·</i>Reproducible Methodology<i>·</i>Defensible Reports<i>·</i>Testimony Support<i>·</i></span>
+      </div>
+    </div>
+    <p style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Independent. Conflict-checked. Nationwide.</p>
+  </div>
+  <div class="hero-scrollcue" aria-hidden="true">Enter the record</div>
+</section>
+
+<!-- ══════════ CHAMBER I — THE DISPUTE ══════════ -->
+<section class="chamber dispute hairline-top" id="dispute" aria-labelledby="dispute-h">
+  <div class="chamber-inner">
+    <p class="exhibit-tag"><span class="tag-no">Exhibit A</span> The Dispute</p>
+    <div class="dispute-grid">
+      <div class="dispute-copy">
+        <h2 class="chamber-title" id="dispute-h">Two numbers.<br><em>Only one can hold.</em></h2>
+        <p data-reveal>Every valuation dispute begins the same way. A carrier produces a figure. An owner, an attorney, an estate, or a court holds another. Between them sits a gap that settlement talks cannot close &mdash; because neither side can yet show its number deserves to survive scrutiny.</p>
+        <p data-reveal>Software outputs arrive with authority they have not earned. Comparable vehicles are chosen without explanation. Condition adjustments appear without support. The record, as it stands, decides nothing.</p>
+        <p data-reveal>PROTELLIGENCE exists for that gap. An independent analysis, built from the records, documented to be reproduced &mdash; a number prepared for the room where it will be challenged.</p>
+        <div class="fault-lines">
+          <div class="fault" data-reveal>
+            <span class="f-no">A-1</span>
+            <div><h3>The carrier&rsquo;s figure</h3><p>Produced quickly, at scale, by a party with a position in the outcome.</p></div>
+          </div>
+          <div class="fault" data-reveal>
+            <span class="f-no">A-2</span>
+            <div><h3>The software&rsquo;s assumptions</h3><p>CCC and Mitchell outputs rest on comparables and adjustments that can &mdash; and should &mdash; be examined line by line.</p></div>
+          </div>
+          <div class="fault" data-reveal>
+            <span class="f-no">A-3</span>
+            <div><h3>The missing record</h3><p>Options, condition, history, mileage context. What was never gathered can never support a number.</p></div>
+          </div>
+        </div>
+      </div>
+      <figure class="dispute-fig" data-reveal data-depth="fig">
+        <div class="fig-img" aria-hidden="true"></div>
+        <div class="fig-tint" aria-hidden="true"></div>
+        <span class="fig-corner" aria-hidden="true">Ref. A</span>
+        <figcaption>Detail, subject vehicle &mdash; every figure begins with the physical record.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CHAMBER II — EVIDENCE TABLE ══════════ -->
+<section class="chamber hairline-top" id="engagements" aria-labelledby="engagements-h">
+  <div class="chamber-inner">
+    <p class="exhibit-tag"><span class="tag-no">Exhibit B</span> Engagements</p>
+    <div class="evidence-intro">
+      <h2 class="chamber-title" id="engagements-h">The evidence table.<br><em>Five files, one discipline.</em></h2>
+      <p class="evidence-note">Open a file &mdash; hover or tab.<br>Each engagement, same method:<br>records in, defensible number out.</p>
+    </div>
+    <div class="folder-row">
+      <div class="folder" tabindex="0" data-reveal>
+        <div class="folder-body">
+          <div class="folder-tab"><span class="f-file">File 01</span>
+            <svg class="f-clip" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="folder-head"><h3>Total-Loss Valuation Disputes</h3><p class="f-sub">Actual cash value</p></div>
+          <div class="folder-flap">
+            <div class="f-rule"></div>
+            <p class="f-copy">When a settlement offer does not reflect the vehicle that was lost: an independent actual-cash-value analysis, documented so each comparable and each adjustment can be traced and defended.</p>
+            <span class="f-open">Open file &rarr; case review</span>
+          </div>
+        </div>
+      </div>
+      <div class="folder" tabindex="0" data-reveal>
+        <div class="folder-body">
+          <div class="folder-tab"><span class="f-file">File 02</span>
+            <svg class="f-clip" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="folder-head"><h3>Diminished-Value Claims</h3><p class="f-sub">Post-repair loss</p></div>
+          <div class="folder-flap">
+            <div class="f-rule"></div>
+            <p class="f-copy">A repaired vehicle is not a never-damaged vehicle. Quantifying the residual loss in market value after repair &mdash; with the reasoning shown, not asserted.</p>
+            <span class="f-open">Open file &rarr; case review</span>
+          </div>
+        </div>
+      </div>
+      <div class="folder" tabindex="0" data-reveal>
+        <div class="folder-body">
+          <div class="folder-tab"><span class="f-file">File 03</span>
+            <svg class="f-clip" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="folder-head"><h3>Expert Reports &amp; Testimony</h3><p class="f-sub">For the courtroom</p></div>
+          <div class="folder-flap">
+            <div class="f-rule"></div>
+            <p class="f-copy">Written opinions prepared for disclosure, deposition, and trial &mdash; methodology stated plainly, sources cited, conclusions built to be cross-examined.</p>
+            <span class="f-open">Open file &rarr; case review</span>
+          </div>
+        </div>
+      </div>
+      <div class="folder" tabindex="0" data-reveal>
+        <div class="folder-body">
+          <div class="folder-tab"><span class="f-file">File 04</span>
+            <svg class="f-clip" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="folder-head"><h3>Estate, Bankruptcy &amp; Divorce Valuation</h3><p class="f-sub">Fiduciary contexts</p></div>
+          <div class="folder-flap">
+            <div class="f-rule"></div>
+            <p class="f-copy">Neutral valuation for courts, trustees, and counsel where vehicles must be divided, distributed, or scheduled &mdash; one defensible figure both sides can examine.</p>
+            <span class="f-open">Open file &rarr; case review</span>
+          </div>
+        </div>
+      </div>
+      <div class="folder" tabindex="0" data-reveal>
+        <div class="folder-body">
+          <div class="folder-tab"><span class="f-file">File 05</span>
+            <svg class="f-clip" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>
+          <div class="folder-head"><h3>Insurance Claim &amp; CCC / Mitchell Review</h3><p class="f-sub">Audit the output</p></div>
+          <div class="folder-flap">
+            <div class="f-rule"></div>
+            <p class="f-copy">A line-by-line examination of the valuation report behind the offer: comparable selection, condition scoring, adjustments &mdash; where the figure holds, and where it does not.</p>
+            <span class="f-open">Open file &rarr; case review</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CHAMBER III — METHOD ══════════ -->
+<section class="chamber method hairline-top" id="method" aria-labelledby="method-h">
+  <div class="method-bg" aria-hidden="true" data-depth="method">
+    <div class="m-img"></div><div class="m-tint"></div>
+  </div>
+  <div class="chamber-inner">
+    <p class="exhibit-tag"><span class="tag-no">Exhibit C</span> Method</p>
+    <h2 class="chamber-title" id="method-h">Five steps.<br><em>No shortcuts on the record.</em></h2>
+    <p class="chamber-lede">The sequence is deliberate. Independence is confirmed before a single document is read; the number is committed to paper before anyone asks what it should be.</p>
+    <div class="method-rail">
+      <div class="step" data-reveal>
+        <span class="s-no">Step 01</span>
+        <h3>Conflict Check</h3>
+        <p>Before any engagement: parties, counsel, and carriers are screened. If independence cannot be preserved, the matter is declined. This is where every file begins &mdash; and some end.</p>
+      </div>
+      <div class="step" data-reveal>
+        <span class="s-no">Step 02</span>
+        <h3>Records &amp; Data Intake</h3>
+        <p>Title and build data, options, mileage, condition documentation, repair records, prior valuation reports. The analysis is only as strong as the record beneath it, so the record comes first.</p>
+      </div>
+      <div class="step" data-reveal>
+        <span class="s-no">Step 03</span>
+        <h3>Valuation Analysis</h3>
+        <p>Market data gathered and weighed against the subject vehicle &mdash; comparables selected for stated reasons, adjustments applied by stated logic. Every judgment is written down so it can be retraced.</p>
+      </div>
+      <div class="step" data-reveal>
+        <span class="s-no">Step 04</span>
+        <h3>Defensible Report</h3>
+        <p>Findings delivered in a document built for opposing counsel as much as for the client: methodology disclosed, sources cited, conclusions separated from assumptions.</p>
+      </div>
+      <div class="step" data-reveal>
+        <span class="s-no">Step 05</span>
+        <h3>Testimony Support</h3>
+        <p>Where the matter proceeds, the opinion travels with it &mdash; deposition and trial testimony, and support for counsel preparing to examine the other side&rsquo;s number.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CHAMBER IV — INDUSTRIES ══════════ -->
+<section class="chamber industries hairline-top" id="industries" aria-labelledby="industries-h">
+  <div class="chamber-inner">
+    <p class="exhibit-tag"><span class="tag-no">Exhibit D</span> Who Retains Us</p>
+    <h2 class="chamber-title" id="industries-h">Eight seats<br><em>at the same table.</em></h2>
+    <p class="chamber-lede">Plaintiff or defense, carrier or claimant &mdash; the analysis does not change with the client. That is the point of retaining an independent.</p>
+    <div class="industry-grid">
+      <div class="industry" data-reveal><span class="i-no">D-01</span><h3>Plaintiff Attorneys</h3><div class="i-line"></div></div>
+      <div class="industry" data-reveal><span class="i-no">D-02</span><h3>Defense Attorneys</h3><div class="i-line"></div></div>
+      <div class="industry" data-reveal><span class="i-no">D-03</span><h3>Insurance Companies</h3><div class="i-line"></div></div>
+      <div class="industry" data-reveal><span class="i-no">D-04</span><h3>Claims Professionals</h3><div class="i-line"></div></div>
+      <div class="industry" data-reveal><span class="i-no">D-05</span><h3>Vehicle Owners in Disputes</h3><div class="i-line"></div></div>
+      <div class="industry" data-reveal><span class="i-no">D-06</span><h3>Corporate Fleets</h3><div class="i-line"></div></div>
+      <div class="industry" data-reveal><span class="i-no">D-07</span><h3>Dealership Groups</h3><div class="i-line"></div></div>
+      <div class="industry" data-reveal><span class="i-no">D-08</span><h3>Financial Institutions</h3><div class="i-line"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CHAMBER V — WHY CLIENTS ══════════ -->
+<section class="chamber hairline-top" id="findings" aria-labelledby="findings-h">
+  <div class="chamber-inner">
+    <p class="exhibit-tag"><span class="tag-no">Exhibit E</span> Findings</p>
+    <h2 class="chamber-title" id="findings-h">Why counsel<br><em>keeps the number.</em></h2>
+    <div class="findings">
+      <div class="finding" data-reveal>
+        <span class="fi-no">Finding E-1</span>
+        <svg class="fi-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3v6M16 9l-9 4v3c0 6 4 10 9 13 5-3 9-7 9-13v-3l-9-4z"/><path d="M12 17l3 3 5-6"/></svg>
+        <h3>Independent &amp; Conflict-Checked</h3>
+        <p>No engagement begins until independence is confirmed. No side is preferred; some matters are declined. The opinion belongs to the record, not to the retaining party.</p>
+      </div>
+      <div class="finding" data-reveal>
+        <span class="fi-no">Finding E-2</span>
+        <svg class="fi-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 26V14M13 26V6M20 26v-8M27 26V10"/><path d="M4 28h24"/></svg>
+        <h3>Transparent &amp; Reproducible</h3>
+        <p>Every comparable, adjustment, and source is documented. Hand the report to another analyst and the path to the number can be walked again, step by step.</p>
+      </div>
+      <div class="finding" data-reveal>
+        <span class="fi-no">Finding E-3</span>
+        <svg class="fi-icon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="11" r="5"/><path d="M6 27c1.5-5 5.5-7.5 10-7.5S24.5 22 26 27"/></svg>
+        <h3>One Point of Accountability</h3>
+        <p>The person who runs the conflict check reads the records, performs the analysis, signs the report, and takes the stand. Nothing is handed down a chain.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CHAMBER VI — FOUNDER ══════════ -->
+<section class="chamber founder hairline-top" id="founder" aria-labelledby="founder-h">
+  <div class="chamber-inner">
+    <p class="exhibit-tag"><span class="tag-no">Exhibit F</span> The Founder</p>
+    <div class="founder-grid">
+      <div class="portrait-frame" data-reveal role="img" aria-label="Reserved space for the professional portrait of Jack Donachie, to be added">
+        <div class="portrait-label">
+          <svg class="p-sil" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="24" r="10"/><path d="M12 54c3-11 11-16 20-16s17 5 20 16"/></svg>
+          <p class="p-cap">Portrait &mdash; to be added<br>Professional photograph<br>in preparation</p>
+        </div>
+        <span class="portrait-plate" aria-hidden="true">J. Donachie &mdash; Principal</span>
+      </div>
+      <div class="founder-copy">
+        <h2 class="founder-name" id="founder-h">Jack Donachie</h2>
+        <p class="founder-role">Founder &amp; Principal Consultant</p>
+        <p data-reveal>PROTELLIGENCE is an independent practice, founded by Jack Donachie to do one thing carefully: establish what a vehicle is worth when the answer is contested &mdash; and stand behind that answer wherever the dispute goes.</p>
+        <p data-reveal>The practice serves attorneys, insurers, claims professionals, corporate fleets, dealership groups, financial institutions, and vehicle owners in disputes, nationwide. Its work spans total-loss and diminished-value matters, estate, bankruptcy, and divorce valuations, and the review of CCC and Mitchell valuation reports.</p>
+        <blockquote class="founder-pull" data-reveal>&ldquo;A valuation is only worth what it survives.&rdquo;</blockquote>
+        <p data-reveal>Every engagement is conflict-checked before it is accepted, documented so the analysis can be reproduced, and carried by a single accountable principal &mdash; from intake to the witness stand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CHAMBER VII — ATTORNEY RESOURCES ══════════ -->
+<section class="chamber hairline-top" id="resources" aria-labelledby="resources-h">
+  <div class="chamber-inner">
+    <p class="exhibit-tag"><span class="tag-no">Exhibit G</span> Attorney Resources</p>
+    <h2 class="chamber-title" id="resources-h">Examine the work<br><em>before you retain it.</em></h2>
+    <p class="chamber-lede">Counsel evaluating the practice may review the writing and the qualifications directly. Both are furnished on request, following a standard conflict check.</p>
+    <div class="resources-grid">
+      <div class="res-card" data-reveal>
+        <span class="r-watermark" aria-hidden="true">SR</span>
+        <span class="r-kind">Document 01 &mdash; PDF</span>
+        <h3>Sample Report</h3>
+        <p>A representative valuation report with matter-identifying details removed: structure, sourcing, comparable documentation, and the form conclusions take.</p>
+        <div class="r-foot">
+          <span class="r-note">Furnished after<br>conflict check</span>
+          <a href="#contact">Request copy
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="res-card" data-reveal>
+        <span class="r-watermark" aria-hidden="true">CV</span>
+        <span class="r-kind">Document 02 &mdash; PDF</span>
+        <h3>Curriculum Vitae</h3>
+        <p>The principal&rsquo;s curriculum vitae, prepared in the form counsel needs for disclosure and expert designation.</p>
+        <div class="r-foot">
+          <span class="r-note">Furnished after<br>conflict check</span>
+          <a href="#contact">Request copy
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <p class="res-bar" data-reveal>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="1"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+      Documents are released to counsel of record only. The conflict check protects your matter as much as this practice.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════ CHAMBER VIII — FAQ ══════════ -->
+<section class="chamber hairline-top" id="faq" aria-labelledby="faq-h">
+  <div class="chamber-inner">
+    <p class="exhibit-tag"><span class="tag-no">Exhibit H</span> Questions of Record</p>
+    <h2 class="chamber-title" id="faq-h">Asked before.<br><em>Answered plainly.</em></h2>
+    <div class="faq-wrap">
+      <details class="faq" data-reveal>
+        <summary><span class="q-no">H-1</span>How are fees handled?<span class="q-mark" aria-hidden="true">+</span></summary>
+        <div class="a"><p>Fee structure is discussed after the conflict check, once the scope of the matter is understood. Engagements are scoped in writing before work begins, and no figure on this site &mdash; or in this practice &mdash; is quoted before independence is confirmed.</p></div>
+      </details>
+      <details class="faq" data-reveal>
+        <summary><span class="q-no">H-2</span>Do you work for plaintiffs or for the defense?<span class="q-mark" aria-hidden="true">+</span></summary>
+        <div class="a"><p>Both, though never on the same question. The practice is retained by plaintiff and defense counsel, by carriers and by claimants. The analysis is the same regardless of who retains it &mdash; which is precisely why each side can rely on it.</p></div>
+      </details>
+      <details class="faq" data-reveal>
+        <summary><span class="q-no">H-3</span>How quickly can a report be delivered?<span class="q-mark" aria-hidden="true">+</span></summary>
+        <div class="a"><p>Timelines depend on the state of the record &mdash; a complete file moves faster than one still being assembled. A realistic delivery date is set at intake, in writing, and kept. Where court deadlines apply, say so at the first conversation.</p></div>
+      </details>
+      <details class="faq" data-reveal>
+        <summary><span class="q-no">H-4</span>Will you testify, and where?<span class="q-mark" aria-hidden="true">+</span></summary>
+        <div class="a"><p>Yes. Reports are written from the outset to withstand deposition and trial, and testimony support is part of the engagement where the matter requires it. The practice serves counsel nationwide.</p></div>
+      </details>
+      <details class="faq" data-reveal>
+        <summary><span class="q-no">H-5</span>What should we send first?<span class="q-mark" aria-hidden="true">+</span></summary>
+        <div class="a"><p>Only what the conflict check requires: the parties, counsel, and carriers involved, and a short description of the dispute. Once independence is confirmed, you will receive a specific records list for the matter &mdash; send nothing substantive before then.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CHAMBER IX — CONTACT ══════════ -->
+<section class="chamber contact hairline-top" id="contact" aria-labelledby="contact-h">
+  <div class="chamber-inner">
+    <p class="exhibit-tag"><span class="tag-no">Exhibit I</span> Open a File</p>
+    <h2 class="chamber-title" id="contact-h">Put the matter<br><em>on the record.</em></h2>
+    <p class="chamber-lede">Describe the dispute in a few lines. The conflict check comes first; everything else follows from it.</p>
+    <div class="contact-grid">
+      <div class="contact-rail">
+        <div class="rail-item" data-reveal>
+          <p class="r-label">Direct line</p>
+          <p class="r-value"><a href="tel:+10007768355">(000)&nbsp;776-8355</a></p>
+          <p class="r-sub">Placeholder number &mdash; final line to be published at launch.</p>
+        </div>
+        <div class="rail-item" data-reveal>
+          <p class="r-label">Jurisdiction</p>
+          <p class="r-value">Nationwide</p>
+          <p class="r-sub">Reports, review work, and testimony support across the United States.</p>
+        </div>
+        <div class="rail-item" data-reveal>
+          <p class="r-label">First step, always</p>
+          <p class="r-value">Conflict check</p>
+          <p class="r-sub">Send party names and a short description of the dispute. Hold substantive records until independence is confirmed.</p>
+        </div>
+        <div class="rail-item" data-reveal>
+          <p class="r-label">Alternative</p>
+          <p class="r-value">Schedule a Consultation</p>
+          <p class="r-sub">Prefer to talk first? Note it in the message field and include the best time to reach you.</p>
+        </div>
+      </div>
+      <form class="case-form" name="max2-case-review" method="POST" data-netlify="true" data-reveal>
+        <input type="hidden" name="form-name" value="max2-case-review">
+        <div class="form-head">
+          <span class="fh-title">Case Review Request</span>
+          <span class="fh-no">Form I-01</span>
+        </div>
+        <div class="field-grid">
+          <div class="field">
+            <label for="cf-name">Full name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="cf-firm">Firm / organization</label>
+            <input id="cf-firm" name="firm" type="text" autocomplete="organization" placeholder="Firm, carrier, or company">
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required placeholder="you@firm.com">
+          </div>
+          <div class="field">
+            <label for="cf-phone">Phone</label>
+            <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="(000) 000-0000">
+          </div>
+          <div class="field wide">
+            <label for="cf-engagement">Engagement type</label>
+            <select id="cf-engagement" name="engagement" required>
+              <option value="" selected disabled>Select the matter type</option>
+              <option>Total-Loss Valuation Dispute</option>
+              <option>Diminished-Value Claim</option>
+              <option>Expert Report &amp; Testimony</option>
+              <option>Estate, Bankruptcy &amp; Divorce Valuation</option>
+              <option>Insurance Claim &amp; CCC/Mitchell Review</option>
+              <option>Other / Not sure</option>
+            </select>
+          </div>
+          <div class="field wide">
+            <label for="cf-message">The dispute, briefly</label>
+            <textarea id="cf-message" name="message" required placeholder="Parties involved, the vehicle, and where the numbers disagree. No substantive records yet — the conflict check comes first."></textarea>
+          </div>
+        </div>
+        <div class="form-foot">
+          <button class="btn btn-primary" type="submit">Submit for Conflict Check
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
+          <p class="ff-note">Reviewed personally.<br>No obligation attaches to an inquiry.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="site-foot">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <span class="mark">PROTELLIGENCE</span>
+      <p>Independent vehicle valuation &amp; litigation consulting. Conflict-checked, reproducible, accountable &mdash; nationwide.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Chambers</h4>
+      <ul>
+        <li><a href="#dispute">The Dispute</a></li>
+        <li><a href="#engagements">Engagements</a></li>
+        <li><a href="#method">Method</a></li>
+        <li><a href="#industries">Who Retains Us</a></li>
+        <li><a href="#founder">Founder</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Counsel</h4>
+      <ul>
+        <li><a href="#resources">Sample Report</a></li>
+        <li><a href="#resources">Curriculum Vitae</a></li>
+        <li><a href="#faq">Questions of Record</a></li>
+        <li><a href="#contact">Request a Case Review</a></li>
+        <li><a href="tel:+10007768355">(000) 776-8355</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-legal">
+    <span>&copy; 2026 PROTELLIGENCE &mdash; Independent Vehicle Valuation &amp; Litigation Consulting</span>
+    <span>Contact details on this page are placeholders pending launch</span>
+  </div>
+</footer>
+
+<!-- ══════════ MOBILE BOTTOM BAR ══════════ -->
+<nav class="mobile-bar" aria-label="Quick actions">
+  <a class="mb-call" href="tel:+10007768355" aria-label="Call PROTELLIGENCE at (000) 776-8355">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>
+    Call</a>
+  <a class="mb-cta" href="#contact">Case Review</a>
+</nav>
+
+<!-- ══════════ CONCIERGE — DEMO ASSISTANT ══════════ -->
+<button class="concierge-btn" id="concBtn" aria-expanded="false" aria-controls="concierge" aria-label="Open the demo assistant chat">
+  <span class="pulse" aria-hidden="true"></span>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H9l-5 4V6z"/></svg>
+</button>
+<div class="concierge" id="concierge" role="dialog" aria-modal="false" aria-label="PROTELLIGENCE demo assistant">
+  <div class="conc-head">
+    <span class="ch-dot" aria-hidden="true"></span>
+    <div class="ch-id"><b>Concierge</b><span>Demo assistant &mdash; scripted, offline</span></div>
+    <button class="conc-close" id="concClose" aria-label="Close chat">&#10005;</button>
+  </div>
+  <div class="conc-log" id="concLog" aria-live="polite"></div>
+  <div class="conc-chips" id="concChips">
+    <button type="button" data-q="What engagements do you handle?">Engagements</button>
+    <button type="button" data-q="How do fees work?">Fees</button>
+    <button type="button" data-q="Can I see a sample report?">Sample report</button>
+    <button type="button" data-q="Do you testify?">Testimony</button>
+  </div>
+  <form class="conc-input" id="concForm">
+    <label for="concField" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Ask the demo assistant</label>
+    <input id="concField" type="text" autocomplete="off" placeholder="Ask about the practice&hellip;" maxlength="200">
+    <button type="submit" aria-label="Send message">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l18-8-6 8 6 8-18-8zM21 4L9 12"/></svg>
+    </button>
+  </form>
+  <p class="conc-disclaim">Demo assistant &mdash; scripted responses, no data leaves this page</p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+"use strict";
+/* ============================================================
+   OBSIDIAN CHAMBERS — behavior layer
+   Everything here is enhancement. With JS off or the CDN down,
+   the page is complete: chambers stack, folders open on
+   hover/focus via CSS, the accordion is native details/summary.
+   ============================================================ */
+var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var docEl = document.documentElement;
+docEl.classList.add("js");
+
+/* ---- header rail: solidify after the first scroll ---- */
+var head = document.getElementById("siteHead");
+function onScroll(){
+  if(window.scrollY > 24){ head.classList.add("is-scrolled"); }
+  else { head.classList.remove("is-scrolled"); }
+}
+window.addEventListener("scroll", onScroll, {passive:true});
+onScroll();
+
+/* ============================================================
+   SCENE CHOREOGRAPHY — only if GSAP arrived and motion is welcome.
+   Hidden states are set HERE, never in CSS, so nothing can be
+   lost if this block never runs.
+   ============================================================ */
+var hasGSAP = typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined";
+if(hasGSAP && !reduced){
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* --- Chamber 00: darkness, then the raking light names the practice --- */
+  var letters = gsap.utils.toArray("#wordmark .lt");
+  var heroBits = gsap.utils.toArray("[data-hero]");
+  gsap.set(letters, {opacity:0, y:26, filter:"blur(6px)"});
+  gsap.set(heroBits, {opacity:0, y:18});
+  gsap.set(".hero-car", {opacity:0, scale:1.06});
+  gsap.set(".hero-glass .pane", {opacity:0});
+
+  var intro = gsap.timeline({defaults:{ease:"power3.out"}});
+  intro
+    .to(".hero-car", {opacity:.85, scale:1, duration:2.2, ease:"power2.out"}, 0)
+    .to(".hero-glass .pane", {opacity:1, duration:1.6, stagger:.15}, .3)
+    .to("[data-hero='kicker']", {opacity:1, y:0, duration:.9}, .55)
+    .to(letters, {opacity:1, y:0, filter:"blur(0px)", duration:.9, stagger:.055}, .75)
+    .to("#heroRake", {opacity:1, duration:.25}, .8)
+    .to("#heroRake", {left:"118%", duration:1.7, ease:"power2.inOut"}, .8)
+    .to("#heroRake", {opacity:0, duration:.4}, 2.15)
+    .to("[data-hero='line']", {opacity:1, y:0, duration:1}, 1.5)
+    .to("[data-hero='actions']", {opacity:1, y:0, duration:.9}, 1.75)
+    .to("[data-hero='ticker']", {opacity:1, y:0, duration:.9}, 1.95);
+
+  /* --- pinned hero scene: layers part as the visitor descends --- */
+  gsap.timeline({
+    scrollTrigger:{trigger:".hero", start:"top top", end:"+=70%", scrub:true, pin:true, pinSpacing:true}
+  })
+  .to(".hero-car", {yPercent:-8, scale:1.04, opacity:.45, ease:"none"}, 0)
+  .to(".hero-glass", {yPercent:-14, ease:"none"}, 0)
+  .to(".hero-content", {yPercent:-6, opacity:.25, ease:"none"}, 0)
+  .to("[data-hero='ticker']", {opacity:0, ease:"none"}, 0);
+
+  /* --- chamber crossfade: each chamber rises out of the dark --- */
+  gsap.utils.toArray(".chamber").forEach(function(ch){
+    if(ch.classList.contains("hero")) return;
+    gsap.fromTo(ch, {opacity:.35}, {
+      opacity:1, ease:"none",
+      scrollTrigger:{trigger:ch, start:"top 92%", end:"top 45%", scrub:true}
+    });
+  });
+
+  /* --- parallax strata --- */
+  gsap.to("[data-depth='fig']", {yPercent:-6, ease:"none",
+    scrollTrigger:{trigger:"#dispute", start:"top bottom", end:"bottom top", scrub:true}});
+  gsap.to("[data-depth='method'] .m-img", {yPercent:10, ease:"none",
+    scrollTrigger:{trigger:"#method", start:"top bottom", end:"bottom top", scrub:true}});
+
+  /* --- evidence reveals: exhibits enter the record one at a time --- */
+  var reveals = gsap.utils.toArray("[data-reveal]");
+  gsap.set(reveals, {opacity:0, y:34});
+  ScrollTrigger.batch(reveals, {
+    start:"top 88%",
+    onEnter:function(batch){
+      gsap.to(batch, {opacity:1, y:0, duration:1, stagger:.09, ease:"power3.out", overwrite:true});
+    }
+  });
+  /* anything already in view on load (deep links) */
+  window.addEventListener("load", function(){ ScrollTrigger.refresh(); });
+}else if(hasGSAP && reduced){
+  /* motion declined: ensure nothing is ever hidden */
+  gsap.set("[data-reveal], [data-hero], #wordmark .lt", {clearProps:"all"});
+}
+
+/* ============================================================
+   CONCIERGE — scripted demo assistant. No network. No storage.
+   ============================================================ */
+var concBtn = document.getElementById("concBtn");
+var conc = document.getElementById("concierge");
+var concClose = document.getElementById("concClose");
+var concLog = document.getElementById("concLog");
+var concForm = document.getElementById("concForm");
+var concField = document.getElementById("concField");
+var concChips = document.getElementById("concChips");
+var greeted = false;
+
+var INTENTS = [
+  {keys:["service","engagement","offer","help with","what do you do","practice areas","work on"],
+   reply:"The practice takes five kinds of matters: total-loss valuation disputes, diminished-value claims, expert reports and testimony, estate/bankruptcy/divorce valuation, and review of CCC or Mitchell insurance valuations. Each is described in the Engagements chamber above."},
+  {keys:["fee","cost","price","pricing","rate","charge","how much","retainer","expensive"],
+   reply:"Fee structure is discussed after the conflict check, once the scope of the matter is clear. No pricing is quoted on this site or before independence is confirmed — that order is deliberate."},
+  {keys:["turnaround","how long","timeline","deadline","how fast","quick","when can","delivery"],
+   reply:"Timelines depend on the state of the record — a complete file moves faster than one still being assembled. A realistic delivery date is set in writing at intake. If a court deadline applies, mention it in your first message."},
+  {keys:["testify","testimony","deposition","trial","court","witness","stand","daubert","cross"],
+   reply:"Yes. Reports are written from the first page to withstand deposition and trial, and testimony support is part of the engagement where the matter requires it — nationwide."},
+  {keys:["area","nationwide","state","where","location","travel","jurisdiction","near me","local"],
+   reply:"The practice is national. Reports, valuation reviews, and testimony support are provided to counsel and clients across the United States."},
+  {keys:["sample report","sample","example report","see a report","what does a report"],
+   reply:"A redacted sample report is available to counsel on request, following a standard conflict check. Use the case review form and note “sample report” in your message."},
+  {keys:["cv","curriculum","vitae","credential","qualification","resume","background","designation"],
+   reply:"The principal’s curriculum vitae is furnished to counsel on request after a standard conflict check, in the form needed for disclosure and expert designation."},
+  {keys:["contact","email","phone","call","reach","number","get in touch"],
+   reply:"The direct line is (000) 776-8355 — a placeholder pending launch. The most reliable route today is the case review form at the foot of the page; every submission is read personally."},
+  {keys:["schedule","consult","appointment","book","meeting","talk","speak","call back"],
+   reply:"To schedule a consultation, submit the case review form and note the best time to reach you. The conflict check runs first; the conversation follows immediately after."},
+  {keys:["insurance","insurer","carrier","ccc","mitchell","adjuster","claim","offer","settlement"],
+   reply:"CCC and Mitchell valuation reports can be examined line by line — comparable selection, condition scoring, and adjustments. The practice works with carriers, claims professionals, and claimants alike; independence is the constant."},
+  {keys:["total loss","totaled","acv","actual cash value","write off","written off"],
+   reply:"Total-loss disputes are a core engagement: an independent actual-cash-value analysis of the vehicle as it stood before the loss, documented so every comparable and adjustment can be defended."},
+  {keys:["diminished","dv claim","after repair","resale","worth less"],
+   reply:"Diminished value is the gap between a repaired vehicle and a never-damaged one. The practice quantifies that residual loss with the reasoning shown — not asserted."},
+  {keys:["estate","divorce","bankruptcy","probate","trustee","dissolution"],
+   reply:"For estates, bankruptcies, and divorces, the practice provides neutral vehicle valuations that courts, trustees, and both counsel can examine — one figure, fully documented."},
+  {keys:["conflict","independen","impartial","neutral","bias","both sides"],
+   reply:"Every matter begins with a conflict check — parties, counsel, and carriers are screened before any records are read. If independence cannot be preserved, the engagement is declined."},
+  {keys:["hello","hi ","hey","good morning","good afternoon","good evening"],
+   reply:"Good day. I’m a scripted demo assistant for PROTELLIGENCE — ask about engagements, fees, turnaround, testimony, or attorney resources, and I’ll point you to the right chamber."}
+];
+var FALLBACK = "I’m a scripted demo assistant, so my range is narrow: engagements, fees, turnaround, testimony, service area, the sample report and CV, scheduling, and contact. For anything substantive, the case review form below reaches the principal directly.";
+
+function addMsg(text, who){
+  var el = document.createElement("div");
+  el.className = "msg " + who;
+  el.textContent = text;
+  concLog.appendChild(el);
+  concLog.scrollTop = concLog.scrollHeight;
+  return el;
+}
+function botReply(text){
+  var t = document.createElement("div");
+  t.className = "msg bot typing";
+  t.setAttribute("aria-hidden","true");
+  t.innerHTML = "<i></i><i></i><i></i>";
+  concLog.appendChild(t);
+  concLog.scrollTop = concLog.scrollHeight;
+  var delay = reduced ? 60 : Math.min(420 + text.length * 4, 1400);
+  setTimeout(function(){
+    t.remove();
+    addMsg(text, "bot");
+  }, delay);
+}
+function route(raw){
+  var q = " " + raw.toLowerCase() + " ";
+  for(var i=0;i<INTENTS.length;i++){
+    for(var k=0;k<INTENTS[i].keys.length;k++){
+      if(q.indexOf(INTENTS[i].keys[k]) !== -1){ return INTENTS[i].reply; }
+    }
+  }
+  return FALLBACK;
+}
+function openConc(){
+  conc.classList.add("open");
+  concBtn.setAttribute("aria-expanded","true");
+  if(!greeted){
+    greeted = true;
+    botReply("Good day. This is the PROTELLIGENCE concierge — a scripted demo, nothing leaves this page. Ask about engagements, fees, testimony, or attorney resources.");
+  }
+  setTimeout(function(){ concField.focus(); }, reduced ? 0 : 340);
+}
+function closeConc(){
+  conc.classList.remove("open");
+  concBtn.setAttribute("aria-expanded","false");
+  concBtn.focus();
+}
+concBtn.addEventListener("click", function(){
+  conc.classList.contains("open") ? closeConc() : openConc();
+});
+concClose.addEventListener("click", closeConc);
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape" && conc.classList.contains("open")) closeConc();
+});
+concForm.addEventListener("submit", function(e){
+  e.preventDefault();
+  var v = concField.value.trim();
+  if(!v) return;
+  addMsg(v, "user");
+  concField.value = "";
+  botReply(route(v));
+});
+concChips.addEventListener("click", function(e){
+  var b = e.target.closest("button[data-q]");
+  if(!b) return;
+  addMsg(b.getAttribute("data-q"), "user");
+  botReply(route(b.getAttribute("data-q")));
+});
+})();
+</script>
+</body>
+</html>
